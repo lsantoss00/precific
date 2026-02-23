@@ -1,5 +1,5 @@
 import FadeInOnScroll from "@/src/components/animations/fade-in-on-scroll";
-import { Card } from "@/src/components/core";
+import { Card } from "@/src/components/core/card";
 import { ReactNode } from "react";
 
 interface ReasonCardProps {

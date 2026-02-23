@@ -1,8 +1,9 @@
 "use client";
 
-import { Skeleton, useSidebar } from "@/src/components/core";
 import Column from "@/src/components/core/column";
 import Row from "@/src/components/core/row";
+import { useSidebar } from "@/src/components/core/sidebar";
+import { Skeleton } from "@/src/components/core/skeleton";
 import { queryClient } from "@/src/libs/tanstack-query/query-client";
 import { useAuth } from "@/src/providers/auth-provider";
 import { useMutation } from "@tanstack/react-query";

@@ -2,6 +2,10 @@
 
 import ConfirmDeleteProductDialog from "@/src/app/(private)/produtos/components/products-table/confirm-delete-product-dialog";
 import ProductDetailsDialog from "@/src/app/(private)/produtos/components/products-table/product-details-dialog";
+
+import Column from "@/src/components/core/column";
+import Row from "@/src/components/core/row";
+import Show from "@/src/components/core/show";
 import {
   Table,
   TableBody,
@@ -9,10 +13,7 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/src/components/core";
-import Column from "@/src/components/core/column";
-import Row from "@/src/components/core/row";
-import Show from "@/src/components/core/show";
+} from "@/src/components/core/table";
 import { queryClient } from "@/src/libs/tanstack-query/query-client";
 import { useAuth } from "@/src/providers/auth-provider";
 import { useMutation, useQuery } from "@tanstack/react-query";

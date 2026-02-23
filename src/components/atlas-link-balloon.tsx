@@ -1,8 +1,8 @@
 "use client";
 
 import AtlasTributarioIcon from "@/public/svgs/atlas-logo.svg";
+import { Card } from "@/src/components/core/card";
 import { useState } from "react";
-import { Card } from "./core";
 import Row from "./core/row";
 
 const AtlasLinkBalloon = () => {

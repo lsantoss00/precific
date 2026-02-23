@@ -1,4 +1,4 @@
-import { Container } from "@/src/components/core";
+import { Container } from "@/src/components/core/container";
 import SectionWithBackground from "@/src/components/section-with-background";
 import { ReactNode } from "react";
 

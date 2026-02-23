@@ -5,8 +5,10 @@ import {
   TAX_REGIME_LABELS,
 } from "@/src/app/(private)/perfil/utils/company-labels";
 import SelectStateInput from "@/src/app/(private)/produtos/components/select-state-input";
-import { Button, Input, Label } from "@/src/components/core";
+import { Button } from "@/src/components/core/button";
 import Column from "@/src/components/core/column";
+import { Input } from "@/src/components/core/input";
+import { Label } from "@/src/components/core/label";
 import { MaskedInput } from "@/src/components/core/masked-input";
 import SelectInput from "@/src/components/core/select-input";
 import Show from "@/src/components/core/show";

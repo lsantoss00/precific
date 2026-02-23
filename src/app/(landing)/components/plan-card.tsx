@@ -1,10 +1,12 @@
 "use client";
 
 import { PlanType } from "@/src/app/(landing)/types/plan-type";
-import { Button, Card, Separator } from "@/src/components/core";
 import { Badge } from "@/src/components/core/badge";
+import { Button } from "@/src/components/core/button";
+import { Card } from "@/src/components/core/card";
 import Column from "@/src/components/core/column";
 import Row from "@/src/components/core/row";
+import { Separator } from "@/src/components/core/separator";
 import { useScrollToSection } from "@/src/hooks/use-scroll-to-section";
 import { CircleCheckBig } from "lucide-react";
 

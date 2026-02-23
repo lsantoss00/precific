@@ -1,7 +1,7 @@
 import PlanCard from "@/src/app/(landing)/components/plan-card";
 import { PlanType } from "@/src/app/(landing)/types/plan-type";
 import FadeInOnScroll from "@/src/components/animations/fade-in-on-scroll";
-import { Container } from "@/src/components/core";
+import { Container } from "@/src/components/core/container";
 
 const OurPlansSection = () => {
   return (

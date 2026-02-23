@@ -1,11 +1,12 @@
 "use client";
 
 import shortLogoImage from "@/public/images/precific-short-logo-image.webp";
-import { Button, Container } from "@/src/components/core";
+import { Container } from "@/src/components/core/container";
 import { useScrollToSection } from "@/src/hooks/use-scroll-to-section";
 import Image from "next/image";
 import Link from "next/link";
 
+import { Button } from "@/src/components/core/button";
 import MobileMenu from "./mobile-menu";
 
 const navItems = [

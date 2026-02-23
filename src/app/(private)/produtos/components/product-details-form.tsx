@@ -2,9 +2,11 @@
 
 import SelectStateInput from "@/src/app/(private)/produtos/components/select-state-input";
 import { useProductForm } from "@/src/app/(private)/produtos/contexts/product-form-context";
-import { Card, Input, Label } from "@/src/components/core";
+import { Card } from "@/src/components/core/card";
 import { Checkbox } from "@/src/components/core/checkbox";
 import Column from "@/src/components/core/column";
+import { Input } from "@/src/components/core/input";
+import { Label } from "@/src/components/core/label";
 import { MaskedInput } from "@/src/components/core/masked-input";
 import Row from "@/src/components/core/row";
 import Show from "@/src/components/core/show";

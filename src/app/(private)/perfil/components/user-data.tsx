@@ -1,8 +1,10 @@
 "use client";
 
 import UserImageUpload from "@/src/app/(private)/perfil/components/user-image-upload";
-import { Card, Input, Label } from "@/src/components/core";
+import { Card } from "@/src/components/core/card";
 import Column from "@/src/components/core/column";
+import { Input } from "@/src/components/core/input";
+import { Label } from "@/src/components/core/label";
 import { useAuth } from "@/src/providers/auth-provider";
 
 interface UserDataProps {

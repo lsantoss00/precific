@@ -1,7 +1,7 @@
 "use client";
 
 import { useProductForm } from "@/src/app/(private)/produtos/contexts/product-form-context";
-import { Button } from "@/src/components/core";
+import { Button } from "@/src/components/core/button";
 import Flex from "@/src/components/core/flex";
 import Row from "@/src/components/core/row";
 import { useAuth } from "@/src/providers/auth-provider";

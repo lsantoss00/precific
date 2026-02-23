@@ -5,14 +5,14 @@ import MetricCard, {
 } from "@/src/app/(private)/produtos/components/metric-card";
 import { ProductResponseType } from "@/src/app/(private)/produtos/types/product-type";
 
+import Column from "@/src/components/core/column";
 import {
   Dialog,
   DialogContent,
   DialogHeader,
-  Separator,
-} from "@/src/components/core";
-import Column from "@/src/components/core/column";
+} from "@/src/components/core/dialog";
 import Flex from "@/src/components/core/flex";
+import { Separator } from "@/src/components/core/separator";
 import Show from "@/src/components/core/show";
 import CustomTooltip from "@/src/components/custom-tooltip";
 import StatusBadge from "@/src/components/status-badge";

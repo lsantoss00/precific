@@ -1,6 +1,7 @@
 "use client";
 
-import { Button, Card } from "@/src/components/core";
+import { Button } from "@/src/components/core/button";
+import { Card } from "@/src/components/core/card";
 import Column from "@/src/components/core/column";
 import Show from "@/src/components/core/show";
 import { User, XIcon } from "lucide-react";

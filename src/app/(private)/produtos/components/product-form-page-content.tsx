@@ -1,6 +1,7 @@
 "use client";
 
-import { Button, Container } from "@/src/components/core";
+import { Button } from "@/src/components/core/button";
+import { Container } from "@/src/components/core/container";
 import Flex from "@/src/components/core/flex";
 import Row from "@/src/components/core/row";
 import Show from "@/src/components/core/show";

@@ -2,10 +2,11 @@
 
 import { ChartFiltersType } from "@/src/app/(private)/dashboard/types/chart-filters-type";
 import { getProducts } from "@/src/app/(private)/produtos/services/get-products";
-import { Button, Label } from "@/src/components/core";
+import { Button } from "@/src/components/core/button";
 import Column from "@/src/components/core/column";
 import DatePicker from "@/src/components/core/date-picker";
 import Flex from "@/src/components/core/flex";
+import { Label } from "@/src/components/core/label";
 import {
   MultiSelect,
   MultiSelectOption,

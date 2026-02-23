@@ -3,13 +3,13 @@
 import logoImage from "@/public/images/precific-logo-image.webp";
 import shortLogoImage from "@/public/images/precific-short-logo-image.webp";
 import ComingSoonBadge from "@/src/components/coming-soon-badge";
+import { Separator } from "@/src/components/core/separator";
 import Menu from "@/src/components/menu";
 import { Clock, Headset, LayoutDashboard, Package } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
-  Separator,
   Sidebar,
   SidebarContent,
   SidebarFooter,
@@ -21,7 +21,7 @@ import {
   SidebarMenuItem,
   SidebarTrigger,
   useSidebar,
-} from "./core";
+} from "./core/sidebar";
 
 export function AppSidebar() {
   const { state } = useSidebar();

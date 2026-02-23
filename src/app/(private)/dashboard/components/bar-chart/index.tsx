@@ -1,7 +1,6 @@
 "use client";
 
 import { ChartDataType } from "@/src/app/(private)/dashboard/types/chart-data-type";
-import { Skeleton } from "@/src/components/core";
 import {
   ChartContainer,
   ChartTooltip,
@@ -12,6 +11,7 @@ import Column from "@/src/components/core/column";
 import Flex from "@/src/components/core/flex";
 import Row from "@/src/components/core/row";
 import Show from "@/src/components/core/show";
+import { Skeleton } from "@/src/components/core/skeleton";
 import { cn } from "@/src/libs/shadcn-ui/utils";
 import { useReducedMotion } from "framer-motion";
 import {

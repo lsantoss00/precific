@@ -1,7 +1,7 @@
 import grupoViriatoLogoImage from "@/public/images/grupo-viriato-logo.webp";
 import precificLogoImage from "@/public/images/precific-logo-image.webp";
-import { Container } from "@/src/components/core";
 import Column from "@/src/components/core/column";
+import { Container } from "@/src/components/core/container";
 import Flex from "@/src/components/core/flex";
 import Row from "@/src/components/core/row";
 import { socialMediaLinks } from "@/src/utils/social-media-links";

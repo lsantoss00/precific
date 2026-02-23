@@ -5,7 +5,7 @@ import {
   supportContactChannelsLinks,
   supportUsefulResourcesLinks,
 } from "@/src/app/(private)/suporte/utils/support-links";
-import { Container } from "@/src/components/core";
+import { Container } from "@/src/components/core/container";
 import Row from "@/src/components/core/row";
 import { Book, Headset, Megaphone } from "lucide-react";
 import { Metadata } from "next";

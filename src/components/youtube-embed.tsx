@@ -1,7 +1,7 @@
 "use client";
 
 import videoThumbnail from "@/public/images/opengraph-image.webp";
-import { Button } from "@/src/components/core";
+import { Button } from "@/src/components/core/button";
 import Row from "@/src/components/core/row";
 import { Play } from "lucide-react";
 import Image from "next/image";

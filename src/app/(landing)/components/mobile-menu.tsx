@@ -1,8 +1,9 @@
 "use client";
 
 import shortLogoImage from "@/public/images/precific-short-logo-image.webp";
-import { Button, DialogTitle } from "@/src/components/core";
+import { Button } from "@/src/components/core/button";
 import Column from "@/src/components/core/column";
+import { DialogTitle } from "@/src/components/core/dialog";
 import Flex from "@/src/components/core/flex";
 import Row from "@/src/components/core/row";
 import { Sheet, SheetContent, SheetTrigger } from "@/src/components/core/sheet";

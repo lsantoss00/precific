@@ -35,6 +35,7 @@ const nextConfig: NextConfig = {
   experimental: {
     globalNotFound: true,
     optimizeCss: true,
+    optimizePackageImports: ["lucide-react"],
   },
   compiler: {
     removeConsole: process.env.NODE_ENV === "production",

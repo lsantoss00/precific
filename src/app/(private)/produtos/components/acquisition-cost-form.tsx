@@ -2,8 +2,10 @@
 
 import { useProductForm } from "@/src/app/(private)/produtos/contexts/product-form-context";
 import { acquisitionCostCalc } from "@/src/app/(private)/produtos/utils/calcs/acquisition-cost-calc";
-import { Card, Input, Label } from "@/src/components/core";
+import { Card } from "@/src/components/core/card";
 import Column from "@/src/components/core/column";
+import { Input } from "@/src/components/core/input";
+import { Label } from "@/src/components/core/label";
 import Row from "@/src/components/core/row";
 import Show from "@/src/components/core/show";
 import CustomTooltip from "@/src/components/custom-tooltip";

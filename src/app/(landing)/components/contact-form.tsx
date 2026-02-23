@@ -1,21 +1,31 @@
 "use client";
 
 import { postLead } from "@/src/app/(landing)/services/post-lead";
-import { Button, Input, Label } from "@/src/components/core";
+import { Button } from "@/src/components/core/button";
 import { Checkbox } from "@/src/components/core/checkbox";
 import Column from "@/src/components/core/column";
+import { Input } from "@/src/components/core/input";
+import { Label } from "@/src/components/core/label";
 import { MaskedInput } from "@/src/components/core/masked-input";
 import Row from "@/src/components/core/row";
 import Show from "@/src/components/core/show";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useMutation } from "@tanstack/react-query";
 import { Loader2Icon } from "lucide-react";
+import dynamic from "next/dynamic";
 import Link from "next/link";
-import { useRef } from "react";
-import ReCAPTCHA from "react-google-recaptcha";
+import { ComponentProps, useRef, useState } from "react";
+import ReCAPTCHAComponent from "react-google-recaptcha";
 import { Controller, useForm } from "react-hook-form";
 import { toast } from "sonner";
 import z from "zod";
+
+const ReCAPTCHA = dynamic(() => import("react-google-recaptcha"), {
+  ssr: false,
+}) as React.ForwardRefExoticComponent<
+  ComponentProps<typeof ReCAPTCHAComponent> &
+    React.RefAttributes<ReCAPTCHAComponent>
+>;
 
 const ContactFormSchema = z.object({
   name: z
@@ -50,7 +60,8 @@ const ContactFormSchema = z.object({
 type ContactFormSchemaType = z.infer<typeof ContactFormSchema>;
 
 const ContactForm = () => {
-  const recaptchaRef = useRef<ReCAPTCHA>(null);
+  const [loadRecaptcha, setLoadRecaptcha] = useState(false);
+  const recaptchaRef = useRef<ReCAPTCHAComponent>(null);
 
   const {
     handleSubmit,
@@ -100,14 +111,18 @@ const ContactForm = () => {
   });
 
   const handleSubmitContactForm = async (data: ContactFormSchemaType) => {
-    if (!recaptchaRef.current) {
+    if (!loadRecaptcha) {
+      setLoadRecaptcha(true);
+      toast.info("Validando segurança... Tente enviar novamente.");
       return;
     }
+
+    if (!recaptchaRef.current) return;
 
     const token = await recaptchaRef.current.executeAsync();
 
     if (!token) {
-      toast.error("Erro desconhecido. Tente novamente mais tarde.");
+      toast.error("Erro na validação do reCAPTCHA. Tente novamente.");
       return;
     }
 
@@ -126,6 +141,9 @@ const ContactForm = () => {
       id="contactForm"
       onSubmit={handleSubmit(handleSubmitContactForm)}
       className="space-y-3 md:space-y-4 flex flex-col justify-between w-full max-w-md self-center"
+      onMouseEnter={() => setLoadRecaptcha(true)}
+      onFocusCapture={() => setLoadRecaptcha(true)}
+      onTouchStart={() => setLoadRecaptcha(true)}
     >
       <Controller
         name="name"
@@ -290,11 +308,14 @@ const ContactForm = () => {
           </Link>
         </Label>
       </Row>
-      <ReCAPTCHA
-        ref={recaptchaRef}
-        size="invisible"
-        sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || ""}
-      />
+      {loadRecaptcha && (
+        <ReCAPTCHA
+          ref={recaptchaRef}
+          size="invisible"
+          sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || ""}
+        />
+      )}
+
       <Button
         className="h-12 md:h-14 text-sm md:text-base"
         type="submit"

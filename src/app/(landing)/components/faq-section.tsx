@@ -1,8 +1,8 @@
 "use client";
 
 import FadeInOnScroll from "@/src/components/animations/fade-in-on-scroll";
-import { Container } from "@/src/components/core";
 import Column from "@/src/components/core/column";
+import { Container } from "@/src/components/core/container";
 import Flex from "@/src/components/core/flex";
 import SectionWithBackground from "@/src/components/section-with-background";
 import dynamic from "next/dynamic";

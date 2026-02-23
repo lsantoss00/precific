@@ -1,5 +1,5 @@
 import LoginForm from "@/src/app/(public)/entrar/components/login-form";
-import { Button } from "@/src/components/core";
+import { Button } from "@/src/components/core/button";
 import Column from "@/src/components/core/column";
 import { Metadata } from "next";
 import Link from "next/link";

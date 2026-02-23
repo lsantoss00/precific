@@ -13,7 +13,8 @@ import { simpleNationalCalc } from "@/src/app/(private)/produtos/utils/calcs/sim
 import { suggestedProductPriceCalc } from "@/src/app/(private)/produtos/utils/calcs/suggested-product-price-calc";
 import { getICMSRate } from "@/src/app/(private)/produtos/utils/icms-table";
 import { getRevenueRangeDataPercentage } from "@/src/app/(private)/produtos/utils/revenue-range-data-percentage";
-import { Button, Card } from "@/src/components/core";
+import { Button } from "@/src/components/core/button";
+import { Card } from "@/src/components/core/card";
 import Column from "@/src/components/core/column";
 import Flex from "@/src/components/core/flex";
 import Row from "@/src/components/core/row";

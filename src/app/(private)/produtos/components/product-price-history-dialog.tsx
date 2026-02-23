@@ -1,6 +1,10 @@
 "use client";
 
-import { Dialog, DialogContent, DialogTrigger } from "@/src/components/core";
+import {
+  Dialog,
+  DialogContent,
+  DialogTrigger,
+} from "@/src/components/core/dialog";
 import { DialogTitle } from "@radix-ui/react-dialog";
 import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";

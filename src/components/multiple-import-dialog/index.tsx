@@ -1,12 +1,13 @@
 "use client";
 
 import spreadsheetExampleImage from "@/public/images/spreadsheet-example.webp";
+import { Button } from "@/src/components/core/button";
 import {
-  Button,
   Dialog,
   DialogContent,
   DialogTrigger,
-} from "@/src/components/core";
+} from "@/src/components/core/dialog";
+
 import ImportSpreadsheetArea from "@/src/components/multiple-import-dialog/import-spreadsheet-area";
 import MultipleImportLoadingState from "@/src/components/multiple-import-dialog/multiple-import-loading-state";
 import { DialogTitle } from "@radix-ui/react-dialog";

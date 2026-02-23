@@ -1,6 +1,6 @@
 "use client";
-import { Progress } from "@/src/components/core";
 import Column from "@/src/components/core/column";
+import { Progress } from "@/src/components/core/progress";
 import { Brain, Calculator, CheckCircle2 } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 
@@ -16,7 +16,7 @@ const LoadingResultState = ({ onComplete }: LoadingResultStateProps) => {
     const stepCount = loadingSteps.length;
 
     const randomWeights = Array.from({ length: stepCount }, () =>
-      Math.random()
+      Math.random(),
     );
     const totalWeight = randomWeights.reduce((sum, weight) => sum + weight, 0);
 

@@ -1,5 +1,5 @@
 import notFoundImage from "@/public/images/404-image.webp";
-import { Button } from "@/src/components/core";
+import { Button } from "@/src/components/core/button";
 import Column from "@/src/components/core/column";
 import { ArrowLeft } from "lucide-react";
 import type { Metadata } from "next";

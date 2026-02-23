@@ -2,7 +2,7 @@ import { AppHeader } from "@/src/components/app-header";
 import { AppSidebar } from "@/src/components/app-sidebar";
 import { AuthGuard } from "@/src/components/auth-guard";
 import CompanyFormDialog from "@/src/components/company-form-dialog";
-import { SidebarInset } from "@/src/components/core";
+import { SidebarInset } from "@/src/components/core/sidebar";
 
 export default async function PrivateLayout({
   children,

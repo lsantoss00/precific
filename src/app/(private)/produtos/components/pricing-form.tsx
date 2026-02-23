@@ -2,8 +2,10 @@
 
 import { useProductForm } from "@/src/app/(private)/produtos/contexts/product-form-context";
 import { getICMSRate } from "@/src/app/(private)/produtos/utils/icms-table";
-import { Card, Input, Label } from "@/src/components/core";
+import { Card } from "@/src/components/core/card";
 import Column from "@/src/components/core/column";
+import { Input } from "@/src/components/core/input";
+import { Label } from "@/src/components/core/label";
 import Row from "@/src/components/core/row";
 import SelectInput from "@/src/components/core/select-input";
 import Show from "@/src/components/core/show";

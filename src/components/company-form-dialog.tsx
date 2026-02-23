@@ -2,14 +2,15 @@
 
 import CompanyForm from "@/src/app/(private)/perfil/components/company-form";
 import { logout } from "@/src/app/(public)/entrar/services/logout";
+import { Button } from "@/src/components/core/button";
+
+import Column from "@/src/components/core/column";
 import {
-  Button,
   Dialog,
   DialogContent,
   DialogHeader,
   DialogTitle,
-} from "@/src/components/core";
-import Column from "@/src/components/core/column";
+} from "@/src/components/core/dialog";
 import { queryClient } from "@/src/libs/tanstack-query/query-client";
 import { useAuth } from "@/src/providers/auth-provider";
 import { useMutation } from "@tanstack/react-query";

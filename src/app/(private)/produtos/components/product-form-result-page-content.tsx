@@ -1,6 +1,6 @@
 "use client";
 
-import { Container } from "@/src/components/core";
+import { Container } from "@/src/components/core/container";
 import Row from "@/src/components/core/row";
 import { NotepadText } from "lucide-react";
 import ProductResult from "./product-result";

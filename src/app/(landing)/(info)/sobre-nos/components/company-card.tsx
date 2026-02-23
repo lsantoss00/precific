@@ -1,5 +1,5 @@
 import { CompanyInfoType } from "@/src/app/(landing)/(info)/sobre-nos/types/company-info-type";
-import { Card } from "@/src/components/core";
+import { Card } from "@/src/components/core/card";
 import Column from "@/src/components/core/column";
 import Flex from "@/src/components/core/flex";
 import Row from "@/src/components/core/row";

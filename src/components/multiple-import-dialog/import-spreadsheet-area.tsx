@@ -2,7 +2,7 @@
 
 import xlsImage from "@/public/images/file-xls.webp";
 import { importProducts } from "@/src/app/(private)/produtos/services/post-products-by-import";
-import { Button } from "@/src/components/core";
+import { Button } from "@/src/components/core/button";
 import { queryClient } from "@/src/libs/tanstack-query/query-client";
 import { useMutation } from "@tanstack/react-query";
 import Image from "next/image";

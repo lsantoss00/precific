@@ -1,9 +1,9 @@
 "use client";
 
 import WhatsAppIcon from "@/public/svgs/whatsapp-logo.svg";
+import { Card } from "@/src/components/core/card";
 import { whatsAppHelpLink } from "@/src/utils/whatsapp-help-link";
 import { useState } from "react";
-import { Card } from "./core";
 import Row from "./core/row";
 
 const WhatsAppHelpLinkBalloon = () => {

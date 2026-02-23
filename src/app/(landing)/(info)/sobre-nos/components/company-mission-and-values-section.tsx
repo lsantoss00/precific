@@ -2,8 +2,8 @@
 
 import { CompanyMissionAndValuesTopicType } from "@/src/app/(landing)/(info)/sobre-nos/types/company-mission-and-values-topic-type";
 import FadeInOnScroll from "@/src/components/animations/fade-in-on-scroll";
-import { Container } from "@/src/components/core";
 import Column from "@/src/components/core/column";
+import { Container } from "@/src/components/core/container";
 import SectionWithBackground from "@/src/components/section-with-background";
 import { Award, Goal, Settings, Share2, ShieldCheck, User } from "lucide-react";
 import CompanySectionBlock from "./company-section-block";

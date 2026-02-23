@@ -1,15 +1,16 @@
 "use client";
 
 import { deleteProduct } from "@/src/app/(private)/produtos/services/delete-product";
+import { Button } from "@/src/components/core/button";
+
+import Column from "@/src/components/core/column";
 import {
-  Button,
   Dialog,
   DialogContent,
   DialogFooter,
   DialogHeader,
   DialogTitle,
-} from "@/src/components/core";
-import Column from "@/src/components/core/column";
+} from "@/src/components/core/dialog";
 import Flex from "@/src/components/core/flex";
 import Show from "@/src/components/core/show";
 import { queryClient } from "@/src/libs/tanstack-query/query-client";

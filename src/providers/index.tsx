@@ -1,7 +1,7 @@
+import { SidebarProvider } from "@/src/components/core/sidebar";
 import { AuthProvider } from "@/src/providers/auth-provider";
 import { NuqsProvider } from "@/src/providers/nuqs-provider";
 import { TanstackQueryProvider } from "@/src/providers/tanstack-query-provider";
-import { SidebarProvider } from "../components/core";
 interface ProvidersProps {
   children: React.ReactNode;
 }

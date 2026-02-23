@@ -1,9 +1,11 @@
 "use client";
 
 import { getProductsForExport } from "@/src/app/(private)/produtos/services/get-products-for-export";
-import { Button, Input, Label } from "@/src/components/core";
+import { Button } from "@/src/components/core/button";
 import Column from "@/src/components/core/column";
 import Flex from "@/src/components/core/flex";
+import { Input } from "@/src/components/core/input";
+import { Label } from "@/src/components/core/label";
 import Row from "@/src/components/core/row";
 import Show from "@/src/components/core/show";
 import ExportDataButton from "@/src/components/export-data-button";

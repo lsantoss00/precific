@@ -1,8 +1,10 @@
 "use client";
 
 import AuthFormCard from "@/src/components/auth-form-card";
-import { Button, Input, Label } from "@/src/components/core";
+import { Button } from "@/src/components/core/button";
 import Column from "@/src/components/core/column";
+import { Input } from "@/src/components/core/input";
+import { Label } from "@/src/components/core/label";
 import Show from "@/src/components/core/show";
 import { queryClient } from "@/src/libs/tanstack-query/query-client";
 import { supabaseErrorsTranslator } from "@/src/utils/supabase-errors-translator";

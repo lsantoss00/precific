@@ -1,5 +1,7 @@
 "use client";
 
+import { SidebarTrigger } from "@/src/components/core/sidebar";
+import { Skeleton } from "@/src/components/core/skeleton";
 import { queryClient } from "@/src/libs/tanstack-query/query-client";
 import { useAuth } from "@/src/providers/auth-provider";
 import { useMutation } from "@tanstack/react-query";
@@ -8,7 +10,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { logout } from "../app/(public)/entrar/services/logout";
-import { SidebarTrigger, Skeleton } from "./core";
 import {
   DropdownMenu,
   DropdownMenuContent,

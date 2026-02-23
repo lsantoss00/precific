@@ -1,7 +1,7 @@
 "use client";
 
+import { Button } from "@/src/components/core/button";
 import { Download, Loader2Icon } from "lucide-react";
-import { Button } from "./core";
 import Show from "./core/show";
 
 interface ExportDataButtonProps {

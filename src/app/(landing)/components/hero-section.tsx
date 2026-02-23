@@ -1,8 +1,9 @@
 "use client";
 
 import FadeInOnScroll from "@/src/components/animations/fade-in-on-scroll";
-import { Button, Container } from "@/src/components/core";
+import { Button } from "@/src/components/core/button";
 import Column from "@/src/components/core/column";
+import { Container } from "@/src/components/core/container";
 import Flex from "@/src/components/core/flex";
 import SectionWithBackground from "@/src/components/section-with-background";
 import YouTubeEmbed from "@/src/components/youtube-embed";

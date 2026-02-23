@@ -1,8 +1,9 @@
 "use client";
 
-import { Button, Switch } from "@/src/components/core";
+import { Button } from "@/src/components/core/button";
 import Row from "@/src/components/core/row";
 import Show from "@/src/components/core/show";
+import { Switch } from "@/src/components/core/switch";
 import CustomTooltip from "@/src/components/custom-tooltip";
 import { currencyFormatter } from "@/src/helpers/currency-formatter";
 import { useAuth } from "@/src/providers/auth-provider";

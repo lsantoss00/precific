@@ -1,8 +1,9 @@
-import { Card, Skeleton } from "@/src/components/core";
+import { Card } from "@/src/components/core/card";
 import Column from "@/src/components/core/column";
 import Flex from "@/src/components/core/flex";
 import Row from "@/src/components/core/row";
 import Show from "@/src/components/core/show";
+import { Skeleton } from "@/src/components/core/skeleton";
 import { currencyFormatter } from "@/src/helpers/currency-formatter";
 import { ArrowDownLeft, ArrowUpRight } from "lucide-react";
 

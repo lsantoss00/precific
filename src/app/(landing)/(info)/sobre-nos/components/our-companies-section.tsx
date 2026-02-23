@@ -7,8 +7,8 @@ import viriatoImobiliariaLogo from "@/public/images/viriato-imobiliaria-logo.web
 import CompanyCard from "@/src/app/(landing)/(info)/sobre-nos/components/company-card";
 import { CompanyInfoType } from "@/src/app/(landing)/(info)/sobre-nos/types/company-info-type";
 import FadeInOnScroll from "@/src/components/animations/fade-in-on-scroll";
-import { Container } from "@/src/components/core";
 import Column from "@/src/components/core/column";
+import { Container } from "@/src/components/core/container";
 
 const OurCompaniesSection = () => {
   return (

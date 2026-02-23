@@ -5,7 +5,7 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/src/components/core";
+} from "@/src/components/core/select";
 import { ComponentProps } from "react";
 import { twMerge } from "tailwind-merge";
 
@@ -34,7 +34,7 @@ const SelectInput = ({
 }: SelectInputProps) => {
   const handleChange = (newValue: string) => {
     const originalOption = options.find(
-      (opt) => String(opt.value) === newValue
+      (opt) => String(opt.value) === newValue,
     );
     if (originalOption) {
       onChange(originalOption.value);

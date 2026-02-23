@@ -3,7 +3,7 @@ import ChartCard from "@/src/app/(private)/dashboard/components/chart-card";
 import CustomChartTooltip from "@/src/app/(private)/dashboard/components/custom-chart-tooltip";
 import { getProductsMarkup } from "@/src/app/(private)/dashboard/services/get-products-markup";
 import { ChartFiltersType } from "@/src/app/(private)/dashboard/types/chart-filters-type";
-import { Button } from "@/src/components/core";
+import { Button } from "@/src/components/core/button";
 import { ChartConfig } from "@/src/components/core/chart";
 import { keepPreviousData, useQuery } from "@tanstack/react-query";
 import { ArrowDownUp } from "lucide-react";
