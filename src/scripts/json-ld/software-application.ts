@@ -10,26 +10,62 @@ export const softwareApplicationJsonLd = {
     {
       "@type": "Offer",
       name: "Plano Básico",
-      price: "79.99",
-      priceCurrency: "BRL",
+      availability: "https://schema.org/InStock",
+      priceSpecification: {
+        "@type": "UnitPriceSpecification",
+        price: "79.99",
+        priceCurrency: "BRL",
+        referenceQuantity: {
+          "@type": "QuantitativeValue",
+          value: "1",
+          unitCode: "MON",
+        },
+      },
     },
     {
       "@type": "Offer",
       name: "Plano Intermediário",
-      price: "199.99",
-      priceCurrency: "BRL",
+      availability: "https://schema.org/InStock",
+      priceSpecification: {
+        "@type": "UnitPriceSpecification",
+        price: "199.99",
+        priceCurrency: "BRL",
+        referenceQuantity: {
+          "@type": "QuantitativeValue",
+          value: "1",
+          unitCode: "MON",
+        },
+      },
     },
     {
       "@type": "Offer",
       name: "Plano Avançado",
-      price: "399.99",
-      priceCurrency: "BRL",
+      availability: "https://schema.org/InStock",
+      priceSpecification: {
+        "@type": "UnitPriceSpecification",
+        price: "399.99",
+        priceCurrency: "BRL",
+        referenceQuantity: {
+          "@type": "QuantitativeValue",
+          value: "1",
+          unitCode: "MON",
+        },
+      },
     },
     {
       "@type": "Offer",
       name: "Plano Customizado",
-      price: "799.99",
-      priceCurrency: "BRL",
+      availability: "https://schema.org/InStock",
+      priceSpecification: {
+        "@type": "UnitPriceSpecification",
+        price: "799.99",
+        priceCurrency: "BRL",
+        referenceQuantity: {
+          "@type": "QuantitativeValue",
+          value: "1",
+          unitCode: "MON",
+        },
+      },
     },
   ],
   publisher: {

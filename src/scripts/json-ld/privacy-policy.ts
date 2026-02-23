@@ -1,6 +1,6 @@
 export const privacyPolicyJsonLd = {
   "@context": "https://schema.org",
-  "@type": "WebPage",
+  "@type": "PrivacyPolicy",
   "@id": "https://precificapp.com/politica-de-privacidade#webpage",
   url: "https://precificapp.com/politica-de-privacidade",
   name: "Política de Privacidade | Precific",

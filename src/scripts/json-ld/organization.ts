@@ -15,6 +15,9 @@ export const OrganizationJsonLd = {
     url: "https://viriato.com.br",
     foundingDate: "1980",
   },
+  makesOffer: {
+    "@id": "https://precificapp.com/#software",
+  },
   contactPoint: [
     {
       "@type": "ContactPoint",

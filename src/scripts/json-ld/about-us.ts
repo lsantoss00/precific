@@ -8,4 +8,9 @@ export const aboutUsJsonLd = {
     "Conheça a história do Precific e do Grupo Viriato, especialista em consultoria empresarial há mais de 40 anos.",
   isPartOf: { "@id": "https://precificapp.com/#website" },
   about: { "@id": "https://precificapp.com/#organization" },
+  mentions: {
+    "@type": "Organization",
+    name: "Grupo Viriato",
+    url: "https://viriato.com.br",
+  },
 };

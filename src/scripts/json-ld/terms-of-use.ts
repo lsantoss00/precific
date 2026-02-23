@@ -1,6 +1,6 @@
 export const termosOfUseJsonLd = {
   "@context": "https://schema.org",
-  "@type": "WebPage",
+  "@type": "TermsOfService",
   "@id": "https://precificapp.com/termos-de-uso#webpage",
   url: "https://precificapp.com/termos-de-uso",
   name: "Termos de Uso | Precific",

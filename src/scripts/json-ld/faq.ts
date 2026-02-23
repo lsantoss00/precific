@@ -6,7 +6,7 @@ export const faqJsonLd = {
     "@id": "https://precificapp.com/#website",
   },
   about: {
-    "@id": "https://precificapp.com/#organization",
+    "@id": "https://precificapp.com/#software",
   },
   mainEntity: [
     {
