@@ -20,7 +20,7 @@ const ValuePropositionSection = dynamic(
 );
 
 const LogoSection = dynamic(
-  () => import("@/src/app/(landing)/components/logo-section"),
+  () => import("@/src/app/(landing)/components/our-plans-section"),
   { ssr: true },
 );
 

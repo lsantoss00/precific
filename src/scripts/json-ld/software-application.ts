@@ -9,16 +9,28 @@ export const softwareApplicationJsonLd = {
   offers: [
     {
       "@type": "Offer",
-      name: "Plano Gratuito",
-      price: "0",
+      name: "Plano Básico",
+      price: "79.99",
       priceCurrency: "BRL",
     },
-    // {
-    //   "@type": "Offer",
-    //   name: "Plano Pago",
-    //   price: "29.90",
-    //   priceCurrency: "BRL",
-    // },
+    {
+      "@type": "Offer",
+      name: "Plano Intermediário",
+      price: "199.99",
+      priceCurrency: "BRL",
+    },
+    {
+      "@type": "Offer",
+      name: "Plano Avançado",
+      price: "399.99",
+      priceCurrency: "BRL",
+    },
+    {
+      "@type": "Offer",
+      name: "Plano Customizado",
+      price: "799.99",
+      priceCurrency: "BRL",
+    },
   ],
   publisher: {
     "@id": "https://precificapp.com/#organization",
