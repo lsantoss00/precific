@@ -5,10 +5,6 @@ import ProductsAverageAcquisitionCostKpiCard from "@/src/app/(private)/dashboard
 import ProductsAverageNetProfitKpiCard from "@/src/app/(private)/dashboard/components/products-average-net-profit-kpi-card";
 import ProductsAveragePriceKpiCard from "@/src/app/(private)/dashboard/components/products-average-price-kpi-card";
 import ProductsAverageProfitabilityKpiCard from "@/src/app/(private)/dashboard/components/products-average-profitability-kpi-card";
-import ProductsFixedCostsRankingChart from "@/src/app/(private)/dashboard/components/products-fixed-costs-ranking-chart";
-import ProductsMarkupRankingChart from "@/src/app/(private)/dashboard/components/products-markup-ranking-chart";
-import ProductsNetProfitRankingChart from "@/src/app/(private)/dashboard/components/products-net-profit-ranking-chart";
-import ProductsShippingRankingChart from "@/src/app/(private)/dashboard/components/products-shipping-ranking-chart";
 import { ChartFiltersType } from "@/src/app/(private)/dashboard/types/chart-filters-type";
 import Column from "@/src/components/core/column";
 import Row from "@/src/components/core/row";
@@ -24,6 +20,30 @@ import {
   useQueryStates,
 } from "nuqs";
 import { useMemo } from "react";
+
+const ProductsNetProfitRankingChart = dynamic(
+  () =>
+    import("@/src/app/(private)/dashboard/components/products-net-profit-ranking-chart"),
+  { ssr: false },
+);
+
+const ProductsMarkupRankingChart = dynamic(
+  () =>
+    import("@/src/app/(private)/dashboard/components/products-markup-ranking-chart"),
+  { ssr: false },
+);
+
+const ProductsFixedCostsRankingChart = dynamic(
+  () =>
+    import("@/src/app/(private)/dashboard/components/products-fixed-costs-ranking-chart"),
+  { ssr: false },
+);
+
+const ProductsShippingRankingChart = dynamic(
+  () =>
+    import("@/src/app/(private)/dashboard/components/products-shipping-ranking-chart"),
+  { ssr: false },
+);
 
 const ProductsPricesAndAcquisitionCostsChart = dynamic(
   () =>

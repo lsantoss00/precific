@@ -9,7 +9,6 @@ import Image from "next/image";
 import Papa from "papaparse";
 import { Dispatch, SetStateAction, useRef, useState } from "react";
 import { toast } from "sonner";
-import * as XLSX from "xlsx";
 
 interface CSVRow {
   sku: string;
@@ -175,8 +174,10 @@ export default function ImportSpreadsheetArea({
     importMutation.mutate(validRows as CSVRow[]);
   };
 
-  const processXLSX = (file: File) => {
+  const processXLSX = async (file: File) => {
     updateProgress(10);
+
+    const XLSX = await import("xlsx");
 
     const reader = new FileReader();
 
