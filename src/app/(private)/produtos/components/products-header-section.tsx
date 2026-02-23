@@ -9,17 +9,21 @@ import { Label } from "@/src/components/core/label";
 import Row from "@/src/components/core/row";
 import Show from "@/src/components/core/show";
 import ExportDataButton from "@/src/components/export-data-button";
-import MultipleImportDialog from "@/src/components/multiple-import-dialog";
 import { currencyFormatter } from "@/src/helpers/currency-formatter";
 import { useDebounce } from "@/src/hooks/use-debounce";
 import { useAuth } from "@/src/providers/auth-provider";
 import { useQuery } from "@tanstack/react-query";
 import { Package, PlusCircle, TriangleAlert, Upload } from "lucide-react";
+import dynamic from "next/dynamic";
 import Link from "next/link";
 import { parseAsInteger, parseAsString, useQueryState } from "nuqs";
-import Papa from "papaparse";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
+
+const MultipleImportDialog = dynamic(
+  () => import("@/src/components/multiple-import-dialog"),
+  { ssr: false },
+);
 
 const ProductsHeaderSection = () => {
   const { isLoadingAuth, isPremium } = useAuth();
@@ -64,6 +68,8 @@ const ProductsHeaderSection = () => {
         });
         return;
       }
+
+      const Papa = (await import("papaparse")).default;
 
       const formattedData = result.data.map((product) => ({
         SKU: product.sku || "-",

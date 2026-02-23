@@ -7,7 +7,6 @@ import {
   DialogContent,
   DialogTrigger,
 } from "@/src/components/core/dialog";
-
 import ImportSpreadsheetArea from "@/src/components/multiple-import-dialog/import-spreadsheet-area";
 import MultipleImportLoadingState from "@/src/components/multiple-import-dialog/multiple-import-loading-state";
 import { DialogTitle } from "@radix-ui/react-dialog";
@@ -76,7 +75,6 @@ const MultipleImportDialog = ({ trigger }: MultipleImportDialogProps) => {
                   height={150}
                   placeholder="blur"
                   className="min-w-137.5"
-                  priority
                 />
               </div>
             </div>

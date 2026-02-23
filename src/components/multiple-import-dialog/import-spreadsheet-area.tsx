@@ -6,7 +6,6 @@ import { Button } from "@/src/components/core/button";
 import { queryClient } from "@/src/libs/tanstack-query/query-client";
 import { useMutation } from "@tanstack/react-query";
 import Image from "next/image";
-import Papa from "papaparse";
 import { Dispatch, SetStateAction, useRef, useState } from "react";
 import { toast } from "sonner";
 
@@ -229,8 +228,10 @@ export default function ImportSpreadsheetArea({
     reader.readAsArrayBuffer(file);
   };
 
-  const processCSV = (file: File) => {
+  const processCSV = async (file: File) => {
     updateProgress(10);
+
+    const Papa = (await import("papaparse")).default;
 
     Papa.parse(file, {
       header: true,
