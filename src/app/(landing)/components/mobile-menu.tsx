@@ -1,16 +1,23 @@
 "use client";
 
 import shortLogoImage from "@/public/images/precific-short-logo-image.webp";
-import { Button } from "@/src/components/core";
+import { Button, DialogTitle } from "@/src/components/core";
 import Column from "@/src/components/core/column";
 import Flex from "@/src/components/core/flex";
 import Row from "@/src/components/core/row";
 import { Sheet, SheetContent, SheetTrigger } from "@/src/components/core/sheet";
 import { useScrollToSection } from "@/src/hooks/use-scroll-to-section";
-import { Compass, Home, Menu, MessageCircle, X } from "lucide-react";
+import { Compass, Home, Menu, MessageCircle, Sparkles, X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { Fragment, useState } from "react";
+
+const navItems = [
+  { label: "Início", icon: Home, section: null },
+  { label: "Descubra", icon: Compass, section: "descubra" },
+  { label: "Planos", icon: Sparkles, section: "planos" },
+  { label: "Converse conosco", icon: MessageCircle, section: "contato" },
+] as const;
 
 const MobileMenu = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -18,18 +25,14 @@ const MobileMenu = () => {
 
   const closeMenu = () => setIsOpen(false);
 
-  const handleScrollToTop = () => {
-    scrollToTop();
-    closeMenu();
-  };
-
-  const handleScrollToSection = (sectionId: string) => {
-    scrollToSection(sectionId);
+  const handleNavClick = (section: string | null) => {
+    section ? scrollToSection(section) : scrollToTop();
     closeMenu();
   };
 
   return (
     <Sheet open={isOpen} onOpenChange={setIsOpen}>
+      <DialogTitle className="sr-only">Mobile Menu</DialogTitle>
       <SheetTrigger asChild className="md:hidden">
         <Button
           variant="ghost"
@@ -76,51 +79,28 @@ const MobileMenu = () => {
             aria-label="Navegação principal"
           >
             <Column as="ul">
-              <li>
-                <Button
-                  variant="ghost"
-                  onClick={handleScrollToTop}
-                  className="flex w-full items-center justify-start gap-4 text-base text-zinc-800 hover:text-primary hover:bg-primary/5 font-medium h-auto px-4 py-3.5 rounded-md group"
-                >
-                  <Home
-                    className="h-5 w-5 text-zinc-800 group-hover:text-primary transition-colors"
-                    aria-hidden="true"
-                  />
-                  Início
-                </Button>
-              </li>
-              <li aria-hidden="true">
-                <span className="block h-px bg-zinc-200 my-1" />
-              </li>
-              <li>
-                <Button
-                  variant="ghost"
-                  onClick={() => handleScrollToSection("descubra")}
-                  className="flex w-full items-center justify-start gap-4 text-base text-zinc-800 hover:text-primary hover:bg-primary/5 font-medium h-auto px-4 py-3.5 rounded-md group"
-                >
-                  <Compass
-                    className="h-5 w-5 text-zinc-800 group-hover:text-primary transition-colors"
-                    aria-hidden="true"
-                  />
-                  Descubra
-                </Button>
-              </li>
-              <li aria-hidden="true">
-                <span className="block h-px bg-zinc-200 my-1" />
-              </li>
-              <li>
-                <Button
-                  variant="ghost"
-                  onClick={() => handleScrollToSection("contato")}
-                  className="flex w-full items-center justify-start gap-4 text-base text-zinc-800 hover:text-primary hover:bg-primary/5 font-medium h-auto px-4 py-3.5 rounded-md group"
-                >
-                  <MessageCircle
-                    className="h-5 w-5 text-zinc-800 group-hover:text-primary transition-colors"
-                    aria-hidden="true"
-                  />
-                  Converse conosco
-                </Button>
-              </li>
+              {navItems.map(({ label, icon: Icon, section }, index) => (
+                <Fragment key={label}>
+                  <li>
+                    <Button
+                      variant="ghost"
+                      onClick={() => handleNavClick(section)}
+                      className="flex w-full items-center justify-start gap-4 text-base text-zinc-800 hover:text-primary hover:bg-primary/5 font-medium h-auto px-4 py-3.5 rounded-md group"
+                    >
+                      <Icon
+                        className="h-5 w-5 text-zinc-800 group-hover:text-primary transition-colors"
+                        aria-hidden="true"
+                      />
+                      {label}
+                    </Button>
+                  </li>
+                  {index < navItems.length - 1 && (
+                    <li key={`${label}-divider`} aria-hidden="true">
+                      <span className="block h-px bg-zinc-200 my-1" />
+                    </li>
+                  )}
+                </Fragment>
+              ))}
             </Column>
           </Column>
 

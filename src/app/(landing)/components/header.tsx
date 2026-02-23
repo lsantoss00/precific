@@ -8,6 +8,13 @@ import Link from "next/link";
 
 import MobileMenu from "./mobile-menu";
 
+const navItems = [
+  { label: "Início", section: null },
+  { label: "Descubra", section: "descubra" },
+  { label: "Planos", section: "planos" },
+  { label: "Converse conosco", section: "contato" },
+] as const;
+
 const Header = () => {
   const { scrollToSection, scrollToTop } = useScrollToSection();
 
@@ -27,33 +34,19 @@ const Header = () => {
             priority
           />
           <ul className="hidden md:flex items-center space-x-6 lg:space-x-8">
-            <li>
-              <Button
-                variant="ghost"
-                onClick={scrollToTop}
-                className="text-sm lg:text-base text-zinc-800 hover:text-primary font-medium transition-colors py-2 px-0 h-auto border-b-2 border-transparent hover:border-primary hover:bg-transparent! rounded-none"
-              >
-                Início
-              </Button>
-            </li>
-            <li>
-              <Button
-                variant="ghost"
-                onClick={() => scrollToSection("descubra")}
-                className="text-sm lg:text-base text-zinc-800 hover:text-primary font-medium transition-colors py-2 px-0 h-auto border-b-2 border-transparent hover:border-primary hover:bg-transparent! rounded-none"
-              >
-                Descubra
-              </Button>
-            </li>
-            <li>
-              <Button
-                variant="ghost"
-                onClick={() => scrollToSection("contato")}
-                className="text-sm lg:text-base text-zinc-800 hover:text-primary font-medium transition-colors py-2 px-0 h-auto border-b-2 border-transparent hover:border-primary hover:bg-transparent! rounded-none"
-              >
-                Converse conosco
-              </Button>
-            </li>
+            {navItems.map(({ label, section }) => (
+              <li key={label}>
+                <Button
+                  variant="ghost"
+                  onClick={() =>
+                    section ? scrollToSection(section) : scrollToTop()
+                  }
+                  className="text-sm lg:text-base text-zinc-800 hover:text-primary font-medium transition-colors py-2 px-0 h-auto border-b-2 border-transparent hover:border-primary hover:bg-transparent! rounded-none"
+                >
+                  {label}
+                </Button>
+              </li>
+            ))}
           </ul>
         </nav>
         <Button

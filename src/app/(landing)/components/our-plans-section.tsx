@@ -8,6 +8,7 @@ const OurPlansSection = () => {
     <Container
       as="section"
       variant="section"
+      id="planos"
       className="bg-white flex flex-col justify-center items-center gap-8 md:gap-10"
     >
       <FadeInOnScroll
