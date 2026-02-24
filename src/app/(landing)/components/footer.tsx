@@ -4,7 +4,7 @@ import Column from "@/src/components/core/column";
 import { Container } from "@/src/components/core/container";
 import Flex from "@/src/components/core/flex";
 import Row from "@/src/components/core/row";
-import { socialMediaLinks } from "@/src/utils/social-media-links";
+import { socialMediaLinks } from "@/src/constants/social-media-links";
 import Image from "next/image";
 import Link from "next/link";
 

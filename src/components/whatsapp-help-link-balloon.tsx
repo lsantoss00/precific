@@ -2,7 +2,7 @@
 
 import WhatsAppIcon from "@/public/svgs/whatsapp-logo.svg";
 import { Card } from "@/src/components/core/card";
-import { whatsAppHelpLink } from "@/src/utils/whatsapp-help-link";
+import { whatsAppHelpLink } from "@/src/constants/whatsapp-help-link";
 import { useState } from "react";
 import Row from "./core/row";
 
