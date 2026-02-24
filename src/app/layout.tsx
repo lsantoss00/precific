@@ -1,12 +1,12 @@
 import AtlasLinkBalloon from "@/src/components/atlas-link-balloon";
 import WhatsAppHelpLinkBalloon from "@/src/components/whatsapp-help-link-balloon";
+import { TanstackQueryProvider } from "@/src/providers/tanstack-query-provider";
 import { OrganizationJsonLd } from "@/src/scripts/json-ld/";
 import type { Metadata, Viewport } from "next";
 import { Poppins } from "next/font/google";
 import Script from "next/script";
 import NextTopLoader from "nextjs-toploader";
 import { Toaster } from "../components/core/sonner";
-import Providers from "../providers";
 import "./globals.css";
 
 const poppins = Poppins({
@@ -128,7 +128,7 @@ export default function RootLayout({
             __html: JSON.stringify(OrganizationJsonLd),
           }}
         />
-        <Providers>
+        <TanstackQueryProvider>
           <NextTopLoader
             color="#66289B"
             height={3}
@@ -140,7 +140,7 @@ export default function RootLayout({
 
           {children}
           <Toaster position="top-center" />
-        </Providers>
+        </TanstackQueryProvider>
         <AtlasLinkBalloon />
         <WhatsAppHelpLinkBalloon />
       </body>
