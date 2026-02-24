@@ -5,7 +5,7 @@ export const plans: PlanType[] = [
     id: "1",
     name: "BÁSICO",
     description:
-      "Ideal para pequenos negócios que um buscam controle simples e eficiente da precificação.",
+      "Ideal para pequenos negócios que buscam um controle simples e eficiente da precificação.",
     price: "R$ 79,99",
     benefits: [
       "1 usuário",
