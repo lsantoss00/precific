@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --webpack",
-    "build": "next build --webpack",
-    "start": "next start --webpack",
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
     "clean": "rm -rf .next node_modules yarn.lock && yarn cache clean && yarn install && yarn build && yarn dev"
   },
   "dependencies": {
@@ -27,7 +27,6 @@
     "@supabase/auth-helpers-nextjs": "^0.10.0",
     "@supabase/ssr": "^0.7.0",
     "@supabase/supabase-js": "^2.58.0",
-    "@svgr/webpack": "^8.1.0",
     "@tanstack/react-query": "^5.90.2",
     "@tanstack/react-table": "^8.21.3",
     "@types/papaparse": "^5.3.16",
@@ -60,6 +59,8 @@
     "zod": "^4.1.11"
   },
   "devDependencies": {
+    "@svgr/core": "^8.1.0",
+    "@svgr/webpack": "^8.1.0",
     "@tailwindcss/postcss": "^4",
     "@types/humps": "^2.0.6",
     "@types/node": "^20",
