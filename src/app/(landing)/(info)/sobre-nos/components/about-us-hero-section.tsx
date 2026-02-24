@@ -3,7 +3,6 @@
 import people1 from "@/public/images/people-1.webp";
 import people2 from "@/public/images/people-2.webp";
 import people3 from "@/public/images/people-3.webp";
-import FadeInOnScroll from "@/src/components/animations/fade-in-on-scroll";
 import Column from "@/src/components/core/column";
 import { Container } from "@/src/components/core/container";
 import Flex from "@/src/components/core/flex";
@@ -23,11 +22,7 @@ const AboutUsHeroSection = () => {
         className="h-full lg:flex lg:flex-col lg:justify-center"
       >
         <Flex className="flex-col lg:flex-row items-center justify-between gap-8 md:gap-12">
-          <FadeInOnScroll
-            direction="left"
-            offset={20}
-            className="w-full xl:max-w-150 2xl:max-w-170 z-10"
-          >
+          <div className="animate-hero w-full xl:max-w-150 2xl:max-w-170 z-10">
             <Column as="header" className="gap-4 md:gap-6">
               <h1 className="sr-only">Sobre o Precific e o Grupo Viriato</h1>
               <Column className="gap-3 max-w-lg">
@@ -59,12 +54,8 @@ const AboutUsHeroSection = () => {
                 </span>{" "}
               </h2>
             </Column>
-          </FadeInOnScroll>
-          <FadeInOnScroll
-            direction="right"
-            offset={20}
-            className="relative z-10"
-          >
+          </div>
+          <div className="animate-hero relative z-10">
             <Flex
               as="figure"
               className="relative lg:mr-4 xl:mr-13"
@@ -117,7 +108,7 @@ const AboutUsHeroSection = () => {
                 />
               </div>
             </Flex>
-          </FadeInOnScroll>
+          </div>
         </Flex>
       </Container>
     </SectionWithBackground>
