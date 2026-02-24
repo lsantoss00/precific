@@ -1,19 +1,14 @@
-"use client";
-
 import userImage from "@/public/images/user-image.webp";
+import CtaButton from "@/src/app/(landing)/components/cta-button";
 import FadeInOnScroll from "@/src/components/animations/fade-in-on-scroll";
-import { Button } from "@/src/components/core/button";
 import Column from "@/src/components/core/column";
 import { Container } from "@/src/components/core/container";
 import Flex from "@/src/components/core/flex";
 import SectionWithBackground from "@/src/components/section-with-background";
-import { useScrollToSection } from "@/src/hooks/use-scroll-to-section";
 import { Ellipsis } from "lucide-react";
 import Image from "next/image";
 
 const ValuePropositionSection = () => {
-  const { scrollToSection } = useScrollToSection();
-
   return (
     <SectionWithBackground
       className="w-full xl:h-168 2xl:h-175 overflow-hidden"
@@ -50,13 +45,10 @@ const ValuePropositionSection = () => {
                   aria-hidden="true"
                 />
               </Column>
-              <Button
-                className="w-full sm:w-fit h-12 md:h-14 px-6 md:px-8 hover:cursor-pointer font-medium text-sm md:text-base"
+              <CtaButton
                 variant="secondary"
-                onClick={() => scrollToSection("contato")}
-              >
-                Quero falar com um especialista!
-              </Button>
+                text="Quero falar com um especialista!"
+              />
             </Flex>
           </Container>
         </FadeInOnScroll>

@@ -1,14 +1,9 @@
-"use client";
-
+import CtaButton from "@/src/app/(landing)/components/cta-button";
 import FadeInOnScroll from "@/src/components/animations/fade-in-on-scroll";
-import { Button } from "@/src/components/core/button";
 import Column from "@/src/components/core/column";
 import { Container } from "@/src/components/core/container";
-import { useScrollToSection } from "@/src/hooks/use-scroll-to-section";
 
 const StartUsingSection = () => {
-  const { scrollToSection } = useScrollToSection();
-
   return (
     <Container
       as="section"
@@ -35,12 +30,7 @@ const StartUsingSection = () => {
               </span>
               ar... Vai deixar ele sair na frente?
             </p>
-            <Button
-              className="h-12 md:h-14 w-full sm:w-fit px-6 md:px-8 text-sm md:text-base"
-              onClick={() => scrollToSection("contato")}
-            >
-              Não quero ficar para trás!
-            </Button>
+            <CtaButton text="Não quero ficar para trás!" />
           </Column>
         </FadeInOnScroll>
       </Column>

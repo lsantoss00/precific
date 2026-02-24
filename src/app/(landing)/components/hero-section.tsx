@@ -1,17 +1,12 @@
-"use client";
-
+import CtaButton from "@/src/app/(landing)/components/cta-button";
 import FadeInOnScroll from "@/src/components/animations/fade-in-on-scroll";
-import { Button } from "@/src/components/core/button";
 import Column from "@/src/components/core/column";
 import { Container } from "@/src/components/core/container";
 import Flex from "@/src/components/core/flex";
 import SectionWithBackground from "@/src/components/section-with-background";
 import YouTubeEmbed from "@/src/components/youtube-embed";
-import { useScrollToSection } from "@/src/hooks/use-scroll-to-section";
 
 const HeroSection = () => {
-  const { scrollToSection } = useScrollToSection();
-
   return (
     <SectionWithBackground
       className="w-full min-h-[calc(100vh-80px)] xl:h-[calc(100vh-80px)] overflow-hidden"
@@ -45,13 +40,7 @@ const HeroSection = () => {
                   simulando cenários futuros da Reforma Tributária.
                 </p>
               </Column>
-              <Button
-                className="w-full sm:w-fit h-12 md:h-14 px-6 md:px-8 hover:cursor-pointer font-medium text-sm md:text-base"
-                variant="secondary"
-                onClick={() => scrollToSection("contato")}
-              >
-                Agendar Demonstração
-              </Button>
+              <CtaButton variant="secondary" />
             </Column>
           </FadeInOnScroll>
           <FadeInOnScroll
