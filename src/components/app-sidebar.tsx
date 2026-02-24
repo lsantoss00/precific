@@ -43,7 +43,6 @@ export function AppSidebar() {
                 alt="Precific | Plataforma de Precificação Inteligente"
                 width={48}
                 height={48}
-                priority
                 className={`hover:cursor-pointer shrink-0 ${
                   !isCollapsed && "hidden"
                 }`}

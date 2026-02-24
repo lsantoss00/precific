@@ -6,12 +6,14 @@ import { ComponentProps, ReactNode } from "react";
 type SectionWithBackgroundProps = ComponentProps<"div"> & {
   as?: React.ElementType;
   children: ReactNode;
+  imagePriority?: boolean;
 };
 
 const SectionWithBackground = ({
   children,
   className,
   as: Component = "section",
+  imagePriority = false,
   ...props
 }: SectionWithBackgroundProps) => {
   return (
@@ -24,9 +26,9 @@ const SectionWithBackground = ({
           src={backgroundSectionImage}
           alt=""
           fill
-          priority
-          fetchPriority="high"
-          loading="eager"
+          priority={imagePriority}
+          fetchPriority={imagePriority ? "high" : "low"}
+          loading={imagePriority ? "eager" : "lazy"}
           className="object-cover object-center"
           aria-hidden="true"
         />

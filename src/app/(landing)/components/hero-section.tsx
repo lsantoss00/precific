@@ -9,6 +9,7 @@ import YouTubeEmbed from "@/src/components/youtube-embed";
 const HeroSection = () => {
   return (
     <SectionWithBackground
+      imagePriority
       className="w-full min-h-[calc(100vh-80px)] xl:h-[calc(100vh-80px)] overflow-hidden"
       aria-labelledby="hero-heading"
     >

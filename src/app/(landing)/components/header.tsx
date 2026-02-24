@@ -32,7 +32,6 @@ const Header = () => {
             width={48}
             height={48}
             sizes="48px"
-            priority
           />
           <ul className="hidden md:flex items-center space-x-6 lg:space-x-8">
             {navItems.map(({ label, section }) => (

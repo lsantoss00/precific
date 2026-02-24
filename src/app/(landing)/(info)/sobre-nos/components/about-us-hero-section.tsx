@@ -14,6 +14,7 @@ import Image from "next/image";
 const AboutUsHeroSection = () => {
   return (
     <SectionWithBackground
+      imagePriority
       className="w-full min-h-[calc(100vh-80px)] lg:h-[calc(100vh-80px)] overflow-hidden"
       aria-labelledby="about-hero-heading"
     >
