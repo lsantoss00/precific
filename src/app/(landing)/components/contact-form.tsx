@@ -137,216 +137,225 @@ const ContactForm = () => {
   );
 
   return (
-    <form
-      id="contactForm"
-      onSubmit={handleSubmit(handleSubmitContactForm)}
-      className="space-y-3 md:space-y-4 flex flex-col justify-between w-full max-w-md self-center"
-      onMouseEnter={() => setLoadRecaptcha(true)}
-      onFocusCapture={() => setLoadRecaptcha(true)}
-      onTouchStart={() => setLoadRecaptcha(true)}
-    >
-      <Controller
-        name="name"
-        control={control}
-        render={({ field: { onChange, value }, fieldState: { error } }) => (
-          <Column>
-            <Input
-              id="name"
-              placeholder="Nome"
-              autoComplete="name"
-              value={value}
-              onChange={onChange}
-              maxLength={80}
-              className={`bg-black/20 placeholder:text-zinc-400! text-white border-white focus-visible:border-white focus-visible:ring-white/50 h-10 md:h-11 text-sm md:text-base ${
-                error && "border-red-600"
-              }`}
-            />
-            <div
-              className={`${error ? "h-3" : "h-0"} transition-all duration-200`}
-            >
-              <Show when={error}>
-                <span className="text-xs text-red-600">{error?.message}</span>
-              </Show>
-            </div>
-          </Column>
-        )}
-      />
-      <Controller
-        name="cnpj"
-        control={control}
-        render={({ field: { onChange, value }, fieldState: { error } }) => (
-          <Column>
-            <MaskedInput
-              id="cnpj"
-              mask="00.000.000/0000-00"
-              placeholder="CNPJ"
-              value={value}
-              onAccept={onChange}
-              unmask={true}
-              maxLength={18}
-              className={`bg-black/20 placeholder:text-zinc-400! text-white border-white focus-visible:border-white focus-visible:ring-white/50 h-10 md:h-11 text-sm md:text-base ${
-                error && "border-red-600"
-              }`}
-            />
-            <div
-              className={`${error ? "h-3" : "h-0"} transition-all duration-200`}
-            >
-              <Show when={error}>
-                <span className="text-xs text-red-600">{error?.message}</span>
-              </Show>
-            </div>
-          </Column>
-        )}
-      />
-      <Controller
-        name="email"
-        control={control}
-        render={({ field: { onChange, value }, fieldState: { error } }) => (
-          <Column>
-            <Input
-              id="email"
-              placeholder="E-mail"
-              autoComplete="email"
-              value={value}
-              onChange={onChange}
-              maxLength={100}
-              className={`bg-black/20 placeholder:text-zinc-400! text-white border-white focus-visible:border-white focus-visible:ring-white/50 h-10 md:h-11 text-sm md:text-base ${
-                error && "border-red-600"
-              }`}
-            />
-            <div
-              className={`${error ? "h-3" : "h-0"} transition-all duration-200`}
-            >
-              <Show when={error}>
-                <span className="text-xs text-red-600">{error?.message}</span>
-              </Show>
-            </div>
-          </Column>
-        )}
-      />
-      <Controller
-        name="phone"
-        control={control}
-        render={({ field: { onChange, value }, fieldState: { error } }) => (
-          <Column>
-            <MaskedInput
-              id="phone"
-              mask={[{ mask: "(00) 0000-0000" }, { mask: "(00) 0 0000-0000" }]}
-              placeholder="Telefone"
-              value={value}
-              onAccept={onChange}
-              unmask={true}
-              maxLength={15}
-              className={`bg-black/20 placeholder:text-zinc-400! text-white border-white focus-visible:border-white focus-visible:ring-white/50 h-10 md:h-11 text-sm md:text-base ${
-                error && "border-red-600"
-              }`}
-            />
-            <div
-              className={`${error ? "h-3" : "h-0"} transition-all duration-200`}
-            >
-              <Show when={error}>
-                <span className="text-xs text-red-600">{error?.message}</span>
-              </Show>
-            </div>
-          </Column>
-        )}
-      />
-      <Row className="gap-2 items-center">
-        <Controller
-          name="acceptMarketing"
-          control={control}
-          render={({ field: { onChange, value } }) => (
-            <Checkbox
-              id="acceptMarketing"
-              checked={value}
-              onCheckedChange={onChange}
-              className="bg-black/20! data-[state=checked]:border-white focus-visible:border-white focus-visible:ring-white/50"
-            />
-          )}
-        />
-        <Label
-          htmlFor="acceptMarketing"
-          className="cursor-pointer text-white font-normal text-xs md:text-sm leading-tight"
-        >
-          Aceito receber comunicações de marketing e promoções exclusivas do
-          Precific
-        </Label>
-      </Row>
-      <Row className="gap-2 items-center">
-        <Controller
-          name="acceptTerms"
-          control={control}
-          render={({ field: { onChange, value } }) => (
-            <Checkbox
-              id="acceptTerms"
-              checked={value}
-              onCheckedChange={onChange}
-              className="bg-black/20! data-[state=checked]:border-white focus-visible:border-white focus-visible:ring-white/50"
-            />
-          )}
-        />
-        <Label
-          htmlFor="acceptTerms"
-          required
-          className="cursor-pointer text-white font-normal text-xs md:text-sm leading-tight"
-        >
-          Li e aceito os{" "}
-          <Link
-            target="_blank"
-            href="/termos-de-uso"
-            className="underline hover:text-secondary"
-          >
-            Termos de Uso
-          </Link>{" "}
-          e a{" "}
-          <Link
-            target="_blank"
-            href="/politica-de-privacidade"
-            className="underline hover:text-secondary"
-          >
-            Política de Privacidade
-          </Link>
-        </Label>
-      </Row>
-      {loadRecaptcha && (
-        <ReCAPTCHA
-          ref={recaptchaRef}
-          size="invisible"
-          sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || ""}
-        />
-      )}
-
-      <Button
-        className="h-12 md:h-14 text-sm md:text-base"
-        type="submit"
-        variant="secondary"
-        disabled={
-          contactMutation.isPending || formInputFieldIsBlank || !isValid
-        }
+    <>
+      <form
+        id="contactForm"
+        onSubmit={handleSubmit(handleSubmitContactForm)}
+        className="space-y-3 md:space-y-4 flex flex-col justify-between w-full max-w-md self-center"
+        onMouseEnter={() => setLoadRecaptcha(true)}
+        onFocusCapture={() => setLoadRecaptcha(true)}
+        onTouchStart={() => setLoadRecaptcha(true)}
       >
-        <Show when={contactMutation.isPending}>
-          <Loader2Icon className="animate-spin" />
-        </Show>
-        Eu quero precificar!
-      </Button>
-      <p className="text-[10px] text-zinc-400 text-center opacity-70">
-        Este site é protegido pelo reCAPTCHA e a
-        <Link
-          href="https://policies.google.com/privacy"
-          className="underline ml-1"
+        <Controller
+          name="name"
+          control={control}
+          render={({ field: { onChange, value }, fieldState: { error } }) => (
+            <Column>
+              <Input
+                id="name"
+                placeholder="Nome"
+                autoComplete="name"
+                value={value}
+                onChange={onChange}
+                maxLength={80}
+                className={`bg-black/20 placeholder:text-zinc-400! text-white border-white focus-visible:border-white focus-visible:ring-white/50 h-10 md:h-11 text-sm md:text-base ${
+                  error && "border-red-600"
+                }`}
+              />
+              <div
+                className={`${error ? "h-3" : "h-0"} transition-all duration-200`}
+              >
+                <Show when={error}>
+                  <span className="text-xs text-red-600">{error?.message}</span>
+                </Show>
+              </div>
+            </Column>
+          )}
+        />
+        <Controller
+          name="cnpj"
+          control={control}
+          render={({ field: { onChange, value }, fieldState: { error } }) => (
+            <Column>
+              <MaskedInput
+                id="cnpj"
+                mask="00.000.000/0000-00"
+                placeholder="CNPJ"
+                value={value}
+                onAccept={onChange}
+                unmask={true}
+                maxLength={18}
+                className={`bg-black/20 placeholder:text-zinc-400! text-white border-white focus-visible:border-white focus-visible:ring-white/50 h-10 md:h-11 text-sm md:text-base ${
+                  error && "border-red-600"
+                }`}
+              />
+              <div
+                className={`${error ? "h-3" : "h-0"} transition-all duration-200`}
+              >
+                <Show when={error}>
+                  <span className="text-xs text-red-600">{error?.message}</span>
+                </Show>
+              </div>
+            </Column>
+          )}
+        />
+        <Controller
+          name="email"
+          control={control}
+          render={({ field: { onChange, value }, fieldState: { error } }) => (
+            <Column>
+              <Input
+                id="email"
+                placeholder="E-mail"
+                autoComplete="email"
+                value={value}
+                onChange={onChange}
+                maxLength={100}
+                className={`bg-black/20 placeholder:text-zinc-400! text-white border-white focus-visible:border-white focus-visible:ring-white/50 h-10 md:h-11 text-sm md:text-base ${
+                  error && "border-red-600"
+                }`}
+              />
+              <div
+                className={`${error ? "h-3" : "h-0"} transition-all duration-200`}
+              >
+                <Show when={error}>
+                  <span className="text-xs text-red-600">{error?.message}</span>
+                </Show>
+              </div>
+            </Column>
+          )}
+        />
+        <Controller
+          name="phone"
+          control={control}
+          render={({ field: { onChange, value }, fieldState: { error } }) => (
+            <Column>
+              <MaskedInput
+                id="phone"
+                mask={[
+                  { mask: "(00) 0000-0000" },
+                  { mask: "(00) 0 0000-0000" },
+                ]}
+                placeholder="Telefone"
+                value={value}
+                onAccept={onChange}
+                unmask={true}
+                maxLength={15}
+                className={`bg-black/20 placeholder:text-zinc-400! text-white border-white focus-visible:border-white focus-visible:ring-white/50 h-10 md:h-11 text-sm md:text-base ${
+                  error && "border-red-600"
+                }`}
+              />
+              <div
+                className={`${error ? "h-3" : "h-0"} transition-all duration-200`}
+              >
+                <Show when={error}>
+                  <span className="text-xs text-red-600">{error?.message}</span>
+                </Show>
+              </div>
+            </Column>
+          )}
+        />
+        <Row className="gap-2 items-center">
+          <Controller
+            name="acceptMarketing"
+            control={control}
+            render={({ field: { onChange, value } }) => (
+              <Checkbox
+                id="acceptMarketing"
+                checked={value}
+                onCheckedChange={onChange}
+                className="bg-black/20! data-[state=checked]:border-white focus-visible:border-white focus-visible:ring-white/50"
+              />
+            )}
+          />
+          <Label
+            htmlFor="acceptMarketing"
+            className="cursor-pointer text-white font-normal text-xs md:text-sm leading-tight"
+          >
+            Aceito receber comunicações de marketing e promoções exclusivas do
+            Precific
+          </Label>
+        </Row>
+        <Row className="gap-2 items-center">
+          <Controller
+            name="acceptTerms"
+            control={control}
+            render={({ field: { onChange, value } }) => (
+              <Checkbox
+                id="acceptTerms"
+                checked={value}
+                onCheckedChange={onChange}
+                className="bg-black/20! data-[state=checked]:border-white focus-visible:border-white focus-visible:ring-white/50"
+              />
+            )}
+          />
+          <Label
+            htmlFor="acceptTerms"
+            required
+            className="cursor-pointer text-white font-normal text-xs md:text-sm leading-tight"
+          >
+            Li e aceito os{" "}
+            <Link
+              target="_blank"
+              href="/termos-de-uso"
+              className="underline hover:text-secondary"
+            >
+              Termos de Uso
+            </Link>{" "}
+            e a{" "}
+            <Link
+              target="_blank"
+              href="/politica-de-privacidade"
+              className="underline hover:text-secondary"
+            >
+              Política de Privacidade
+            </Link>
+          </Label>
+        </Row>
+        <Button
+          className="h-12 md:h-14 text-sm md:text-base"
+          type="submit"
+          variant="secondary"
+          disabled={
+            contactMutation.isPending || formInputFieldIsBlank || !isValid
+          }
         >
-          Privacidade
-        </Link>{" "}
-        e
-        <Link
-          href="https://policies.google.com/terms"
-          className="underline ml-1"
-        >
-          Termos
-        </Link>{" "}
-        do Google se aplicam.
-      </p>
-    </form>
+          <Show when={contactMutation.isPending}>
+            <Loader2Icon className="animate-spin" />
+          </Show>
+          Eu quero precificar!
+        </Button>
+        <p className="text-[10px] text-zinc-400 text-center opacity-70">
+          Este site é protegido pelo reCAPTCHA e a
+          <Link
+            href="https://policies.google.com/privacy"
+            className="underline ml-1"
+          >
+            Privacidade
+          </Link>{" "}
+          e
+          <Link
+            href="https://policies.google.com/terms"
+            className="underline ml-1"
+          >
+            Termos
+          </Link>{" "}
+          do Google se aplicam.
+        </p>
+      </form>
+      <div
+        className="absolute h-0 w-0 overflow-hidden pointer-events-none"
+        aria-hidden="true"
+      >
+        {loadRecaptcha && (
+          <ReCAPTCHA
+            ref={recaptchaRef}
+            size="invisible"
+            sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || ""}
+          />
+        )}
+      </div>
+    </>
   );
 };
 
