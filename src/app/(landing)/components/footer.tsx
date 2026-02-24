@@ -98,8 +98,15 @@ const Footer = () => {
         <div className="mt-8 md:mt-12 pt-6 md:pt-8 border-t border-border">
           <p className="text-muted-foreground text-xs md:text-sm text-center">
             <small>
-              © {currentYear} Precific — uma solução do Grupo Viriato. Todos os
-              direitos reservados.
+              © {currentYear} Precific — uma solução do{" "}
+              <a
+                href="https://www.viriato.com.br/"
+                target="_blank"
+                className="hover:text-primary hover:underline transition-colors duration-300"
+              >
+                Grupo Viriato
+              </a>
+              . Todos os direitos reservados.
             </small>
           </p>
         </div>

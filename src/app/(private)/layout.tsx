@@ -16,7 +16,7 @@ export default async function PrivateLayout({
       <SidebarInset className="flex flex-col min-h-screen">
         <AppHeader />
         <AuthGuard>
-          <div className="flex h-full w-full justify-center pb-26 2xl:pb-0">
+          <div className="flex h-full w-full justify-center pb-30 2xl:pb-0">
             {children}
           </div>
         </AuthGuard>

@@ -10,7 +10,7 @@ const WhatsAppHelpLinkBalloon = () => {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
-    <Row className="fixed bottom-2 right-4 flex items-center gap-3 z-50">
+    <Row className="fixed bottom-4.5 right-4 flex items-center gap-3 z-50">
       <Card
         className={`px-4 py-2 duration-300 whitespace-nowrap pointer-events-none ${
           isHovered ? "block" : "hidden"
