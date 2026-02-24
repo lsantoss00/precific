@@ -1,4 +1,5 @@
 import CtaButton from "@/src/app/(landing)/components/cta-button";
+import FadeInOnScroll from "@/src/components/animations/fade-in-on-scroll";
 import Column from "@/src/components/core/column";
 import { Container } from "@/src/components/core/container";
 import Flex from "@/src/components/core/flex";
@@ -13,7 +14,11 @@ const HeroSection = () => {
     >
       <Container as="section" variant="section" className="xl:h-full">
         <Flex className="flex-col xl:flex-row items-center justify-between xl:h-full gap-8 md:gap-12">
-          <div className="animate-hero relative z-10 w-full xl:max-w-140">
+          <FadeInOnScroll
+            direction="left"
+            offset={20}
+            className="relative z-10 w-full xl:max-w-140"
+          >
             <Column className="space-y-6 md:space-y-8">
               <Column as="header" className="space-y-4 md:space-y-5">
                 <h1 className="sr-only">
@@ -37,15 +42,19 @@ const HeroSection = () => {
               </Column>
               <CtaButton variant="secondary" />
             </Column>
-          </div>
-          <div className="animate-hero relative z-10 w-full xl:max-w-180 2xl:max-w-240 mt-8 xl:mt-0">
+          </FadeInOnScroll>
+          <FadeInOnScroll
+            direction="right"
+            offset={20}
+            className="relative z-10 w-full xl:max-w-180 2xl:max-w-240 mt-8 xl:mt-0"
+          >
             <Flex as="figure" className="aspect-video shrink-0">
               <YouTubeEmbed
                 videoId="9gNKBYR-rhg"
                 title="Precific — Demonstração do sistema de precificação inteligente"
               />
             </Flex>
-          </div>
+          </FadeInOnScroll>
         </Flex>
       </Container>
     </SectionWithBackground>
