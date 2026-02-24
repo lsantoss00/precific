@@ -5,7 +5,7 @@ import shortLogoImage from "@/public/images/precific-short-logo-image.webp";
 import ComingSoonBadge from "@/src/components/coming-soon-badge";
 import { Separator } from "@/src/components/core/separator";
 import Menu from "@/src/components/menu";
-import { Clock, Headset, LayoutDashboard, Package } from "lucide-react";
+import { Clock, Crown, Headset, LayoutDashboard, Package } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -151,12 +151,12 @@ export function AppSidebar() {
       </SidebarContent>
       <SidebarFooter className="items-center mb-2 space-y-4">
         <Menu />
-        <span
+        {/* <span
           className="text-gray-500 text-xs font-medium"
           aria-label="Versão do aplicativo"
         >
           v0.1.0
-        </span>
+        </span> */}
       </SidebarFooter>
     </Sidebar>
   );
@@ -180,6 +180,13 @@ const mainItems = [
 ];
 
 const secondaryItems = [
+  {
+    title: "Planos",
+    url: "/planos",
+    icon: Crown,
+    disabled: false,
+    soon: false,
+  },
   {
     title: "Suporte",
     url: "/suporte",
