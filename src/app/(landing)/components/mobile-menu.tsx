@@ -8,7 +8,7 @@ import Flex from "@/src/components/core/flex";
 import Row from "@/src/components/core/row";
 import { Sheet, SheetContent, SheetTrigger } from "@/src/components/core/sheet";
 import { useScrollToSection } from "@/src/hooks/use-scroll-to-section";
-import { Compass, Home, Menu, MessageCircle, Sparkles, X } from "lucide-react";
+import { Compass, Crown, Home, Menu, MessageCircle, X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { Fragment, useState } from "react";
@@ -16,7 +16,7 @@ import { Fragment, useState } from "react";
 const navItems = [
   { label: "Início", icon: Home, section: null },
   { label: "Descubra", icon: Compass, section: "descubra" },
-  { label: "Planos", icon: Sparkles, section: "planos" },
+  { label: "Planos", icon: Crown, section: "planos" },
   { label: "Converse conosco", icon: MessageCircle, section: "contato" },
 ] as const;
 
