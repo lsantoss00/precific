@@ -13,7 +13,7 @@ import { currencyFormatter } from "@/src/helpers/currency-formatter";
 import { useDebounce } from "@/src/hooks/use-debounce";
 import { useAuth } from "@/src/providers/auth-provider";
 import { useQuery } from "@tanstack/react-query";
-import { Package, PlusCircle, TriangleAlert, Upload } from "lucide-react";
+import { Package, PlusCircle, TriangleAlert } from "lucide-react";
 import dynamic from "next/dynamic";
 import Link from "next/link";
 import { parseAsInteger, parseAsString, useQueryState } from "nuqs";
@@ -140,18 +140,14 @@ const ProductsHeaderSection = () => {
           className="space-x-2 w-full lg:w-fit lg:justify-end"
           aria-label="Ações de produtos"
         >
-          <Button
-            asChild
-            className="hover:cursor-pointer w-fit h-12"
-            variant="secondary"
-          >
+          <Button asChild className="hover:cursor-pointer w-fit h-12 ">
             <Link href="/produtos/novo">
               <PlusCircle aria-hidden="true" />
               <span>Novo Produto</span>
             </Link>
           </Button>
           <ExportDataButton onClick={handleExport} pending={isFetching} />
-          <MultipleImportDialog
+          {/* <MultipleImportDialog
             trigger={
               <Button className="hover:cursor-pointer flex-1 md:flex-none md:w-fit h-12">
                 <Upload className="text-white" aria-hidden="true" />
@@ -159,7 +155,7 @@ const ProductsHeaderSection = () => {
                 <span className="sr-only sm:hidden">Importar produtos</span>
               </Button>
             }
-          />
+          /> */}
         </Row>
       </Flex>
     </Column>

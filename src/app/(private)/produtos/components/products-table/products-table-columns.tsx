@@ -8,7 +8,7 @@ import CustomTooltip from "@/src/components/custom-tooltip";
 import { currencyFormatter } from "@/src/helpers/currency-formatter";
 import { useAuth } from "@/src/providers/auth-provider";
 import { ColumnDef } from "@tanstack/react-table";
-import { Eye, Info, Loader2Icon, Tag, Trash2 } from "lucide-react";
+import { Eye, Info, Loader2Icon, Pencil, Trash2 } from "lucide-react";
 import Link from "next/link";
 import SortableHeader from "../../../../../components/core/sortable-header";
 import { ProductResponseType } from "../../types/product-type";
@@ -79,7 +79,7 @@ export const productsTableColumns: ColumnDef<Partial<ProductResponseType>>[] = [
     header: ({ column }) => (
       <SortableHeader column={column}>
         <CustomTooltip
-          className="text-primary!"
+          className="text-muted-foreground!"
           message="Preço de Venda do seu produto ANTES de usar a plataforma"
           icon={<Info />}
         />
@@ -102,7 +102,7 @@ export const productsTableColumns: ColumnDef<Partial<ProductResponseType>>[] = [
     header: ({ column }) => (
       <SortableHeader column={column}>
         <CustomTooltip
-          className="text-primary!"
+          className="text-muted-foreground!"
           message="Preço de Venda do seu produto DEPOIS de usar a plataforma"
           icon={<Info />}
         />
@@ -125,7 +125,7 @@ export const productsTableColumns: ColumnDef<Partial<ProductResponseType>>[] = [
     header: ({ column }) => (
       <SortableHeader column={column}>
         <CustomTooltip
-          className="text-primary!"
+          className="text-muted-foreground!"
           message="Em breve"
           icon={<Info />}
         />
@@ -205,24 +205,20 @@ export const productsTableColumns: ColumnDef<Partial<ProductResponseType>>[] = [
             size="icon"
             onClick={() => meta?.onViewProductDetails(product)}
             aria-label="Visualizar Produto"
+            className="border-zinc-300 bg-muted hover:border-foreground! hover:ring-0 ring-"
           >
-            <Eye className="w-4 h-4" />
+            <Eye className="w-4 h-4 text-foreground" />
           </Button>
           <Show
             when={!isDisabled}
             fallback={
-              <Button
-                variant="secondary"
-                className="w-9 sm:w-fit"
-                disabled={true}
-              >
-                <Tag />
+              <Button className="w-9 sm:w-fit" disabled={true}>
+                <Pencil />
               </Button>
             }
           >
             <Button
               asChild
-              variant="secondary"
               className="w-9 sm:w-fit"
               disabled={
                 meta?.pendingUpdateProductStatus || meta?.pendingDeleteProduct
@@ -230,7 +226,7 @@ export const productsTableColumns: ColumnDef<Partial<ProductResponseType>>[] = [
               aria-label="Precificar Produto"
             >
               <Link href={`/produtos/${product.id}`}>
-                <Tag />
+                <Pencil />
               </Link>
             </Button>
           </Show>

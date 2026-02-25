@@ -22,7 +22,7 @@ const ProductInfoCards = () => {
       ),
       value: summary?.registeredProducts || 0,
       icon: (
-        <Package className="w-12 h-12 p-2.5 text-[#66219B] bg-[#66218B]/20 rounded-md" />
+        <Package className="w-12 h-12 p-2.5 text-primary bg-primary/20 rounded-md" />
       ),
     },
     {

@@ -12,12 +12,12 @@ interface ExportDataButtonProps {
 const ExportDataButton = ({ onClick, pending }: ExportDataButtonProps) => {
   return (
     <Button
-      className="hover:cursor-pointer flex-1 md:flex-none md:w-fit h-12"
+      className="hover:cursor-pointer flex-1 md:flex-none md:w-fit h-12 bg-transparent! text-primary! border! border-primary! hover:ring-1!"
       type="button"
       disabled={pending}
       onClick={onClick}
     >
-      <Show when={pending} fallback={<Download className="text-white" />}>
+      <Show when={pending} fallback={<Download />}>
         <Loader2Icon className="animate-spin" />
       </Show>
 

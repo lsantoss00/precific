@@ -1,7 +1,7 @@
 "use client";
 
 import { dateFormatter } from "@/src/helpers/date-formatter";
-import { ChevronDownIcon } from "lucide-react";
+import { CalendarIcon } from "lucide-react";
 import { useState } from "react";
 import { pt } from "react-day-picker/locale";
 import { Button } from "./button";
@@ -23,17 +23,18 @@ function DatePicker({ value, onValueChange }: DatePickerProps) {
     <Popover open={open} onOpenChange={setOpen}>
       <PopoverTrigger asChild>
         <Button
-          variant="outline"
           id="date-picker"
-          className="w-full h-12 justify-between font-normal text-base bg-white!"
+          className="w-full h-12 justify-between font-normal text-muted-foreground text-base bg-white! border border-foreground/10!"
         >
           <Show
             when={value}
             fallback={<span className="text-muted-foreground">Selecione</span>}
           >
-            {dateFormatter(transactionDateFormatted!)}
+            <span className="text-foreground">
+              {dateFormatter(transactionDateFormatted!)}
+            </span>
           </Show>
-          <ChevronDownIcon />
+          <CalendarIcon />
         </Button>
       </PopoverTrigger>
       <PopoverContent className="overflow-hidden p-0 w-fit">

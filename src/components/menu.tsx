@@ -51,6 +51,7 @@ const Menu = () => {
         className={`${
           !isLoadingAuth && "cursor-pointer hover:bg-neutral-100"
         }  p-2 h-12 rounded-md`}
+        tabIndex={0}
       >
         <Row className="w-full items-center gap-2">
           <Show
@@ -86,7 +87,7 @@ const Menu = () => {
                   </Column>
                 }
               >
-                <span className="text-sm font-medium text-neutral-900 truncate">
+                <span className="text-sm font-semibold text-primary truncate">
                   {firstName}
                 </span>
                 <span className="text-xs text-neutral-500 truncate">

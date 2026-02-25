@@ -79,7 +79,7 @@ const ConfirmDeleteProductDialog = ({
         <DialogFooter className="w-full items-center">
           <Button
             variant="outline"
-            className="flex-1 w-full"
+            className="flex-1 w-full border-zinc-300 bg-muted hover:border-foreground! text-foreground! hover:ring-0"
             onClick={() => onOpenChange?.(false)}
           >
             Cancelar

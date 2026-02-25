@@ -648,20 +648,20 @@ const ProductResult = () => {
       value: profitability,
       secondValue: inverseCalculations?.inverseProfitability,
       type: "percentage" as const,
-      variant: "success" as const,
+      // variant: "" as const,
     },
     {
       title: "Lucro líquido",
       value: netProfit,
       secondValue: inverseCalculations?.userRealNetProfit,
-      variant: "success" as const,
+      // variant: "success" as const,
       gridSpan: "col-span-1",
     },
     {
       title: "Preço de venda final",
       value: finalSalePrice,
       secondValue: inverseCalculations?.userFinalSalePrice,
-      variant: "secondary" as const,
+      variant: "success" as const,
       gridSpan: "col-span-1 md:col-span-2",
     },
   ];
@@ -690,7 +690,7 @@ const ProductResult = () => {
       title: "Preço de venda final",
       value: finalSalePrice,
       secondValue: inverseCalculations?.userFinalSalePrice,
-      variant: "secondary" as const,
+      variant: "success" as const,
       gridSpan: "col-span-1 md:col-span-2 row-6",
     },
   ];
