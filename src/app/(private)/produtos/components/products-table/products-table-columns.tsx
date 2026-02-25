@@ -205,7 +205,7 @@ export const productsTableColumns: ColumnDef<Partial<ProductResponseType>>[] = [
             size="icon"
             onClick={() => meta?.onViewProductDetails(product)}
             aria-label="Visualizar Produto"
-            className="border-zinc-300 bg-muted hover:border-foreground! hover:ring-0 ring-"
+            className="border-zinc-300 bg-muted hover:border-foreground! hover:ring-0 ring-foreground!"
           >
             <Eye className="w-4 h-4 text-foreground" />
           </Button>
