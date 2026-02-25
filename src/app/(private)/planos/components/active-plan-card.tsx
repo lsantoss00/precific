@@ -18,10 +18,10 @@ import {
 } from "lucide-react";
 
 const planData = {
-  name: "Plano Profissional",
+  name: "Plano Customizado",
   description:
-    "Ideal para empresas em crescimento que precisam de análises avançadas e gestão completa de produtos.",
-  price: 199.9,
+    "Solução flexível para empresas que precisam de regras e recursos sob medida dedicados.",
+  price: 799.99,
   users: {
     max: 5,
     current: [
@@ -31,19 +31,25 @@ const planData = {
     ],
   },
   products: {
-    total: 87,
-    maxAllowed: 150,
-    priced: 72,
-    active: 65,
-    inactive: 22,
+    total: 1000,
+    maxAllowed: 1000,
+    priced: 500,
+    active: 250,
+    inactive: 250,
   },
   charts: [
-    { name: "Preço Médio", available: true },
-    { name: "Margem de Lucro", available: true },
+    { name: "Preço Médio de Venda", available: true },
+    { name: "Custo Médio", available: true },
+    { name: "Lucro Líquido Médio", available: true },
+    { name: "Rentabilidade Média", available: true },
+    { name: "Ranking de Lucro Líquido", available: true },
+    { name: "Ranking de Markup", available: true },
+    { name: "Ranking de Custo Fixo", available: true },
+    { name: "Ranking de Frete", available: true },
+    { name: "Preço de Venda X Custo de Aquisição", available: false },
+    { name: "Preço de Venda X Lucro Líquido", available: false },
     { name: "Histórico de Preços", available: false },
-    { name: "Comparativo de Mercado", available: false },
-    { name: "Tendência de Vendas", available: false },
-    { name: "Análise de Concorrência", available: false },
+    { name: "Histórico de Lucros Líquidos", available: false },
   ],
 };
 
@@ -166,7 +172,7 @@ const ActivePlanCard = () => {
         <Separator />
         <section>
           <SectionHeader icon={BarChart3} title="Gráficos Disponíveis" />
-          <div className="md:columns-2 gap-2">
+          <div className="md:columns-3 gap-2">
             {availableCharts.map((chart) => (
               <Flex
                 key={chart.name}
