@@ -133,9 +133,7 @@ export default function RootLayout({
             color="#66289B"
             height={3}
             showSpinner={false}
-            speed={300}
             crawl={false}
-            easing="ease"
           />
 
           {children}
