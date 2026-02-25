@@ -126,6 +126,7 @@ const LoginForm = () => {
           <Button
             className="hover:cursor-pointer w-full"
             type="submit"
+            pending={pendingLogin}
             disabled={pendingLogin || formInputFieldIsBlank}
           >
             <Show when={pendingLogin}>

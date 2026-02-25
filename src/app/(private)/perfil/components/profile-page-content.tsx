@@ -77,7 +77,7 @@ const ProfilePageContent = () => {
         </Flex>
       </Flex>
       <Button
-        className="w-full md:w-40 h-12 self-end disabled:bg-primary/90 disabled:text-white"
+        className="w-full md:w-40 h-12 self-end disabled:bg-primary/90! disabled:text-white"
         onClick={handleUpdateProfilePicture}
         disabled={isSaving || !hasChanges}
       >

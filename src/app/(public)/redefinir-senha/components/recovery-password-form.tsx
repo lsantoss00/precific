@@ -113,6 +113,7 @@ const RecoveryPasswordForm = () => {
           <Button
             className="hover:cursor-pointer w-full"
             type="submit"
+            pending={pendingDoRecoveryPassword}
             disabled={pendingDoRecoveryPassword || formInputFieldIsBlank}
           >
             <Show when={pendingDoRecoveryPassword}>

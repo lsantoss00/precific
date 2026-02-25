@@ -21,7 +21,6 @@ const ExportDataButton = ({ onClick, pending }: ExportDataButtonProps) => {
       <Show when={pending} fallback={<Download />}>
         <Loader2Icon className="animate-spin" />
       </Show>
-
       <span className="hidden sm:flex">Exportar</span>
     </Button>
   );

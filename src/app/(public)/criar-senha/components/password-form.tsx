@@ -152,6 +152,7 @@ const PasswordForm = () => {
           <Button
             className="hover:cursor-pointer w-full"
             type="submit"
+            pending={pendingCreateNewPassword}
             disabled={
               pendingCreateNewPassword || formInputFieldIsBlank || !isValid
             }
