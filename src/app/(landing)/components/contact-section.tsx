@@ -1,17 +1,13 @@
-"use client";
-
 import ContactForm from "@/src/app/(landing)/components/contact-form";
 import FadeInOnScroll from "@/src/components/animations/fade-in-on-scroll";
 import Column from "@/src/components/core/column";
 import { Container } from "@/src/components/core/container";
 import Flex from "@/src/components/core/flex";
-import { useMediaQuery } from "@/src/hooks/use-media-query";
 import Image from "next/image";
 
 const ContactSection = () => {
-  const isMd = useMediaQuery(`(max-width: 768px)`);
-
   return (
+    // TO-DO: Padronizar com único Container
     <Flex
       id="contato"
       className="flex-col lg:flex-row items-stretch justify-between h-full"
