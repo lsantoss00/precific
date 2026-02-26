@@ -39,14 +39,14 @@ const YouTubeEmbed = ({
               alt={title}
               fill
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-              className="object-cover transition-transform duration-300 ease-out group-hover:scale-105"
+              className="object-cover transition-transform duration-300 ease-out group-hover:scale-105 brightness-50"
               priority
               loading="eager"
             />
           </div>
-          <Row className="absolute left-0 bottom-0 gap-4 p-4 pointer-events-none bg-background/10 w-full">
+          <Row className="absolute left-0 bottom-0 gap-4 p-2 md:p-4 pointer-events-none bg-foreground w-full">
             <Row
-              className="justify-center bg-primary rounded-full p-3 shadow-lg"
+              className="justify-center bg-primary rounded-full p-2 shadow-lg"
               aria-hidden
             >
               <Play className="w-5 h-5 text-white" />
@@ -54,7 +54,7 @@ const YouTubeEmbed = ({
           </Row>
         </Button>
       ) : (
-        <div className="relative w-full h-full rounded-md bg-black">
+        <div className="relative w-full h-full rounded-md bg-foreground">
           <iframe
             className="absolute top-0 left-0 w-full h-full rounded-md"
             src={`${embedBase}?${embedParams}&autoplay=1`}

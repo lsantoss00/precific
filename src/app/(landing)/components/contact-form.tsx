@@ -157,9 +157,7 @@ const ContactForm = () => {
               value={value}
               onChange={onChange}
               maxLength={80}
-              className={`bg-black/20 placeholder:text-zinc-400! text-white border-white focus-visible:border-white focus-visible:ring-white/50 h-10 md:h-11 text-sm md:text-base ${
-                error && "border-red-600"
-              }`}
+              className={`${error && "border-red-600"}`}
             />
             <div
               className={`${error ? "h-3" : "h-0"} transition-all duration-200`}
@@ -184,9 +182,7 @@ const ContactForm = () => {
               onAccept={onChange}
               unmask={true}
               maxLength={18}
-              className={`bg-black/20 placeholder:text-zinc-400! text-white border-white focus-visible:border-white focus-visible:ring-white/50 h-10 md:h-11 text-sm md:text-base ${
-                error && "border-red-600"
-              }`}
+              className={`${error && "border-red-600"}`}
             />
             <div
               className={`${error ? "h-3" : "h-0"} transition-all duration-200`}
@@ -210,9 +206,7 @@ const ContactForm = () => {
               value={value}
               onChange={onChange}
               maxLength={100}
-              className={`bg-black/20 placeholder:text-zinc-400! text-white border-white focus-visible:border-white focus-visible:ring-white/50 h-10 md:h-11 text-sm md:text-base ${
-                error && "border-red-600"
-              }`}
+              className={`${error && "border-red-600"}`}
             />
             <div
               className={`${error ? "h-3" : "h-0"} transition-all duration-200`}
@@ -237,9 +231,7 @@ const ContactForm = () => {
               onAccept={onChange}
               unmask={true}
               maxLength={15}
-              className={`bg-black/20 placeholder:text-zinc-400! text-white border-white focus-visible:border-white focus-visible:ring-white/50 h-10 md:h-11 text-sm md:text-base ${
-                error && "border-red-600"
-              }`}
+              className={`${error && "border-red-600"}`}
             />
             <div
               className={`${error ? "h-3" : "h-0"} transition-all duration-200`}
@@ -260,13 +252,12 @@ const ContactForm = () => {
               id="acceptMarketing"
               checked={value}
               onCheckedChange={onChange}
-              className="bg-black/20! data-[state=checked]:border-white focus-visible:border-white focus-visible:ring-white/50"
             />
           )}
         />
         <Label
           htmlFor="acceptMarketing"
-          className="cursor-pointer text-white font-normal text-xs md:text-sm leading-tight"
+          className="cursor-pointer font-normal text-xs md:text-sm leading-tight"
         >
           Aceito receber comunicações de marketing e promoções exclusivas do
           Precific
@@ -281,20 +272,19 @@ const ContactForm = () => {
               id="acceptTerms"
               checked={value}
               onCheckedChange={onChange}
-              className="bg-black/20! data-[state=checked]:border-white focus-visible:border-white focus-visible:ring-white/50"
             />
           )}
         />
         <Label
           htmlFor="acceptTerms"
           required
-          className="cursor-pointer text-white font-normal text-xs md:text-sm leading-tight"
+          className="cursor-pointer font-normal text-xs md:text-sm leading-tight"
         >
           Li e aceito os{" "}
           <Link
             target="_blank"
             href="/termos-de-uso"
-            className="underline hover:text-secondary"
+            className="underline hover:text-primary"
           >
             Termos de Uso
           </Link>{" "}
@@ -302,7 +292,7 @@ const ContactForm = () => {
           <Link
             target="_blank"
             href="/politica-de-privacidade"
-            className="underline hover:text-secondary"
+            className="underline hover:text-primary"
           >
             Política de Privacidade
           </Link>
@@ -323,7 +313,6 @@ const ContactForm = () => {
       <Button
         className="h-12 md:h-14 text-sm md:text-base"
         type="submit"
-        variant="secondary"
         disabled={
           contactMutation.isPending || formInputFieldIsBlank || !isValid
         }
@@ -333,18 +322,18 @@ const ContactForm = () => {
         </Show>
         Eu quero precificar!
       </Button>
-      <p className="text-[10px] text-zinc-400 text-center opacity-70">
+      <p className="text-[10px] text-zinc-400 text-center">
         Este site é protegido pelo reCAPTCHA e a
         <Link
           href="https://policies.google.com/privacy"
-          className="underline ml-1"
+          className="underline ml-1 hover:text-primary"
         >
           Privacidade
         </Link>{" "}
         e
         <Link
           href="https://policies.google.com/terms"
-          className="underline ml-1"
+          className="underline ml-1 hover:text-primary"
         >
           Termos
         </Link>{" "}

@@ -20,7 +20,7 @@ const Header = () => {
   const { scrollToSection, scrollToTop } = useScrollToSection();
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 h-20 bg-white border-b border-zinc-200">
+    <header className="fixed top-0 left-0 right-0 z-50 h-20 bg-background border-b border-zinc-200">
       <Container
         variant="section"
         className="flex items-center justify-between h-full py-0!"
@@ -52,7 +52,6 @@ const Header = () => {
         <Button
           asChild
           className="hidden md:flex w-fit h-10 md:h-12 px-4 md:px-6 text-sm md:text-base font-medium"
-          variant="secondary"
         >
           <Link href="/entrar">Acessar Plataforma</Link>
         </Button>

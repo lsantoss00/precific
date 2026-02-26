@@ -19,18 +19,13 @@ const ValuePropositionSection = dynamic(
   { ssr: true },
 );
 
-const LogoSection = dynamic(
+const OurPlansSection = dynamic(
   () => import("@/src/app/(landing)/components/our-plans-section"),
   { ssr: true },
 );
 
 const ContactSection = dynamic(
   () => import("@/src/app/(landing)/components/contact-section"),
-  { ssr: true },
-);
-
-const StartUsingSection = dynamic(
-  () => import("@/src/app/(landing)/components/start-using-section"),
   { ssr: true },
 );
 
@@ -59,9 +54,8 @@ export default function LandingPageContent() {
       <ReasonsSection />
       <GetAheadSection />
       <ValuePropositionSection />
-      <LogoSection />
+      <OurPlansSection />
       <ContactSection />
-      <StartUsingSection />
       <FAQSection />
     </>
   );

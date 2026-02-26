@@ -112,7 +112,6 @@ const MobileMenu = () => {
             <Button
               asChild
               className="w-full h-14 text-base font-semibold shadow-sm"
-              variant="secondary"
             >
               <Link href="/entrar" onClick={closeMenu}>
                 Acessar Plataforma
