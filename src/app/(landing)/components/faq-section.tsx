@@ -1,14 +1,8 @@
-"use client";
-
 import FadeInOnScroll from "@/src/components/animations/fade-in-on-scroll";
 import Column from "@/src/components/core/column";
 import { Container } from "@/src/components/core/container";
 import Flex from "@/src/components/core/flex";
-import dynamic from "next/dynamic";
-
-const FAQAccordion = dynamic(() => import("@/src/components/faq-accordion"), {
-  ssr: false,
-});
+import FAQAccordion from "@/src/components/faq-accordion";
 
 const FAQSection = () => {
   return (
