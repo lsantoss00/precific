@@ -95,7 +95,7 @@ const ProductDetailsDialog = ({
     {
       title: "Preço de venda final",
       value: product?.priceIn2026 ?? 0,
-      variant: "primary" as const,
+      variant: "success" as const,
       gridSpan: "col-span-1 sm:col-span-2",
     },
   ];
@@ -120,7 +120,7 @@ const ProductDetailsDialog = ({
     {
       title: "Preço de venda final",
       value: product?.priceIn2026 ?? 0,
-      variant: "primary" as const,
+      variant: "success" as const,
       gridSpan: "col-span-1 sm:col-span-2 lg:col-span-3",
     },
   ];

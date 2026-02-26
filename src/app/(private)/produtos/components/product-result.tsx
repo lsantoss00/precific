@@ -648,13 +648,11 @@ const ProductResult = () => {
       value: profitability,
       secondValue: inverseCalculations?.inverseProfitability,
       type: "percentage" as const,
-      // variant: "" as const,
     },
     {
       title: "Lucro líquido",
       value: netProfit,
       secondValue: inverseCalculations?.userRealNetProfit,
-      // variant: "success" as const,
       gridSpan: "col-span-1",
     },
     {
