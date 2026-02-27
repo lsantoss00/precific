@@ -105,7 +105,7 @@ const Footer = () => {
               <a
                 href="https://www.viriato.com.br/"
                 target="_blank"
-                className="hover:text-primary hover:underline transition-colors duration-300"
+                className="hover:text-white hover:underline"
               >
                 Grupo Viriato
               </a>
