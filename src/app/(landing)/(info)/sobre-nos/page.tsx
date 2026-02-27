@@ -60,8 +60,8 @@ export default function AboutUsPage() {
   return (
     <>
       <AboutUsHeroSection />
-      <CompanyMissionStatementSection />
       <OurCompaniesSection />
+      <CompanyMissionStatementSection />
       <CompanyMissionAndValuesSection />
     </>
   );

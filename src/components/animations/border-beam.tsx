@@ -50,7 +50,7 @@ interface BorderBeamProps {
   borderWidth?: number;
 }
 
-export const BorderBeam = ({
+const BorderBeam = ({
   className,
   size = 50,
   delay = 0,
@@ -104,3 +104,5 @@ export const BorderBeam = ({
     </div>
   );
 };
+
+export default BorderBeam;
