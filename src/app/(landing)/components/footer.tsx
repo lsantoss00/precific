@@ -20,7 +20,7 @@ const Footer = () => {
   return (
     <footer className="bg-black w-full">
       <Container variant="section">
-        <Flex className="flex-col lg:flex-row justify-between gap-8 md:gap-12 lg:gap-16">
+        <Flex className="flex-col xl:flex-row justify-between gap-8 md:gap-12 lg:gap-16">
           <Column className="flex-1 space-y-4 md:space-y-6 w-full md:w-auto">
             <Row className="items-center gap-4">
               <Flex as="figure" className="relative">
@@ -50,7 +50,7 @@ const Footer = () => {
                 />
               </Flex>
             </Row>
-            <p className="text-muted-foreground text-sm sm:text-base max-w-sm md:max-w-md lg:max-w-md xl:max-w-lg leading-relaxed lg:text-justify">
+            <p className="text-muted-foreground text-sm sm:text-base max-w-sm md:w-full md:max-w-none xl:max-w-lg leading-relaxed text-justify">
               O Precific é um produto oficial do Grupo Viriato, desenvolvido
               para apoiar empresas na formação de preços com precisão,
               inteligência tributária e eficiência operacional. Há mais de 40
@@ -77,7 +77,7 @@ const Footer = () => {
           </Column>
           <Flex
             as="nav"
-            className="flex-col sm:flex-row gap-8 md:gap-12 w-full md:w-auto"
+            className="flex-col sm:flex-row gap-8 md:gap-12 w-full md:w-auto justify-between"
             aria-label="Links do rodapé"
           >
             {usefulLinks.map((usefulLink) => (

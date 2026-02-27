@@ -86,6 +86,7 @@
   html,
   body {
     @apply bg-background text-foreground;
+    overflow-x: hidden;
   }
   html {
     scroll-behavior: smooth;
@@ -108,5 +109,5 @@
 }
 
 .grecaptcha-badge {
-  visibility: hidden;
+  visibility: hidden !important;
 }
