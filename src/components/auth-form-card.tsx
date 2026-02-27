@@ -1,5 +1,5 @@
 import logoImage from "@/public/images/precific-logo-image.webp";
-import { BorderBeam } from "@/src/components/animations/border-beam";
+import BorderBeam from "@/src/components/animations/border-beam";
 import { Card } from "@/src/components/core/card";
 import Flex from "@/src/components/core/flex";
 import Image from "next/image";

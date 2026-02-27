@@ -10,7 +10,7 @@ export default function LandingPageLayout({
   children: React.ReactNode;
 }) {
   return (
-    <Column className="w-full min-h-screen">
+    <Column className="w-full min-h-screen overflow-x-hidden">
       <Script
         id="website-jsonld"
         type="application/ld+json"
