@@ -10,7 +10,7 @@ export default function InfoPageLayout({ children }: InfoPageLayoutProps) {
     <Container
       as="article"
       variant="section"
-      className="lg:px-20 xl:px-25 z-10"
+      className="lg:px-20 xl:px-25 z-10 bg-white"
     >
       {children}
     </Container>
