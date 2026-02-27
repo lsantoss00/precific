@@ -44,7 +44,7 @@ const YouTubeEmbed = ({
               loading="eager"
             />
           </div>
-          <Row className="absolute left-0 bottom-0 gap-4 p-2 md:p-4 pointer-events-none bg-foreground w-full">
+          <Row className="absolute left-0 bottom-0 gap-4 p-2 md:p-4 pointer-events-none bg-transparent w-full">
             <Row
               className="justify-center bg-primary rounded-full p-2 shadow-lg"
               aria-hidden
