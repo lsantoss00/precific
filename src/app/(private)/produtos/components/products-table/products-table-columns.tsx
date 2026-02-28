@@ -212,21 +212,23 @@ export const productsTableColumns: ColumnDef<Partial<ProductResponseType>>[] = [
           <Show
             when={!isDisabled}
             fallback={
-              <Button className="w-9 sm:w-fit" disabled={true}>
+              <Button size="icon" disabled={true}>
                 <Pencil />
               </Button>
             }
           >
             <Button
               asChild
-              className="w-9 sm:w-fit"
+              variant="outline"
+              size="icon"
+              className="border-zinc-300 bg-muted hover:border-foreground! hover:ring-0 ring-foreground!"
               disabled={
                 meta?.pendingUpdateProductStatus || meta?.pendingDeleteProduct
               }
               aria-label="Precificar Produto"
             >
               <Link href={`/produtos/${product.id}`}>
-                <Pencil />
+                <Pencil className="w-4 h-4 text-foreground" />
               </Link>
             </Button>
           </Show>
