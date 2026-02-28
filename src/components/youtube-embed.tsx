@@ -41,7 +41,6 @@ const YouTubeEmbed = ({
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
               className="object-cover transition-transform duration-300 ease-out group-hover:scale-105 brightness-50"
               priority
-              loading="eager"
             />
           </div>
           <Row className="absolute left-0 bottom-0 gap-4 p-2 md:p-4 pointer-events-none bg-transparent w-full">
