@@ -1,3 +1,4 @@
+import Column from "@/src/components/core/column";
 import { Container } from "@/src/components/core/container";
 import { ReactNode } from "react";
 
@@ -10,9 +11,9 @@ export default function InfoPageLayout({ children }: InfoPageLayoutProps) {
     <Container
       as="article"
       variant="section"
-      className="lg:px-20 xl:px-25 z-10 bg-white"
+      className="z-10 bg-white 2xl:px-0!"
     >
-      {children}
+      <Column className="max-w-7xl m-auto">{children}</Column>
     </Container>
   );
 }
