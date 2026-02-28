@@ -15,7 +15,6 @@ export default function HomeLayout({
       <Script
         id="landing-jsonld"
         type="application/ld+json"
-        strategy="afterInteractive"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(landingJsonLd),
         }}
@@ -23,7 +22,6 @@ export default function HomeLayout({
       <Script
         id="software-application-jsonld"
         type="application/ld+json"
-        strategy="afterInteractive"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(softwareApplicationJsonLd),
         }}
@@ -31,7 +29,6 @@ export default function HomeLayout({
       <Script
         id="faq-jsonld"
         type="application/ld+json"
-        strategy="afterInteractive"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(faqJsonLd),
         }}

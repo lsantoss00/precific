@@ -11,7 +11,6 @@ export default function PrivacyPolicyLayout({
       <Script
         id="privacy-policy-jsonld"
         type="application/ld+json"
-        strategy="afterInteractive"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(privacyPolicyJsonLd),
         }}

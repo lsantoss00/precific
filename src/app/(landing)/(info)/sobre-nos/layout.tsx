@@ -11,7 +11,6 @@ export default function AboutUsLayout({
       <Script
         id="about-us-jsonld"
         type="application/ld+json"
-        strategy="afterInteractive"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(aboutUsJsonLd),
         }}

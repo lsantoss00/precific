@@ -14,7 +14,6 @@ export default function LandingPageLayout({
       <Script
         id="website-jsonld"
         type="application/ld+json"
-        strategy="afterInteractive"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(websiteJsonLd),
         }}

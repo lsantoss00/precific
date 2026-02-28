@@ -123,7 +123,6 @@ export default function RootLayout({
         <Script
           id="organization-jsonld"
           type="application/ld+json"
-          strategy="afterInteractive"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(OrganizationJsonLd),
           }}
