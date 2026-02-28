@@ -44,7 +44,7 @@ export default function PrivacyPolicyPage() {
         title="Política de Privacidade"
         description="Esta Política de Privacidade descreve como o Precific coleta, usa,
         armazena e protege as informações pessoais dos usuários da nossa
-        plataforma de precificação. <br /> É importante ler atentamente esta
+        plataforma. <br /> É importante ler atentamente esta
         política antes de utilizar nossos serviços ou fornecer quaisquer
         informações pessoais."
       />
