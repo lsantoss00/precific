@@ -23,7 +23,7 @@ const Header = () => {
     <header className="fixed top-0 left-0 right-0 z-50 h-20 bg-background border-b border-zinc-200">
       <Container
         variant="section"
-        className="flex items-center justify-between h-full py-0!"
+        className="flex items-center justify-between h-full py-0! 2xl:px-0 m-auto 2xl:max-w-7xl"
       >
         <nav className="flex items-center space-x-4 md:space-x-8">
           <Image

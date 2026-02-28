@@ -10,10 +10,10 @@ const HeroSection = () => {
     <Container
       as="section"
       variant="section"
-      className="w-full min-h-[calc(100vh-80px)] xl:h-[calc(100vh-80px)] overflow-hidden bg-white"
+      className="w-full min-h-[calc(100vh-80px)] xl:h-[calc(100vh-80px)] bg-white"
       aria-labelledby="hero-heading"
     >
-      <Flex className="flex-col xl:flex-row items-center justify-between xl:h-full gap-8 md:gap-12">
+      <Flex className="flex-col xl:flex-row items-center justify-between xl:h-full gap-8 md:gap-12 2xl:max-w-7xl m-auto">
         <FadeInOnScroll
           direction="left"
           offset={20}
@@ -25,14 +25,8 @@ const HeroSection = () => {
                 Precific | Plataforma de Precificação Inteligente
               </h1>
               <h2 className="font-bold text-3xl sm:text-4xl md:text-5xl xl:text-5xl 2xl:text-6xl leading-tight">
-                <span className="relative inline-block">
-                  Precifique
-                  {/* <span
-                      className="absolute bottom-1 left-4 h-4 w-full bg-linear-to-r rounded-md from-primary from-50% to-transparent -z-10"
-                      aria-hidden="true"
-                    /> */}
-                </span>{" "}
-                seus produtos com precisão.
+                <span className="relative inline-block">Precifique</span> seus
+                produtos com precisão.
               </h2>
               <p className="text-muted-foreground text-base md:text-lg max-w-2xl">
                 O <strong className="font-normal">Precific</strong> automatiza o

@@ -9,10 +9,10 @@ import Image from "next/image";
 
 const ValuePropositionSection = () => {
   return (
-    <Flex className="flex-col xl:flex-row items-center justify-between h-full w-full xl:h-168 2xl:h-175 overflow-hidden bg-white">
-      <FadeInOnScroll direction="left" offset={20} className="w-full xl:w-1/2">
-        <Container as="section" variant="section" className="relative">
-          <Flex className="flex-col lg:flex-row xl:flex-col space-y-8 md:space-y-12 xl:space-y-12 2xl:space-y-20 w-full">
+    <Container as="section" className="2xl:p-0! bg-white">
+      <Flex className="flex-col xl:flex-row gap-8 items-center justify-between h-full w-full 2xl:max-w-7xl m-auto">
+        <FadeInOnScroll direction="left" offset={20} className="w-full">
+          <Flex className="flex-col space-y-8 md:space-y-12 xl:space-y-12 2xl:space-y-20 w-full">
             <Column className="space-y-4 md:space-y-5">
               <h2
                 id="value-proposition-heading"
@@ -32,25 +32,25 @@ const ValuePropositionSection = () => {
             </Column>
             <CtaButton text="Quero falar com um especialista!" />
           </Flex>
-        </Container>
-      </FadeInOnScroll>
-      <FadeInOnScroll
-        direction="right"
-        offset={20}
-        className="relative z-10 w-full xl:w-1/2 h-80 sm:h-96 md:h-110 lg:h-140 xl:h-full"
-      >
-        <Flex as="figure" className="relative w-full h-full">
-          <Image
-            src={userImage}
-            alt="Usuário satisfeito utilizando a plataforma Precific"
-            fill
-            loading="lazy"
-            className="object-cover object-center brightness-75"
-            sizes="(max-width: 640px) 100vw, (max-width: 768px) 100vw, (max-width: 1280px) 100vw, 50vw"
-          />
-        </Flex>
-      </FadeInOnScroll>
-    </Flex>
+        </FadeInOnScroll>
+        <FadeInOnScroll
+          direction="right"
+          offset={20}
+          className="relative z-10 w-full h-80 sm:h-96 md:h-110 lg:h-140 my-10"
+        >
+          <Flex as="figure">
+            <Image
+              src={userImage}
+              alt="Usuário satisfeito utilizando a plataforma Precific"
+              fill
+              loading="lazy"
+              className="object-cover object-center brightness-75 rounded-md"
+              sizes="(max-width: 640px) 100vw, (max-width: 768px) 100vw, (max-width: 1280px) 100vw, 50vw"
+            />
+          </Flex>
+        </FadeInOnScroll>
+      </Flex>
+    </Container>
   );
 };
 export default ValuePropositionSection;

@@ -9,14 +9,11 @@ const FAQSection = () => {
     <Container
       as="section"
       variant="section"
-      className="m-auto max-w-360 w-full overflow-hidden bg-background"
+      className="w-full overflow-hidden bg-background 2xl:px-0! m-auto 2xl:max-w-7xl"
     >
       <Flex className="flex-col gap-8 xl:gap-12 justify-center">
         <FadeInOnScroll direction="left" offset={20}>
-          <Column
-            as="header"
-            className="relative z-10 w-full 2xl:w-140 space-y-6 md:space-y-8"
-          >
+          <Column className="relative z-10 w-full space-y-6 md:space-y-8">
             <Column className="space-y-4 md:space-y-5">
               <h2
                 id="faq-heading"
