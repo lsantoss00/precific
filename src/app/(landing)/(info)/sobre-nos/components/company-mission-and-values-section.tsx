@@ -24,7 +24,7 @@ const CompanyMissionAndValuesSection = () => {
       className="space-y-12 lg:space-y-16 bg-background 2xl:px-0! 2xl:max-w-7xl m-auto"
     >
       <Column
-        className="space-y-8 sm:space-y-10 md:space-y-12 xl:flex-row xl:space-y-0 xl:space-x-16 2xl:space-x-24 justify-between w-full xl:gap-20"
+        className="space-y-8 sm:space-y-10 md:space-y-12 xl:flex-row xl:space-y-0 xl:space-x-16 2xl:space-x-40 justify-between w-full"
         aria-labelledby="values-heading"
       >
         <FadeInOnScroll
@@ -64,13 +64,13 @@ const CompanyMissionAndValuesSection = () => {
       </Column>
       <Column
         as="section"
-        className="space-y-8 sm:space-y-10 md:space-y-12 xl:flex-row xl:space-y-0 xl:space-x-16 2xl:space-x-24 justify-between w-full"
+        className="space-y-8 sm:space-y-10 md:space-y-12 xl:flex-row xl:space-y-0 xl:space-x-16 2xl:space-x-40 justify-between w-full"
         aria-labelledby="mission-heading"
       >
         <FadeInOnScroll
           direction="left"
           offset={20}
-          className="w-full xl:max-w-xl"
+          className="w-full xl:max-w-lg"
         >
           <CompanySectionBlock
             id="mission-heading"
