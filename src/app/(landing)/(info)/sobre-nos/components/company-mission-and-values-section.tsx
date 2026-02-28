@@ -4,7 +4,15 @@ import { CompanyMissionAndValuesTopicType } from "@/src/app/(landing)/(info)/sob
 import FadeInOnScroll from "@/src/components/animations/fade-in-on-scroll";
 import Column from "@/src/components/core/column";
 import { Container } from "@/src/components/core/container";
-import { Award, Goal, Settings, Share2, ShieldCheck, User } from "lucide-react";
+import {
+  Award,
+  Eye,
+  Goal,
+  Rocket,
+  Share2,
+  ShieldCheck,
+  Target,
+} from "lucide-react";
 import CompanySectionBlock from "./company-section-block";
 import CompanyTopicCard from "./company-topic-card";
 
@@ -104,7 +112,7 @@ const companyValuesTopics: CompanyMissionAndValuesTopicType[] = [
     title: "Transparência",
     description:
       "Atuamos com processos claros, critérios objetivos e comunicação direta. Acreditamos que confiança se constrói com informação acessível e decisões bem explicadas.",
-    icon: <Settings />,
+    icon: <Eye />,
   },
   {
     title: "Colaboração",
@@ -125,12 +133,12 @@ const companyMissionTopics: CompanyMissionAndValuesTopicType[] = [
     title: "Propósito",
     description:
       "Existimos para desenvolver, orientar e servir empresas por meio de soluções que unem conhecimento técnico, estratégia e tecnologia, promovendo crescimento sustentável e decisões mais seguras.",
-    icon: <User />,
+    icon: <Target />,
   },
   {
     title: "Missão",
     description:
       "Apoiar empresas na construção de estruturas mais sólidas, eficientes e preparadas para o futuro, oferecendo serviços e soluções que gerem clareza, controle e valor de longo prazo.",
-    icon: <Settings />,
+    icon: <Rocket />,
   },
 ];
