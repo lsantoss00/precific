@@ -21,9 +21,7 @@ const HeroSection = () => {
         >
           <Column className="space-y-6 md:space-y-8">
             <Column as="header" className="space-y-4 md:space-y-5">
-              <h1 className="sr-only">
-                Precific | Plataforma de Precificação Inteligente
-              </h1>
+              <h1 className="sr-only">Precific</h1>
               <h2 className="font-bold text-3xl sm:text-4xl md:text-5xl xl:text-5xl 2xl:text-6xl leading-tight">
                 <span className="relative inline-block">Precifique</span> seus
                 produtos com precisão.

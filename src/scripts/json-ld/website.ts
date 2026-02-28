@@ -4,6 +4,7 @@ export const websiteJsonLd = {
   "@id": "https://precificapp.com/#website",
   url: "https://precificapp.com",
   name: "Precific",
+  alternateName: "Precific",
   about: {
     "@id": "https://precificapp.com/#software",
   },
