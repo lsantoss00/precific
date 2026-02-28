@@ -12,7 +12,7 @@ const AuthFormCard = ({ children }: AuthFormCardProps) => {
   return (
     <Card
       as="article"
-      className="relative rounded-2xl p-6 mx-4 shadow-sm w-full max-w-125 items-center bg-white"
+      className="relative rounded-2xl p-6 mx-4 shadow-sm w-full max-w-125 items-center bg-white overflow-clip"
     >
       <Flex as="figure" className="mb-10">
         <Image
