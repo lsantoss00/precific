@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   twitter: {
     title: "Entrar | Precific",
     description:
-      "Faça login na sua conta Precific e acesse ferramentas de precificação inteligente.",
+      "Faça login na sua conta Precific e acesse ferramentas de precificação inteligente, gestão de custos e simulação tributária.",
   },
   alternates: {
     canonical: "/entrar",

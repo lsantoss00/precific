@@ -27,7 +27,7 @@ export const metadata: Metadata = {
   twitter: {
     title: "Sobre Nós | Precific",
     description:
-      "Conheça o Precific, sistema inteligente de precificação e gestão tributária desenvolvido pelo Grupo Viriato.",
+      "Conheça o Precific, sistema inteligente de precificação e gestão tributária desenvolvido pelo Grupo Viriato. Nossa missão é simplificar a gestão financeira e tributária das empresas brasileiras.",
   },
   alternates: {
     canonical: "/sobre-nos",
