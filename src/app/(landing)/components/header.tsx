@@ -10,7 +10,6 @@ import { Button } from "@/src/components/core/button";
 import MobileMenu from "./mobile-menu";
 
 const navItems = [
-  { label: "Início", section: null },
   { label: "Descubra", section: "descubra" },
   { label: "Planos", section: "planos" },
   { label: "Converse conosco", section: "contato" },
@@ -32,6 +31,8 @@ const Header = () => {
             width={48}
             height={48}
             sizes="48px"
+            className="cursor-pointer hover:scale-[1.05] transition-all"
+            onClick={() => scrollToTop()}
           />
           <ul className="hidden md:flex items-center space-x-6 lg:space-x-8">
             {navItems.map(({ label, section }) => (
