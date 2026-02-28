@@ -17,7 +17,7 @@ const OurCompaniesSection = () => {
       variant="section"
       aria-labelledby="companies-heading"
     >
-      <Column className="gap-6">
+      <Column className="gap-6 2xl:max-w-7xl m-auto">
         <FadeInOnScroll direction="up" offset={16}>
           <h2
             id="companies-heading"

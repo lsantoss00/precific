@@ -11,7 +11,7 @@ const CompanyMissionStatementSection = () => {
       aria-labelledby="mission-statement-heading"
     >
       <FadeInOnScroll direction="up" offset={20} className="w-full">
-        <Column className="space-y-4 sm:space-y-5 md:space-y-6 w-full xl:max-w-none">
+        <Column className="space-y-4 sm:space-y-5 md:space-y-6 w-full 2xl:max-w-7xl m-auto">
           <h2
             id="mission-statement-heading"
             className="font-bold text-2xl sm:text-3xl md:text-4xl lg:text-4xl xl:text-4xl 2xl:text-5xl leading-tight text-center text-white"

@@ -38,15 +38,15 @@ export const metadata: Metadata = {
   },
 };
 
-const CompanyMissionStatementSection = dynamic(
-  () =>
-    import("@/src/app/(landing)/(info)/sobre-nos/components/company-mission-statement-section"),
-  { ssr: true },
-);
-
 const OurCompaniesSection = dynamic(
   () =>
     import("@/src/app/(landing)/(info)/sobre-nos/components/our-companies-section"),
+  { ssr: true },
+);
+
+const CompanyMissionStatementSection = dynamic(
+  () =>
+    import("@/src/app/(landing)/(info)/sobre-nos/components/company-mission-statement-section"),
   { ssr: true },
 );
 

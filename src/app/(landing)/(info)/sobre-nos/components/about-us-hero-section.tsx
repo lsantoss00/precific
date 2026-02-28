@@ -18,9 +18,9 @@ const AboutUsHeroSection = () => {
       as="section"
       variant="section"
       aria-labelledby="about-hero-heading"
-      className="w-full min-h-[calc(100vh-80px)] xl:h-[calc(100vh-80px)] overflow-hidden bg-white"
+      className="w-full min-h-[calc(100vh-80px)] lg:h-[calc(100vh-80px)] overflow-hidden bg-white"
     >
-      <Flex className="flex-col xl:flex-row items-center justify-between xl:h-full gap-8 md:gap-12">
+      <Flex className="flex-col lg:flex-row items-center justify-between lg:h-full gap-8 md:gap-12 2xl:max-w-7xl m-auto">
         <FadeInOnScroll
           direction="left"
           offset={20}

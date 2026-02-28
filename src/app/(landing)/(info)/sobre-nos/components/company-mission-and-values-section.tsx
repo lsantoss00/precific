@@ -13,16 +13,16 @@ const CompanyMissionAndValuesSection = () => {
     <Container
       as="section"
       variant="section"
-      className="space-y-12 lg:space-y-16 bg-background"
+      className="space-y-12 lg:space-y-16 bg-background 2xl:px-0! 2xl:max-w-7xl m-auto"
     >
       <Column
-        className="space-y-8 sm:space-y-10 md:space-y-12 xl:flex-row xl:space-y-0 xl:space-x-16 2xl:space-x-24 justify-between w-full"
+        className="space-y-8 sm:space-y-10 md:space-y-12 xl:flex-row xl:space-y-0 xl:space-x-16 2xl:space-x-24 justify-between w-full xl:gap-20"
         aria-labelledby="values-heading"
       >
         <FadeInOnScroll
           direction="left"
           offset={20}
-          className="w-full xl:max-w-2xl"
+          className="w-full xl:max-w-lg"
         >
           <CompanySectionBlock
             id="values-heading"
@@ -35,7 +35,7 @@ const CompanyMissionAndValuesSection = () => {
         </FadeInOnScroll>
         <Column
           as="ul"
-          className="space-y-4 sm:space-y-5 md:space-y-6 w-full lg:w-auto lg:flex-1 xl:max-w-2xl"
+          className="space-y-4 sm:space-y-5 md:space-y-6 w-full lg:w-auto lg:flex-1"
         >
           {companyValuesTopics.map((value, index) => (
             <FadeInOnScroll
