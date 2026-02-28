@@ -95,12 +95,12 @@ const privacyPolicyTopics: InfoTopicType[] = [
   {
     title: "5. Cookies e tecnologias similares",
     content:
-      "O Precific utiliza cookies e tecnologias similares para melhorar a experiência do usuário, manter sessões ativas, personalizar conteúdo e analisar o uso da plataforma. Os usuários podem controlar o uso de cookies através das configurações do navegador, mas a desativação pode limitar funcionalidades essenciais como autenticação e salvamento de preferências.",
+      "O Precific utiliza exclusivamente cookies técnicos e de sessão, estritamente necessários para o funcionamento da plataforma, como autenticação de usuários e controle de fluxos de acesso.",
   },
   {
     title: "6. Alterações nesta política",
     content:
-      "Podemos atualizar esta Política de Privacidade periodicamente para refletir alterações em nossas práticas de informações. Recomendamos que os usuários revisem esta política regularmente. O uso contínuo dos serviços após a publicação de quaisquer alterações nesta política será considerado como aceitação dessas alterações.",
+      "Podemos atualizar esta Política de Privacidade periodicamente para refletir alterações em nossas práticas de tratamento de dados. Em caso de alterações relevantes, notificaremos os usuários com antecedência mínima de 15 dias por e-mail ou por aviso em destaque na plataforma. As alterações entrarão em vigor somente após esse período, e o usuário poderá, caso discorde das novas condições, solicitar o encerramento de sua conta e a exclusão de seus dados através dos canais de comunicação disponíveis em nosso site.",
   },
   {
     title: "7. Contato",
