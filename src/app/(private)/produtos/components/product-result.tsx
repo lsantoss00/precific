@@ -108,6 +108,7 @@ const ProductResult = () => {
     formData?.icmsSt !== 0 && formData?.icmsSt !== undefined;
   const userProductPriceExists =
     formData?.userProductPrice !== 0 &&
+    formData?.userProductPrice !== null &&
     formData?.userProductPrice !== undefined;
   const companyRegime = company?.taxRegime;
   const isSimpleNational = company?.taxRegime === "simple_national";
