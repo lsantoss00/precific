@@ -742,7 +742,7 @@ const ProductResult = () => {
       }
     >
       <Column className="h-full gap-4">
-        <Flex className="flex-col lg:flex-row w-full flex-1 gap-4">
+        <Flex className="flex-col lg:flex-row w-full gap-4">
           <Button
             asChild
             className="hidden lg:flex h-full w-20"
