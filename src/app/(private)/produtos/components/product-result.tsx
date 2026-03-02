@@ -60,9 +60,12 @@ const ProductResult = () => {
   const { mutate: post, isPending: pendingPostProduct } = useMutation({
     mutationFn: postProduct,
     onSuccess: async () => {
-      await queryClient?.invalidateQueries({ queryKey: ["product"] });
-      await queryClient?.invalidateQueries({ queryKey: ["products"] });
-      await queryClient?.invalidateQueries({ queryKey: ["dashboard"] });
+      await Promise.all([
+        queryClient?.invalidateQueries({ queryKey: ["product"] }),
+        queryClient?.invalidateQueries({ queryKey: ["products"] }),
+        queryClient?.invalidateQueries({ queryKey: ["company"] }),
+        queryClient?.invalidateQueries({ queryKey: ["dashboard"] }),
+      ]);
       toast.success("Produto adicionado com sucesso!", {
         className: "!bg-green-600 !text-white",
       });
@@ -78,12 +81,15 @@ const ProductResult = () => {
   const { mutate: update, isPending: pendingUpdateProduct } = useMutation({
     mutationFn: updateProduct,
     onSuccess: async () => {
-      await queryClient?.invalidateQueries({
-        queryKey: ["product", productId],
-      });
-      await queryClient?.invalidateQueries({ queryKey: ["products"] });
-      await queryClient?.invalidateQueries({ queryKey: ["company"] });
-      await queryClient?.invalidateQueries({ queryKey: ["dashboard"] });
+      await Promise.all([
+        await queryClient?.invalidateQueries({
+          queryKey: ["product", productId],
+        }),
+        queryClient?.invalidateQueries({ queryKey: ["product"] }),
+        queryClient?.invalidateQueries({ queryKey: ["products"] }),
+        queryClient?.invalidateQueries({ queryKey: ["company"] }),
+        queryClient?.invalidateQueries({ queryKey: ["dashboard"] }),
+      ]);
       toast.success("Produto atualizado com sucesso!", {
         className: "!bg-green-600 !text-white",
       });
