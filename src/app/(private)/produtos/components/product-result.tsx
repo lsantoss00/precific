@@ -160,12 +160,12 @@ const ProductResult = () => {
 
   const salesIcmsValue = percentageValueCalc({
     base: suggestedProductPrice,
-    percentage: formData?.salesIcms,
+    percentage: formData?.salesIcms ?? 0,
   });
 
   const salesPisCofinsValue = percentageValueCalc({
     base: suggestedProductPrice - salesIcmsValue,
-    percentage: formData?.salesPisCofins,
+    percentage: formData?.salesPisCofins ?? 0,
   });
 
   const suggestedProductPriceIbsCbsBase =
