@@ -1,7 +1,7 @@
 import { Card } from "@/src/components/core/card";
 import Column from "@/src/components/core/column";
 import Row from "@/src/components/core/row";
-import { socialMediaLinks } from "@/src/utils/social-media-links";
+import { socialMediaLinks } from "@/src/constants/social-media-links";
 
 const SocialMediasCard = () => {
   return (
@@ -21,7 +21,7 @@ const SocialMediasCard = () => {
             href={socialMedia.href}
             target="_blank"
             rel="noopener noreferrer"
-            className="h-12 w-12 rounded-md bg-primary/10 text-primary flex items-center justify-center hover:bg-primary hover:text-white transition-colors"
+            className="h-12 w-12 rounded-md bg-primary/10 text-primary flex items-center justify-center hover:bg-primary hover:text-white transition-colors focus-visible:ring-1 ring-primary!"
             aria-label={socialMedia.label}
           >
             {socialMedia.icon}

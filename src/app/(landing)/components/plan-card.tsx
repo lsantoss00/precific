@@ -8,18 +8,23 @@ import Column from "@/src/components/core/column";
 import Row from "@/src/components/core/row";
 import { Separator } from "@/src/components/core/separator";
 import { useScrollToSection } from "@/src/hooks/use-scroll-to-section";
+import { cn } from "@/src/libs/shadcn-ui/utils";
 import { CircleCheckBig } from "lucide-react";
 
 interface PlanCardProps {
   plan: PlanType;
+  className?: string;
 }
 
-const PlanCard = ({ plan }: PlanCardProps) => {
+const PlanCard = ({ plan, className }: PlanCardProps) => {
   const { scrollToSection } = useScrollToSection();
 
   return (
     <Card
-      className={`px-4 py-8 xl:max-w-sm h-full flex flex-col hover:scale-105 transition-transform duration-200 ${plan?.isMostPopular && "border-primary"}`}
+      className={cn(
+        `px-4 py-8 h-full flex flex-col ${plan?.isMostPopular && "border-primary"}`,
+        className,
+      )}
     >
       <Column className="gap-1">
         <Row className="items-center justify-between gap-2">

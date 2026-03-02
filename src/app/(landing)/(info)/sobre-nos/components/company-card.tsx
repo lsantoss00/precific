@@ -28,7 +28,7 @@ const CompanyCard = ({ company, isLast = false }: CompanyCardProps) => {
         rel="noopener noreferrer"
         className="group block flex-1 min-w-0"
       >
-        <Card className="relative overflow-hidden p-4 sm:p-5 md:p-6 lg:p-8 transition-all duration-300 ease-out hover:shadow-lg">
+        <Card className="relative overflow-hidden p-4 sm:p-5 md:p-6 lg:p-8 transition-all duration-300 hover:ring-2 hover:ring-primary hover:scale-[1.02] shadow-lg">
           <Flex className="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-5 md:gap-6 lg:gap-8">
             <div className="absolute top-3 right-3 sm:top-4 sm:right-4">
               <ExternalLink className="w-4 h-4 sm:w-4 sm:h-4 md:w-5 md:h-5 text-muted-foreground transition-all duration-300 group-hover:text-primary" />

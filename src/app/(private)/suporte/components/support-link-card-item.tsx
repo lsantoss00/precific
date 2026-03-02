@@ -13,7 +13,7 @@ const SupportLinkCardItem = ({ item }: SupportLinkCardItemProps) => {
       target="_blank"
       rel="noopener noreferrer"
       aria-label={`Link para ${item.title}`}
-      className="flex flex-col md:flex-row md:items-center gap-4 transition-colors duration-300 p-2 cursor-pointer rounded-md hover:bg-zinc-50"
+      className="flex flex-col md:flex-row md:items-center gap-4 transition-colors duration-300 p-2 cursor-pointer rounded-md hover:bg-zinc-50 focus-visible:ring-1 ring-primary!"
     >
       <div
         className={`h-10 w-10 rounded-md flex items-center justify-center shrink-0 ${

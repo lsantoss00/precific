@@ -11,7 +11,6 @@ export default function TermsOfUseLayout({
       <Script
         id="termos-of-use-jsonld"
         type="application/ld+json"
-        strategy="afterInteractive"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(termosOfUseJsonLd),
         }}

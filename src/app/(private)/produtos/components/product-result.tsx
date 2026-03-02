@@ -60,9 +60,12 @@ const ProductResult = () => {
   const { mutate: post, isPending: pendingPostProduct } = useMutation({
     mutationFn: postProduct,
     onSuccess: async () => {
-      await queryClient?.invalidateQueries({ queryKey: ["product"] });
-      await queryClient?.invalidateQueries({ queryKey: ["products"] });
-      await queryClient?.invalidateQueries({ queryKey: ["dashboard"] });
+      await Promise.all([
+        queryClient?.invalidateQueries({ queryKey: ["product"] }),
+        queryClient?.invalidateQueries({ queryKey: ["products"] }),
+        queryClient?.invalidateQueries({ queryKey: ["company"] }),
+        queryClient?.invalidateQueries({ queryKey: ["dashboard"] }),
+      ]);
       toast.success("Produto adicionado com sucesso!", {
         className: "!bg-green-600 !text-white",
       });
@@ -78,12 +81,15 @@ const ProductResult = () => {
   const { mutate: update, isPending: pendingUpdateProduct } = useMutation({
     mutationFn: updateProduct,
     onSuccess: async () => {
-      await queryClient?.invalidateQueries({
-        queryKey: ["product", productId],
-      });
-      await queryClient?.invalidateQueries({ queryKey: ["products"] });
-      await queryClient?.invalidateQueries({ queryKey: ["company"] });
-      await queryClient?.invalidateQueries({ queryKey: ["dashboard"] });
+      await Promise.all([
+        await queryClient?.invalidateQueries({
+          queryKey: ["product", productId],
+        }),
+        queryClient?.invalidateQueries({ queryKey: ["product"] }),
+        queryClient?.invalidateQueries({ queryKey: ["products"] }),
+        queryClient?.invalidateQueries({ queryKey: ["company"] }),
+        queryClient?.invalidateQueries({ queryKey: ["dashboard"] }),
+      ]);
       toast.success("Produto atualizado com sucesso!", {
         className: "!bg-green-600 !text-white",
       });
@@ -648,20 +654,18 @@ const ProductResult = () => {
       value: profitability,
       secondValue: inverseCalculations?.inverseProfitability,
       type: "percentage" as const,
-      variant: "success" as const,
     },
     {
       title: "Lucro líquido",
       value: netProfit,
       secondValue: inverseCalculations?.userRealNetProfit,
-      variant: "success" as const,
       gridSpan: "col-span-1",
     },
     {
       title: "Preço de venda final",
       value: finalSalePrice,
       secondValue: inverseCalculations?.userFinalSalePrice,
-      variant: "secondary" as const,
+      variant: "success" as const,
       gridSpan: "col-span-1 md:col-span-2",
     },
   ];
@@ -690,7 +694,7 @@ const ProductResult = () => {
       title: "Preço de venda final",
       value: finalSalePrice,
       secondValue: inverseCalculations?.userFinalSalePrice,
-      variant: "secondary" as const,
+      variant: "success" as const,
       gridSpan: "col-span-1 md:col-span-2 row-6",
     },
   ];
@@ -738,7 +742,7 @@ const ProductResult = () => {
       }
     >
       <Column className="h-full gap-4">
-        <Flex className="flex-col lg:flex-row w-full flex-1 gap-4">
+        <Flex className="flex-col lg:flex-row w-full gap-4">
           <Button
             asChild
             className="hidden lg:flex h-full w-20"
@@ -818,7 +822,7 @@ const ProductResult = () => {
             </Link>
           </Button>
           <Button
-            className="flex-1 md:flex-none md:w-40 h-12 flex items-center"
+            className="flex-1 md:flex-none md:w-40 h-12 flex items-center disabled:bg-primary/90 disabled:text-white"
             onClick={handleFinishForm}
             disabled={pending}
           >

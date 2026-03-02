@@ -113,6 +113,7 @@ const RecoveryPasswordForm = () => {
           <Button
             className="hover:cursor-pointer w-full"
             type="submit"
+            pending={pendingDoRecoveryPassword}
             disabled={pendingDoRecoveryPassword || formInputFieldIsBlank}
           >
             <Show when={pendingDoRecoveryPassword}>
@@ -120,8 +121,13 @@ const RecoveryPasswordForm = () => {
             </Show>
             Enviar instruções
           </Button>
-          <Link href="/entrar" className="flex self-center w-fit" passHref>
-            <Button type="button" variant="link" className="">
+          <Link
+            href="/entrar"
+            className="flex self-center w-fit mt-1"
+            passHref
+            tabIndex={1}
+          >
+            <Button type="button" variant="link" className="text-foreground">
               Voltar ao Login
             </Button>
           </Link>

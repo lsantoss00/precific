@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   twitter: {
     title: "Criar Senha | Precific",
     description:
-      "Configure sua senha de acesso ao Precific e comece a utilizar as ferramentas de precificação.",
+      "Configure sua senha de acesso ao Precific e comece a utilizar as ferramentas de precificação e gestão tributária.",
   },
   robots: {
     index: false,

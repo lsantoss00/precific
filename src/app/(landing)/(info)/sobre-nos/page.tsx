@@ -27,7 +27,7 @@ export const metadata: Metadata = {
   twitter: {
     title: "Sobre Nós | Precific",
     description:
-      "Conheça o Precific, sistema inteligente de precificação e gestão tributária desenvolvido pelo Grupo Viriato.",
+      "Conheça o Precific, sistema inteligente de precificação e gestão tributária desenvolvido pelo Grupo Viriato. Nossa missão é simplificar a gestão financeira e tributária das empresas brasileiras.",
   },
   alternates: {
     canonical: "/sobre-nos",
@@ -38,15 +38,15 @@ export const metadata: Metadata = {
   },
 };
 
-const CompanyMissionStatementSection = dynamic(
-  () =>
-    import("@/src/app/(landing)/(info)/sobre-nos/components/company-mission-statement-section"),
-  { ssr: true },
-);
-
 const OurCompaniesSection = dynamic(
   () =>
     import("@/src/app/(landing)/(info)/sobre-nos/components/our-companies-section"),
+  { ssr: true },
+);
+
+const CompanyMissionStatementSection = dynamic(
+  () =>
+    import("@/src/app/(landing)/(info)/sobre-nos/components/company-mission-statement-section"),
   { ssr: true },
 );
 
@@ -60,8 +60,8 @@ export default function AboutUsPage() {
   return (
     <>
       <AboutUsHeroSection />
-      <CompanyMissionStatementSection />
       <OurCompaniesSection />
+      <CompanyMissionStatementSection />
       <CompanyMissionAndValuesSection />
     </>
   );

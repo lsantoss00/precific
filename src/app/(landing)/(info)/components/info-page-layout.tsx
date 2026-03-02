@@ -1,5 +1,5 @@
+import Column from "@/src/components/core/column";
 import { Container } from "@/src/components/core/container";
-import SectionWithBackground from "@/src/components/section-with-background";
 import { ReactNode } from "react";
 
 interface InfoPageLayoutProps {
@@ -8,10 +8,12 @@ interface InfoPageLayoutProps {
 
 export default function InfoPageLayout({ children }: InfoPageLayoutProps) {
   return (
-    <SectionWithBackground as="article">
-      <Container variant="section" className="lg:px-20 xl:px-25 z-10">
-        {children}
-      </Container>
-    </SectionWithBackground>
+    <Container
+      as="article"
+      variant="section"
+      className="z-10 bg-white 2xl:px-0!"
+    >
+      <Column className="max-w-7xl m-auto">{children}</Column>
+    </Container>
   );
 }

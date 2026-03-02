@@ -10,7 +10,6 @@ import { Button } from "@/src/components/core/button";
 import MobileMenu from "./mobile-menu";
 
 const navItems = [
-  { label: "Início", section: null },
   { label: "Descubra", section: "descubra" },
   { label: "Planos", section: "planos" },
   { label: "Converse conosco", section: "contato" },
@@ -20,10 +19,10 @@ const Header = () => {
   const { scrollToSection, scrollToTop } = useScrollToSection();
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 h-20 bg-white border-b border-zinc-200">
+    <header className="fixed top-0 left-0 right-0 z-50 h-20 bg-background border-b border-zinc-200">
       <Container
         variant="section"
-        className="flex items-center justify-between h-full py-0!"
+        className="flex items-center justify-between h-full py-0! 2xl:px-0 m-auto 2xl:max-w-7xl"
       >
         <nav className="flex items-center space-x-4 md:space-x-8">
           <Image
@@ -32,6 +31,8 @@ const Header = () => {
             width={48}
             height={48}
             sizes="48px"
+            className="cursor-pointer hover:scale-[1.02] transition-all"
+            onClick={() => scrollToTop()}
           />
           <ul className="hidden md:flex items-center space-x-6 lg:space-x-8">
             {navItems.map(({ label, section }) => (
@@ -52,7 +53,6 @@ const Header = () => {
         <Button
           asChild
           className="hidden md:flex w-fit h-10 md:h-12 px-4 md:px-6 text-sm md:text-base font-medium"
-          variant="secondary"
         >
           <Link href="/entrar">Acessar Plataforma</Link>
         </Button>

@@ -3,7 +3,7 @@ export const landingJsonLd = {
   "@type": "WebPage",
   "@id": "https://precificapp.com/#landing",
   url: "https://precificapp.com",
-  name: "Precific | Plataforma de Precificação",
+  name: "Precific",
   isPartOf: {
     "@id": "https://precificapp.com/#website",
   },

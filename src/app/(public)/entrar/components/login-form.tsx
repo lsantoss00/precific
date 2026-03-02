@@ -126,6 +126,7 @@ const LoginForm = () => {
           <Button
             className="hover:cursor-pointer w-full"
             type="submit"
+            pending={pendingLogin}
             disabled={pendingLogin || formInputFieldIsBlank}
           >
             <Show when={pendingLogin}>
@@ -135,10 +136,11 @@ const LoginForm = () => {
           </Button>
           <Link
             href="/redefinir-senha"
-            className="flex self-center w-fit"
+            className="flex self-center w-fit mt-1"
             passHref
+            tabIndex={1}
           >
-            <Button type="button" variant="link" className="">
+            <Button type="button" variant="link" className="text-foreground">
               Esqueci minha senha
             </Button>
           </Link>

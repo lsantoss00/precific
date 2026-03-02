@@ -14,13 +14,13 @@ const ExportDataButton = ({ onClick, pending }: ExportDataButtonProps) => {
     <Button
       className="hover:cursor-pointer flex-1 md:flex-none md:w-fit h-12"
       type="button"
+      variant="outline"
       disabled={pending}
       onClick={onClick}
     >
-      <Show when={pending} fallback={<Download className="text-white" />}>
+      <Show when={pending} fallback={<Download />}>
         <Loader2Icon className="animate-spin" />
       </Show>
-
       <span className="hidden sm:flex">Exportar</span>
     </Button>
   );

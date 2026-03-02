@@ -1,6 +1,6 @@
 import WhatsAppIcon from "@/public/svgs/whatsapp-logo.svg";
 import { SupportLinkItemType } from "@/src/app/(private)/suporte/types/support-link-item-type";
-import { whatsAppHelpLink } from "@/src/utils/whatsapp-help-link";
+import { whatsAppHelpLink } from "@/src/constants/whatsapp-help-link";
 import { Cookie, FileText, Handshake, Mail, Phone } from "lucide-react";
 
 export const supportContactChannelsLinks: SupportLinkItemType[] = [

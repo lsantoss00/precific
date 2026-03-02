@@ -7,7 +7,7 @@ import { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Termos de Uso",
   description:
-    "Leia os termos de uso do Precific. Conheça as condições de utilização, direitos e responsabilidades ao usar nossa plataforma de precificação e gestão tributária.",
+    "Leia os termos de uso do Precific. Conheça as condições de utilização, direitos e responsabilidades ao usar nossa plataforma.",
   keywords: [
     "termos de uso",
     "condições de uso",
@@ -57,7 +57,7 @@ const termsOfUseTopics: InfoTopicType[] = [
   {
     title: "1. Aceitação dos Termos",
     content:
-      "Ao criar uma conta, acessar ou utilizar a plataforma Precific, o usuário declara ter lido, compreendido e aceito integralmente estes Termos de Uso. Se o usuário não concordar com qualquer disposição aqui apresentada, não deverá utilizar nossos serviços. A utilização contínua da plataforma após eventuais alterações nestes termos constitui aceitação das modificações realizadas.",
+      "Ao criar uma conta, acessar ou utilizar a plataforma Precific, o usuário declara ter lido, compreendido e aceito integralmente estes Termos de Uso. Se o usuário não concordar com qualquer disposição aqui apresentada, não deverá utilizar nossos serviços. Em caso de alterações relevantes nestes Termos, o Precific notificará os usuários com antecedência mínima de 15 dias por e-mail ou por aviso em destaque na plataforma. As alterações entrarão em vigor somente após esse prazo. Caso o usuário discorde das novas condições, poderá solicitar o encerramento de sua conta através dos canais de comunicação disponíveis em nosso site.",
   },
   {
     title: "2. Descrição do Serviço",
@@ -201,6 +201,6 @@ const termsOfUseTopics: InfoTopicType[] = [
   {
     title: "14. Contato",
     content:
-      "Em caso de dúvidas, sugestões ou solicitações relacionadas a estes Termos de Uso, entre em contato conosco através dos canais de comunicação disponíveis em nosso site ou pelo e-mail de suporte. Nosso compromisso é manter uma comunicação transparente e atender às suas necessidades da melhor forma possível.",
+      "Em caso de dúvidas, sugestões ou solicitações relacionadas a estes Termos de Uso, entre em contato conosco através dos canais de comunicação fornecidos em nosso site. Nosso compromisso é manter uma comunicação transparente e atender às suas necessidades da melhor forma possível.",
   },
 ];

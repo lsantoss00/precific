@@ -15,14 +15,14 @@ function Label({ className, required = false, ...props }: LabelProps) {
     <LabelPrimitive.Root
       data-slot="label"
       className={cn(
-        "items-center gap-2 text-sm leading-none font-medium select-none group-data-[disabled=true]:pointer-events-none group-data-[disabled=true]:opacity-50 peer-disabled:cursor-not-allowed peer-disabled:opacity-50 block",
+        "items-center text-sm leading-none font-medium select-none group-data-[disabled=true]:pointer-events-none group-data-[disabled=true]:opacity-50 peer-disabled:cursor-not-allowed peer-disabled:opacity-50 block",
         className,
       )}
       {...props}
     >
       {props.children}
       <Show when={required}>
-        <span className="text-red-500">*</span>
+        <span className="text-red-500 ml-1">*</span>
       </Show>
     </LabelPrimitive.Root>
   );

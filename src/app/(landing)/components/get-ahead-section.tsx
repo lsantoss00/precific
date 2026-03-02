@@ -7,7 +7,7 @@ const GetAheadSection = () => {
     <Container
       as="section"
       variant="section"
-      className="bg-white"
+      className="bg-primary"
       aria-labelledby="get-ahead-heading"
     >
       <Column className="items-center">
@@ -15,11 +15,11 @@ const GetAheadSection = () => {
           <Column className="max-w-155 space-y-4 md:space-y-6">
             <h2
               id="get-ahead-heading"
-              className="font-bold text-2xl sm:text-3xl md:text-4xl xl:text-4xl 2xl:text-5xl text-center leading-tight"
+              className="font-bold text-2xl sm:text-3xl md:text-4xl xl:text-4xl 2xl:text-5xl text-center text-white leading-tight"
             >
               Esteja à frente da concorrência!
             </h2>
-            <p className="text-center text-sm md:text-base xl:text-base 2xl:text-lg text-muted-foreground max-w-3xl">
+            <p className="text-center text-sm md:text-base xl:text-base 2xl:text-lg text-zinc-200 max-w-3xl">
               Empresas que não precificarem corretamente, não irão aproveitar os
               créditos de IBS/CBS e estarão com o preço fora do mercado, não
               conseguindo competir com seus concorrentes!

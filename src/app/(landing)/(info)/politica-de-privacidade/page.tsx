@@ -44,7 +44,7 @@ export default function PrivacyPolicyPage() {
         title="Política de Privacidade"
         description="Esta Política de Privacidade descreve como o Precific coleta, usa,
         armazena e protege as informações pessoais dos usuários da nossa
-        plataforma de precificação. <br /> É importante ler atentamente esta
+        plataforma. <br /> É importante ler atentamente esta
         política antes de utilizar nossos serviços ou fornecer quaisquer
         informações pessoais."
       />
@@ -57,7 +57,7 @@ const privacyPolicyTopics: InfoTopicType[] = [
   {
     title: "1. Informações coletadas",
     content:
-      "o Precific pode coletar as seguintes informações pessoais dos usuários:",
+      "O Precific pode coletar as seguintes informações pessoais dos usuários:",
     items: [
       "Informações de cadastro: Nome completo, endereço de e-mail, senha (criptografada), telefone e informações da empresa.",
       "Informações de produtos: Dados de custos, margens de lucro, preços e demais informações inseridas na plataforma para cálculo de precificação.",
@@ -67,7 +67,7 @@ const privacyPolicyTopics: InfoTopicType[] = [
   {
     title: "2. Uso das informações",
     content:
-      "o Precific utiliza as informações coletadas para as seguintes finalidades:",
+      "O Precific utiliza as informações coletadas para as seguintes finalidades:",
     items: [
       "Fornecer e operar a plataforma: Processar cálculos de precificação, armazenar dados de produtos e gerenciar sua conta.",
       "Melhorar nossos serviços: Analisar o uso da plataforma para desenvolver novos recursos e aprimorar a experiência do usuário.",
@@ -79,7 +79,7 @@ const privacyPolicyTopics: InfoTopicType[] = [
   {
     title: "3. Compartilhamento de informações",
     content:
-      "o Precific não vende suas informações pessoais. Podemos compartilhar informações apenas nas seguintes situações:",
+      "O Precific não vende suas informações pessoais. Podemos compartilhar informações apenas nas seguintes situações:",
     items: [
       "Provedores de serviços: Com parceiros que auxiliam na operação da plataforma (hospedagem, processamento de pagamentos, análise de dados), todos sujeitos a acordos de confidencialidade.",
       "Requisitos legais: Quando exigido por lei, ordem judicial ou para proteger direitos, propriedade ou segurança do Precific e seus usuários.",
@@ -90,17 +90,17 @@ const privacyPolicyTopics: InfoTopicType[] = [
   {
     title: "4. Armazenamento e segurança de dados",
     content:
-      "o Precific emprega medidas de segurança adequadas para proteger as informações pessoais dos usuários contra acesso não autorizado, alteração, divulgação ou destruição. Utilizamos criptografia de dados, protocolos HTTPS, autenticação segura e acesso restrito aos dados apenas para funcionários autorizados que necessitam das informações para desempenhar suas funções.",
+      "O Precific emprega medidas de segurança adequadas para proteger as informações pessoais dos usuários contra acesso não autorizado, alteração, divulgação ou destruição. Utilizamos criptografia de dados, protocolos HTTPS, autenticação segura e acesso restrito aos dados apenas para funcionários autorizados que necessitam das informações para desempenhar suas funções.",
   },
   {
     title: "5. Cookies e tecnologias similares",
     content:
-      "o Precific utiliza cookies e tecnologias similares para melhorar a experiência do usuário, manter sessões ativas, personalizar conteúdo e analisar o uso da plataforma. Os usuários podem controlar o uso de cookies através das configurações do navegador, mas a desativação pode limitar funcionalidades essenciais como autenticação e salvamento de preferências.",
+      "O Precific utiliza exclusivamente cookies técnicos e de sessão, estritamente necessários para o funcionamento da plataforma, como autenticação de usuários e controle de fluxos de acesso.",
   },
   {
     title: "6. Alterações nesta política",
     content:
-      "Podemos atualizar esta Política de Privacidade periodicamente para refletir alterações em nossas práticas de informações. Recomendamos que os usuários revisem esta política regularmente. O uso contínuo dos serviços após a publicação de quaisquer alterações nesta política será considerado como aceitação dessas alterações.",
+      "Podemos atualizar esta Política de Privacidade periodicamente para refletir alterações em nossas práticas de tratamento de dados. Em caso de alterações relevantes, notificaremos os usuários com antecedência mínima de 15 dias por e-mail ou por aviso em destaque na plataforma. As alterações entrarão em vigor somente após esse período, e o usuário poderá, caso discorde das novas condições, solicitar o encerramento de sua conta e a exclusão de seus dados através dos canais de comunicação disponíveis em nosso site.",
   },
   {
     title: "7. Contato",

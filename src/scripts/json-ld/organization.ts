@@ -3,7 +3,7 @@ export const OrganizationJsonLd = {
   "@type": "Organization",
   "@id": "https://precificapp.com/#organization",
   name: "Precific",
-  alternateName: "Precific App",
+  alternateName: "Precific",
   url: "https://precificapp.com",
   logo: "https://precificapp.com/images/precific-logo-image.webp",
   description:

@@ -16,7 +16,7 @@ import Show from "@/src/components/core/show";
 import { queryClient } from "@/src/libs/tanstack-query/query-client";
 import { DialogDescription } from "@radix-ui/react-dialog";
 import { useMutation } from "@tanstack/react-query";
-import { Loader2Icon, X } from "lucide-react";
+import { Loader2Icon, Trash2 } from "lucide-react";
 import { toast } from "sonner";
 
 interface ConfirmDeleteProductDialogProps {
@@ -63,7 +63,7 @@ const ConfirmDeleteProductDialog = ({
       >
         <DialogHeader className="items-center gap-4">
           <Flex className="w-12 h-12 rounded-full bg-red-200 items-center justify-center border border-red-600 shrink-0 shadow-md">
-            <X className="text-red-600" />
+            <Trash2 className="text-red-600" />
           </Flex>
           <Column className="items-center gap-2">
             <DialogTitle>Excluir Produto</DialogTitle>
@@ -79,7 +79,7 @@ const ConfirmDeleteProductDialog = ({
         <DialogFooter className="w-full items-center">
           <Button
             variant="outline"
-            className="flex-1 w-full"
+            className="flex-1 w-full border-zinc-300 bg-muted hover:border-foreground! text-foreground! hover:ring-0"
             onClick={() => onOpenChange?.(false)}
           >
             Cancelar

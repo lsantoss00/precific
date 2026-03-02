@@ -50,18 +50,18 @@ interface BorderBeamProps {
   borderWidth?: number;
 }
 
-export const BorderBeam = ({
+const BorderBeam = ({
   className,
   size = 50,
   delay = 0,
   duration = 6,
-  colorFrom = "#ffaa40",
-  colorTo = "#9c40ff",
+  colorFrom = "#5e2a99",
+  colorTo = "#5e2a99",
   transition,
   style,
   reverse = false,
   initialOffset = 0,
-  borderWidth = 1,
+  borderWidth = 2,
 }: BorderBeamProps) => {
   return (
     <div
@@ -104,3 +104,5 @@ export const BorderBeam = ({
     </div>
   );
 };
+
+export default BorderBeam;
