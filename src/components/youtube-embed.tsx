@@ -39,16 +39,16 @@ const YouTubeEmbed = ({
               alt={title}
               fill
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-              className="object-cover transition-transform duration-300 ease-out group-hover:scale-105 brightness-50"
+              className="object-cover transition-all duration-300 ease-out group-hover:scale-105 brightness-90 hover:brightness-100"
               priority
             />
           </div>
           <Row className="absolute left-0 bottom-0 gap-4 p-2 md:p-4 pointer-events-none bg-transparent w-full">
             <Row
-              className="justify-center bg-primary rounded-full p-2 shadow-lg"
+              className="justify-center bg-white rounded-full p-2 shadow-lg"
               aria-hidden
             >
-              <Play className="w-5 h-5 text-white" />
+              <Play className="w-5 h-5 text-primary" />
             </Row>
           </Row>
         </Button>
