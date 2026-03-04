@@ -242,18 +242,12 @@ const ProductsTable = () => {
       <ConfirmDeleteProductDialog
         product={productToDelete!}
         open={openConfirmDeleteDialog}
-        onOpenChange={(open) => {
-          setOpenConfirmDeleteDialog(open);
-          if (!open) setProductToDelete(null);
-        }}
+        onOpenChange={setOpenConfirmDeleteDialog}
       />
       <ProductDetailsDialog
         product={productToView!}
         open={openProductDetailsDialog}
-        onOpenChange={(open) => {
-          setOpenProductDetailsDialog(open);
-          if (!open) setProductToView(null);
-        }}
+        onOpenChange={setOpenProductDetailsDialog}
       />
     </Column>
   );
