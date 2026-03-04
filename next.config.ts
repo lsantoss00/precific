@@ -4,7 +4,6 @@ const nextConfig: NextConfig = {
   experimental: {
     globalNotFound: true,
     optimizeCss: true,
-    browsersListForSwc: true,
   },
 
   ...({
