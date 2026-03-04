@@ -13,7 +13,7 @@ interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
 }
 
 const Input = forwardRef<HTMLInputElement, InputProps>(
-  ({ className, type, error, isSearchInput, ...props }, ref) => {
+  ({ className, type, error, isSearchInput, ...props }) => {
     const [showPassword, setShowPassword] = useState(false);
     const [isFocused, setIsFocused] = useState(false);
 
@@ -46,7 +46,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
           />
         </Show>
         <input
-          ref={ref}
+          ref={inputRef}
           type={inputType}
           onFocus={handleFocus}
           data-slot="input"
