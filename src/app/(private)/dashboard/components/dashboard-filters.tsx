@@ -107,7 +107,7 @@ const DashboardFilters = ({ value, onChange }: DashboardFiltersProps) => {
     return Array.from(map.values());
   }, [fetchedOptions, selectedProductsMap]);
 
-  useMemo(() => {
+  useEffect(() => {
     const newMap = new Map(selectedProductsMap);
     let hasChanges = false;
 
@@ -178,7 +178,11 @@ const DashboardFilters = ({ value, onChange }: DashboardFiltersProps) => {
   }, [dateTo]);
 
   useEffect(() => {
-    if (JSON.stringify(debouncedProducts) !== JSON.stringify(products)) {
+    const arraysEqual =
+      debouncedProducts?.length === products?.length &&
+      debouncedProducts?.every((id, i) => id === products?.[i]);
+
+    if (!arraysEqual) {
       onChange({ ...value, productIds: debouncedProducts });
     }
   }, [debouncedProducts]);
