@@ -7,7 +7,7 @@ import { Switch } from "@/src/components/core/switch";
 import CustomTooltip from "@/src/components/custom-tooltip";
 import { currencyFormatter } from "@/src/helpers/currency-formatter";
 import { useAuth } from "@/src/providers/auth-provider";
-import { ColumnDef } from "@tanstack/react-table";
+import { ColumnDef, Row as TanstackRow } from "@tanstack/react-table";
 import { Eye, Info, Loader2Icon, Pencil, Trash2 } from "lucide-react";
 import Link from "next/link";
 import SortableHeader from "../../../../../components/core/sortable-header";
@@ -21,6 +21,82 @@ interface ProductTableMeta {
   pendingUpdateProductStatus: boolean;
   pricedProductsQuantity: number;
 }
+
+interface ProductActionsCellProps {
+  row: TanstackRow<Partial<ProductResponseType>>;
+  meta: ProductTableMeta;
+}
+
+const ProductActionsCell = ({ row, meta }: ProductActionsCellProps) => {
+  const { isPremium } = useAuth();
+  const product = row.original;
+
+  const priceIn2026 = product?.priceIn2026 ?? 0;
+  const isPriced = priceIn2026 > 0;
+  const freeLimitReached = (meta?.pricedProductsQuantity ?? 0) >= 10;
+
+  const isOverLimit = !isPremium && !isPriced && freeLimitReached;
+
+  const cannotEditExisting = !isPremium && isPriced;
+
+  const isDisabled =
+    meta?.pendingUpdateProductStatus ||
+    meta?.pendingDeleteProduct ||
+    isOverLimit ||
+    cannotEditExisting;
+
+  return (
+    <Row className="justify-end space-x-2">
+      <Button
+        variant="ghost"
+        size="icon"
+        onClick={() => meta?.onViewProductDetails(product)}
+        aria-label="Visualizar Produto"
+        className="hover:bg-primary/20  hover:text-primary"
+      >
+        <Eye />
+      </Button>
+      <Show
+        when={!isDisabled}
+        fallback={
+          <Button variant="ghost" size="icon" disabled={true}>
+            <Pencil />
+          </Button>
+        }
+      >
+        <Button
+          asChild
+          variant="ghost"
+          size="icon"
+          className="hover:bg-primary/20  hover:text-primary"
+          disabled={
+            meta?.pendingUpdateProductStatus || meta?.pendingDeleteProduct
+          }
+          aria-label="Precificar Produto"
+        >
+          <Link href={`/produtos/${product.id}`}>
+            <Pencil />
+          </Link>
+        </Button>
+      </Show>
+      <Button
+        variant="ghost"
+        size="icon"
+        onClick={() => meta?.onDeleteProduct(product.id!, product.name!)}
+        disabled={isDisabled}
+        aria-label="Excluir produto"
+        className="hover:bg-red-200  hover:text-red-500"
+      >
+        <Show
+          when={!meta?.pendingDeleteProduct}
+          fallback={<Loader2Icon className="animate-spin" />}
+        >
+          <Trash2 />
+        </Show>
+      </Button>
+    </Row>
+  );
+};
 
 export const productsTableColumns: ColumnDef<Partial<ProductResponseType>>[] = [
   {
@@ -181,74 +257,7 @@ export const productsTableColumns: ColumnDef<Partial<ProductResponseType>>[] = [
     header: () => <div className="w-25 sm:w-30" />,
     cell: ({ row, table }) => {
       const meta = table.options.meta as ProductTableMeta;
-      const product = row.original;
-      const { isPremium } = useAuth();
-
-      const priceIn2026 = product?.priceIn2026 ?? 0;
-      const isPriced = priceIn2026 > 0;
-      const freeLimitReached = (meta?.pricedProductsQuantity ?? 0) >= 10;
-
-      const isOverLimit = !isPremium && !isPriced && freeLimitReached;
-
-      const cannotEditExisting = !isPremium && isPriced;
-
-      const isDisabled =
-        meta?.pendingUpdateProductStatus ||
-        meta?.pendingDeleteProduct ||
-        isOverLimit ||
-        cannotEditExisting;
-
-      return (
-        <Row className="justify-end space-x-2">
-          <Button
-            variant="ghost"
-            size="icon"
-            onClick={() => meta?.onViewProductDetails(product)}
-            aria-label="Visualizar Produto"
-            className="hover:bg-primary/20  hover:text-primary"
-          >
-            <Eye />
-          </Button>
-          <Show
-            when={!isDisabled}
-            fallback={
-              <Button variant="ghost" size="icon" disabled={true}>
-                <Pencil />
-              </Button>
-            }
-          >
-            <Button
-              asChild
-              variant="ghost"
-              size="icon"
-              className="hover:bg-primary/20  hover:text-primary"
-              disabled={
-                meta?.pendingUpdateProductStatus || meta?.pendingDeleteProduct
-              }
-              aria-label="Precificar Produto"
-            >
-              <Link href={`/produtos/${product.id}`}>
-                <Pencil />
-              </Link>
-            </Button>
-          </Show>
-          <Button
-            variant="ghost"
-            size="icon"
-            onClick={() => meta?.onDeleteProduct(product.id!, product.name!)}
-            disabled={isDisabled}
-            aria-label="Excluir produto"
-            className="hover:bg-red-200  hover:text-red-500"
-          >
-            <Show
-              when={!meta?.pendingDeleteProduct}
-              fallback={<Loader2Icon className="animate-spin" />}
-            >
-              <Trash2 />
-            </Show>
-          </Button>
-        </Row>
-      );
+      return <ProductActionsCell row={row} meta={meta} />;
     },
     meta: {
       className: "table-cell",
