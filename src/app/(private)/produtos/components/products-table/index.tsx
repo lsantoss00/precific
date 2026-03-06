@@ -170,7 +170,7 @@ const ProductsTable = () => {
 
   return (
     <Column className="bg-white shadow-md flex flex-col h-160.5! overflow-hidden rounded-md">
-      <div className="flex-1 overflow-hidden">
+      <div className="flex-1 overflow-hidden relative">
         <Table className="w-full table-fixed">
           <TableHeader className="sticky top-0 z-10 h-14">
             {table.getHeaderGroups().map((headerGroup) => (
@@ -193,48 +193,37 @@ const ProductsTable = () => {
             ))}
           </TableHeader>
           <TableBody>
-            <Show
-              when={hasData}
-              fallback={
-                <TableRow className="hover:bg-transparent!">
+            {hasData && table.getRowModel().rows.map((row) => (
+              <TableRow key={row.id}>
+                {row.getVisibleCells().map((cell) => (
                   <TableCell
-                    colSpan={table.getAllColumns().length}
-                    className="h-130 text-center"
+                    key={cell.id}
+                    style={{ width: cell.column.columnDef.size }}
+                    className={`px-4 ${cell.column.columnDef.meta?.className ?? ""}`}
                   >
-                    <div className="flex items-center justify-center h-full">
-                      <Show
-                        when={isPending}
-                        fallback={<span>Sem resultados.</span>}
-                      >
-                        <Row className="justify-center items-center gap-2">
-                          <Loader2 className="text-primary animate-spin" />
-                          <span>Carregando produtos...</span>
-                        </Row>
-                      </Show>
-                    </div>
+                    {flexRender(
+                      cell.column.columnDef.cell,
+                      cell.getContext(),
+                    )}
                   </TableCell>
-                </TableRow>
-              }
-            >
-              {table.getRowModel().rows.map((row) => (
-                <TableRow key={row.id}>
-                  {row.getVisibleCells().map((cell) => (
-                    <TableCell
-                      key={cell.id}
-                      style={{ width: cell.column.columnDef.size }}
-                      className={`px-4 ${cell.column.columnDef.meta?.className ?? ""}`}
-                    >
-                      {flexRender(
-                        cell.column.columnDef.cell,
-                        cell.getContext(),
-                      )}
-                    </TableCell>
-                  ))}
-                </TableRow>
-              ))}
-            </Show>
+                ))}
+              </TableRow>
+            ))}
           </TableBody>
         </Table>
+        <Show when={!hasData}>
+          <div className="absolute inset-0 top-14 flex items-center justify-center">
+            <Show
+              when={isPending}
+              fallback={<span>Sem resultados.</span>}
+            >
+              <Row className="justify-center items-center gap-2">
+                <Loader2 className="text-primary animate-spin" />
+                <span>Carregando produtos...</span>
+              </Row>
+            </Show>
+          </div>
+        </Show>
       </div>
       <Row className="border-t h-14 md:pr-3">
         <ProductsTablePagination totalPages={totalPages} />
