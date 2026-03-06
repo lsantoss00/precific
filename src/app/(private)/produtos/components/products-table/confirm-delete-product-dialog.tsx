@@ -22,17 +22,20 @@ import { toast } from "sonner";
 interface ConfirmDeleteProductDialogProps {
   open?: boolean;
   onOpenChange?: (open: boolean) => void;
+  onDeleteSuccess?: () => void;
   product: { productId: string; productName: string } | null;
 }
 
 const ConfirmDeleteProductDialog = ({
   open,
   onOpenChange,
+  onDeleteSuccess,
   product,
 }: ConfirmDeleteProductDialogProps) => {
   const { mutate: del, isPending: pendingDeleteProduct } = useMutation({
     mutationFn: deleteProduct,
     onSuccess: async () => {
+      onDeleteSuccess?.();
       await queryClient.invalidateQueries({
         queryKey: ["products"],
       });

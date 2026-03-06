@@ -31,7 +31,7 @@ import {
   parseAsStringLiteral,
   useQueryState,
 } from "nuqs";
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import { toast } from "sonner";
 import { getProducts } from "../../services/get-products";
 import { updateProductStatus } from "../../services/update-product-status";
@@ -60,8 +60,6 @@ const ProductsTable = () => {
   const pageSize = 10;
   const pricedProductsQuantity = company?.pricedProductsQuantity;
 
-  const [products, setProducts] = useState<ProductResponseType[]>([]);
-  const [totalPages, setTotalPages] = useState(0);
   const [openConfirmDeleteDialog, setOpenConfirmDeleteDialog] = useState(false);
   const [productToDelete, setProductToDelete] = useState<{
     productId: string;
@@ -95,15 +93,30 @@ const ProductsTable = () => {
     useMutation({
       mutationFn: updateProductStatus,
       onSuccess: async (_, variables) => {
-        setProducts((prev) =>
-          prev.map((product) =>
-            product.id === variables.productId
+        queryClient.setQueryData(
+          [
+            "products",
+            profile?.companyId,
+            page,
+            pageSize,
+            search,
+            sortBy,
+            sortOrder,
+          ],
+          (old: Awaited<ReturnType<typeof getProducts>> | undefined) =>
+            old
               ? {
-                  ...product,
-                  status: variables.status as "ACTIVE" | "INACTIVE",
+                  ...old,
+                  data: old.data.map((product) =>
+                    product.id === variables.productId
+                      ? {
+                          ...product,
+                          status: variables.status as "ACTIVE" | "INACTIVE",
+                        }
+                      : product,
+                  ),
                 }
-              : product,
-          ),
+              : old,
         );
         await queryClient.invalidateQueries({
           queryKey: ["product", "summaries"],
@@ -116,6 +129,8 @@ const ProductsTable = () => {
         toast.error(error.message, { className: "!bg-red-600 !text-white" });
       },
     });
+
+  const products = data?.data ?? [];
 
   const table = useReactTable({
     data: products,
@@ -155,17 +170,6 @@ const ProductsTable = () => {
     },
   });
 
-  useEffect(() => {
-    if (data?.data) setProducts(data.data);
-    if (data?.totalPages !== undefined) setTotalPages(data.totalPages);
-  }, [data]);
-
-  useEffect(() => {
-    if (!isPending && data?.data && data.data.length === 0 && page > 1) {
-      setPage(page - 1);
-    }
-  }, [data, isPending, page, setPage]);
-
   const hasData = !isPending && products.length > 0;
 
   return (
@@ -193,30 +197,28 @@ const ProductsTable = () => {
             ))}
           </TableHeader>
           <TableBody>
-            {hasData && table.getRowModel().rows.map((row) => (
-              <TableRow key={row.id}>
-                {row.getVisibleCells().map((cell) => (
-                  <TableCell
-                    key={cell.id}
-                    style={{ width: cell.column.columnDef.size }}
-                    className={`px-4 ${cell.column.columnDef.meta?.className ?? ""}`}
-                  >
-                    {flexRender(
-                      cell.column.columnDef.cell,
-                      cell.getContext(),
-                    )}
-                  </TableCell>
-                ))}
-              </TableRow>
-            ))}
+            {hasData &&
+              table.getRowModel().rows.map((row) => (
+                <TableRow key={row.id}>
+                  {row.getVisibleCells().map((cell) => (
+                    <TableCell
+                      key={cell.id}
+                      style={{ width: cell.column.columnDef.size }}
+                      className={`px-4 ${cell.column.columnDef.meta?.className ?? ""}`}
+                    >
+                      {flexRender(
+                        cell.column.columnDef.cell,
+                        cell.getContext(),
+                      )}
+                    </TableCell>
+                  ))}
+                </TableRow>
+              ))}
           </TableBody>
         </Table>
         <Show when={!hasData}>
           <div className="absolute inset-0 top-14 flex items-center justify-center">
-            <Show
-              when={isPending}
-              fallback={<span>Sem resultados.</span>}
-            >
+            <Show when={isPending} fallback={<span>Sem resultados.</span>}>
               <Row className="justify-center items-center gap-2">
                 <Loader2 className="text-primary animate-spin" />
                 <span>Carregando produtos...</span>
@@ -226,12 +228,15 @@ const ProductsTable = () => {
         </Show>
       </div>
       <Row className="border-t h-14 md:pr-3">
-        <ProductsTablePagination totalPages={totalPages} />
+        <ProductsTablePagination totalPages={data?.totalPages ?? 0} />
       </Row>
       <ConfirmDeleteProductDialog
         product={productToDelete!}
         open={openConfirmDeleteDialog}
         onOpenChange={setOpenConfirmDeleteDialog}
+        onDeleteSuccess={() => {
+          if (products.length <= 1 && page > 1) setPage(page - 1);
+        }}
       />
       <ProductDetailsDialog
         product={productToView!}
