@@ -14,16 +14,10 @@ import { useDebounce } from "@/src/hooks/use-debounce";
 import { useAuth } from "@/src/providers/auth-provider";
 import { useQuery } from "@tanstack/react-query";
 import { Package, PlusCircle, TriangleAlert } from "lucide-react";
-import dynamic from "next/dynamic";
 import Link from "next/link";
 import { parseAsInteger, parseAsString, useQueryState } from "nuqs";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
-
-const MultipleImportDialog = dynamic(
-  () => import("@/src/components/multiple-import-dialog"),
-  { ssr: false },
-);
 
 const ProductsHeaderSection = () => {
   const { isLoadingAuth, isPremium } = useAuth();
