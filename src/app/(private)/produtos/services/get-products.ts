@@ -30,7 +30,7 @@ export async function getProducts({
   const from = (page - 1) * pageSize;
   const to = from + pageSize - 1;
 
-  const productsTableSortBy = decamelize(sortBy);
+  const productsTableSortBy = decamelize(sortBy).replace(/([a-z])(\d)/g, "$1_$2");
 
   let query = supabase
     .from("products")
