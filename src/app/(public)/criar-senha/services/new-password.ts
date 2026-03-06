@@ -3,7 +3,11 @@
 import { createServer } from "@/src/libs/supabase/server";
 import { cookies } from "next/headers";
 
-export async function newPassword({ password }: { password: string }) {
+interface NewPasswordProps {
+  password: string;
+}
+
+export async function newPassword({ password }: NewPasswordProps) {
   const supabase = await createServer();
   const cookieStore = await cookies();
 
