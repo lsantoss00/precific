@@ -31,7 +31,7 @@ import {
   parseAsStringLiteral,
   useQueryState,
 } from "nuqs";
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import { toast } from "sonner";
 import { getProducts } from "../../services/get-products";
 import { updateProductStatus } from "../../services/update-product-status";
@@ -60,8 +60,6 @@ const ProductsTable = () => {
   const pageSize = 10;
   const pricedProductsQuantity = company?.pricedProductsQuantity;
 
-  const [products, setProducts] = useState<ProductResponseType[]>([]);
-  const [totalPages, setTotalPages] = useState(0);
   const [openConfirmDeleteDialog, setOpenConfirmDeleteDialog] = useState(false);
   const [productToDelete, setProductToDelete] = useState<{
     productId: string;
@@ -91,20 +89,16 @@ const ProductsTable = () => {
     enabled: !!profile?.companyId,
   });
 
+  const products = data?.data ?? [];
+  const totalPages = data?.totalPages ?? 0;
+
   const { mutate: updateStatus, isPending: pendingUpdateProductStatus } =
     useMutation({
       mutationFn: updateProductStatus,
-      onSuccess: async (_, variables) => {
-        setProducts((prev) =>
-          prev.map((product) =>
-            product.id === variables.productId
-              ? {
-                  ...product,
-                  status: variables.status as "ACTIVE" | "INACTIVE",
-                }
-              : product,
-          ),
-        );
+      onSuccess: async () => {
+        await queryClient.invalidateQueries({
+          queryKey: ["products"],
+        });
         await queryClient.invalidateQueries({
           queryKey: ["product", "summaries"],
         });
@@ -155,31 +149,24 @@ const ProductsTable = () => {
     },
   });
 
-  useEffect(() => {
-    if (data?.data) setProducts(data.data);
-    if (data?.totalPages !== undefined) setTotalPages(data.totalPages);
-  }, [data]);
-
-  useEffect(() => {
-    if (!isPending && data?.data && data.data.length === 0 && page > 1) {
-      setPage(page - 1);
-    }
-  }, [data, isPending, page, setPage]);
+  if (!isPending && products.length === 0 && page > 1) {
+    setPage(page - 1);
+  }
 
   const hasData = !isPending && products.length > 0;
 
   return (
-    <Column className="bg-white shadow-sm flex flex-col h-160.5! overflow-hidden rounded-md">
+    <Column className="bg-white shadow-md flex flex-col h-160.5! overflow-hidden rounded-md">
       <div className="flex-1 overflow-hidden">
         <Table className="w-full table-fixed">
-          <TableHeader className="sticky top-0 z-10 shadow-sm h-14">
+          <TableHeader className="sticky top-0 z-10 h-14">
             {table.getHeaderGroups().map((headerGroup) => (
               <TableRow key={headerGroup.id} className="hover:bg-transparent!">
                 {headerGroup.headers.map((header) => (
                   <TableHead
                     key={header.id}
                     style={{ width: header.column.columnDef.size }}
-                    className={`text-gray-400 ${header.column.columnDef.meta?.className ?? ""}`}
+                    className={`text-neutral-400 ${header.column.columnDef.meta?.className ?? ""}`}
                   >
                     {header.isPlaceholder
                       ? null
@@ -199,7 +186,7 @@ const ProductsTable = () => {
                 <TableRow className="hover:bg-transparent!">
                   <TableCell
                     colSpan={table.getAllColumns().length}
-                    className="h-130 text-center text-gray-500"
+                    className="h-130 text-center"
                   >
                     <div className="flex items-center justify-center h-full">
                       <Show
@@ -236,7 +223,7 @@ const ProductsTable = () => {
           </TableBody>
         </Table>
       </div>
-      <Row className="bg-neutral-50 border-t h-14 md:pr-3">
+      <Row className="border-t h-14 md:pr-3">
         <ProductsTablePagination totalPages={totalPages} />
       </Row>
       <ConfirmDeleteProductDialog
