@@ -50,10 +50,7 @@ const Header = () => {
             ))}
           </ul>
         </nav>
-        <Button
-          asChild
-          className="hidden md:flex w-fit h-10 md:h-12 px-4 md:px-6 text-sm md:text-base font-medium"
-        >
+        <Button asChild className="hidden md:flex w-fit text-base font-medium">
           <Link href="/entrar">Acessar Plataforma</Link>
         </Button>
         <MobileMenu />

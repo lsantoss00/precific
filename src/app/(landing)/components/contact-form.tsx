@@ -311,7 +311,7 @@ const ContactForm = () => {
         )}
       </div>
       <Button
-        className="h-12 md:h-14 text-sm md:text-base"
+        className="md:h-14 text-sm md:text-base"
         type="submit"
         disabled={
           contactMutation.isPending || formInputFieldIsBlank || !isValid

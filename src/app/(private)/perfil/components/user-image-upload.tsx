@@ -52,7 +52,7 @@ const UserImageUpload = ({ initialPreview, onChange }: UserUploadProps) => {
       <Show when={preview}>
         <Button
           variant="ghost"
-          className="flex w-12 h-12 cursor-pointer absolute right-0 top-0"
+          className="flex w-12 cursor-pointer absolute right-0 top-0"
           onClick={(e) => {
             e.stopPropagation();
             setPreview(null);

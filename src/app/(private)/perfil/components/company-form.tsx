@@ -425,7 +425,7 @@ const CompanyForm = () => {
         </Column>
       </div>
       <Button
-        className="hover:cursor-pointer w-full h-12 mt-6"
+        className="hover:cursor-pointer w-full mt-6"
         type="submit"
         disabled={formInputFieldIsBlank || pendingPostCompany}
       >

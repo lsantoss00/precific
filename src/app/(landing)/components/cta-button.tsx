@@ -15,7 +15,7 @@ const CtaButton = ({ text = "Agendar Demonstração" }: CtaButtonProps) => {
 
   return (
     <Button
-      className="w-full sm:w-fit h-12 md:h-14 px-6 md:px-8 hover:cursor-pointer font-medium text-sm md:text-base"
+      className="w-full sm:w-fit md:h-14 px-6 md:px-8 hover:cursor-pointer font-medium text-sm md:text-base"
       onClick={() => scrollToSection("contato")}
     >
       {text}

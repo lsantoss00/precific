@@ -136,7 +136,7 @@ const ProductsHeaderSection = () => {
           className="space-x-2 w-full lg:w-fit lg:justify-end"
           aria-label="Ações de produtos"
         >
-          <Button asChild className="hover:cursor-pointer w-fit h-12">
+          <Button asChild className="hover:cursor-pointer w-fit">
             <Link href="/produtos/novo">
               <PlusCircle aria-hidden="true" />
               <span>Novo Produto</span>

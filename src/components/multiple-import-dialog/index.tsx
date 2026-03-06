@@ -56,7 +56,7 @@ const MultipleImportDialog = ({ trigger }: MultipleImportDialogProps) => {
 
               <Button
                 aria-label="download-spreadsheet-example"
-                className="shrink-0 h-12 w-full md:max-w-60 bg-green-500 hover:bg-green-600 !ring-green-600 text-white"
+                className="shrink-0 w-full md:max-w-60 bg-green-500 hover:bg-green-600 !ring-green-600 text-white"
                 onClick={handleDownloadSpreadsheetExample}
               >
                 <Download className="h-5 w-5" />

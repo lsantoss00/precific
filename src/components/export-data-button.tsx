@@ -12,7 +12,7 @@ interface ExportDataButtonProps {
 const ExportDataButton = ({ onClick, pending }: ExportDataButtonProps) => {
   return (
     <Button
-      className="hover:cursor-pointer flex-1 max-w-35 h-12"
+      className="hover:cursor-pointer flex-1 max-w-35"
       type="button"
       variant="outline"
       disabled={pending}
