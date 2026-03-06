@@ -31,7 +31,7 @@ import {
   parseAsStringLiteral,
   useQueryState,
 } from "nuqs";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { toast } from "sonner";
 import { getProducts } from "../../services/get-products";
 import { updateProductStatus } from "../../services/update-product-status";
@@ -60,6 +60,8 @@ const ProductsTable = () => {
   const pageSize = 10;
   const pricedProductsQuantity = company?.pricedProductsQuantity;
 
+  const [products, setProducts] = useState<ProductResponseType[]>([]);
+  const [totalPages, setTotalPages] = useState(0);
   const [openConfirmDeleteDialog, setOpenConfirmDeleteDialog] = useState(false);
   const [productToDelete, setProductToDelete] = useState<{
     productId: string;
@@ -89,16 +91,20 @@ const ProductsTable = () => {
     enabled: !!profile?.companyId,
   });
 
-  const products = data?.data ?? [];
-  const totalPages = data?.totalPages ?? 0;
-
   const { mutate: updateStatus, isPending: pendingUpdateProductStatus } =
     useMutation({
       mutationFn: updateProductStatus,
-      onSuccess: async () => {
-        await queryClient.invalidateQueries({
-          queryKey: ["products"],
-        });
+      onSuccess: async (_, variables) => {
+        setProducts((prev) =>
+          prev.map((product) =>
+            product.id === variables.productId
+              ? {
+                  ...product,
+                  status: variables.status as "ACTIVE" | "INACTIVE",
+                }
+              : product,
+          ),
+        );
         await queryClient.invalidateQueries({
           queryKey: ["product", "summaries"],
         });
@@ -149,9 +155,16 @@ const ProductsTable = () => {
     },
   });
 
-  if (!isPending && products.length === 0 && page > 1) {
-    setPage(page - 1);
-  }
+  useEffect(() => {
+    if (data?.data) setProducts(data.data);
+    if (data?.totalPages !== undefined) setTotalPages(data.totalPages);
+  }, [data]);
+
+  useEffect(() => {
+    if (!isPending && data?.data && data.data.length === 0 && page > 1) {
+      setPage(page - 1);
+    }
+  }, [data, isPending, page, setPage]);
 
   const hasData = !isPending && products.length > 0;
 
