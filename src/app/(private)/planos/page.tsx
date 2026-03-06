@@ -1,6 +1,6 @@
 import PlansView from "@/src/app/(private)/planos/components/plans-view";
 import { Container } from "@/src/components/core/container";
-import Row from "@/src/components/core/row";
+import PageTitle from "@/src/components/page-title";
 import { Crown } from "lucide-react";
 import { Metadata } from "next";
 
@@ -17,10 +17,10 @@ export const metadata: Metadata = {
 export default function SupportPage() {
   return (
     <Container variant="page">
-      <Row className="items-center gap-2">
-        <Crown size={26} />
-        <h1 className="text-3xl font-semibold">Planos</h1>
-      </Row>
+      <PageTitle
+        icon={<Crown size={26} className="shrink-0" />}
+        title="Planos"
+      />
       <PlansView />
     </Container>
   );

@@ -7,8 +7,8 @@ import ProductsAveragePriceKpiCard from "@/src/app/(private)/dashboard/component
 import ProductsAverageProfitabilityKpiCard from "@/src/app/(private)/dashboard/components/products-average-profitability-kpi-card";
 import { ChartFiltersType } from "@/src/app/(private)/dashboard/types/chart-filters-type";
 import Column from "@/src/components/core/column";
-import Row from "@/src/components/core/row";
 import Show from "@/src/components/core/show";
+import PageTitle from "@/src/components/page-title";
 import PremiumFeatureWrapper from "@/src/components/premium-feature-wrapper";
 import { useAuth } from "@/src/providers/auth-provider";
 import { CircleX, LayoutDashboard } from "lucide-react";
@@ -121,10 +121,10 @@ const DashboardPageContent = () => {
 
   return (
     <Column className="gap-4 relative flex-1">
-      <Row className="items-center gap-2">
-        <LayoutDashboard size={26} className="shrink-0" />
-        <h1 className="text-3xl font-semibold">Dashboard</h1>
-      </Row>
+      <PageTitle
+        icon={<LayoutDashboard size={26} className="shrink-0" />}
+        title="Dashboard"
+      />
       <Show
         when={companyHasProducts}
         fallback={

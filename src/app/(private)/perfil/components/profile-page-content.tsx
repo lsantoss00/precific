@@ -6,8 +6,8 @@ import { postProfilePicture } from "@/src/app/(private)/perfil/services/post-pro
 import { Button } from "@/src/components/core/button";
 import { Container } from "@/src/components/core/container";
 import Flex from "@/src/components/core/flex";
-import Row from "@/src/components/core/row";
 import Show from "@/src/components/core/show";
+import PageTitle from "@/src/components/page-title";
 import { queryClient } from "@/src/libs/tanstack-query/query-client";
 import { useAuth } from "@/src/providers/auth-provider";
 import { supabaseErrorsTranslator } from "@/src/utils/supabase-errors-translator";
@@ -61,10 +61,10 @@ const ProfilePageContent = () => {
 
   return (
     <Container variant="page">
-      <Row className="items-center gap-2">
-        <CircleUserRound size={26} />
-        <h1 className="text-3xl font-semibold">Perfil</h1>
-      </Row>
+      <PageTitle
+        icon={<CircleUserRound size={26} className="shrink-0" />}
+        title="Perfil"
+      />
       <Flex
         className="flex-col lg:flex-row w-full flex-1 gap-4"
         aria-label="Informações do perfil"
