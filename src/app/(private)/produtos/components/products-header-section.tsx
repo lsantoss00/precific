@@ -69,9 +69,11 @@ const ProductsHeaderSection = () => {
         SKU: product.sku || "-",
         Nome: product.name || "-",
         NCM: product.ncm || "-",
-        Preço: currencyFormatter(Number(product.priceToday)) || "-",
-        "Preço em 2026": currencyFormatter(Number(product.priceIn2026)) || "-",
-        "Preço em 2027": currencyFormatter(Number(product.priceIn2027)) || "-",
+        Preço: currencyFormatter(Number(product.priceToday) * 100) || "-",
+        "Preço em 2026":
+          currencyFormatter(Number(product.priceIn2026) * 100) || "-",
+        "Preço em 2027":
+          currencyFormatter(Number(product.priceIn2027) * 100) || "-",
         Status: product.status === "INACTIVE" ? "Inativo" : "Ativo",
       }));
 

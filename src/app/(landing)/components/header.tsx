@@ -19,7 +19,7 @@ const Header = () => {
   const { scrollToSection, scrollToTop } = useScrollToSection();
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 h-20 bg-background border-b border-zinc-200">
+    <header className="fixed top-0 left-0 right-0 z-50 h-20 bg-background border-b border-neutral-200">
       <Container
         variant="section"
         className="flex items-center justify-between h-full py-0! 2xl:px-0 m-auto 2xl:max-w-7xl"
@@ -42,7 +42,7 @@ const Header = () => {
                   onClick={() =>
                     section ? scrollToSection(section) : scrollToTop()
                   }
-                  className="text-sm lg:text-base text-zinc-800 hover:text-primary font-medium transition-colors py-2 px-0 h-auto border-b-2 border-transparent hover:border-primary hover:bg-transparent! rounded-none"
+                  className="text-sm lg:text-base text-neutral-800 hover:text-primary font-medium transition-colors py-2 px-0 h-auto border-b-2 border-transparent hover:border-primary hover:bg-transparent! rounded-none"
                 >
                   {label}
                 </Button>

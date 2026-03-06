@@ -24,7 +24,7 @@ const AtlasLinkBalloon = () => {
         <span className="text-sm font-medium">Conheça o Atlas Tributário</span>
       </Card>
       <a
-        className="bg-zinc-800 h-12 w-12 flex items-center justify-center rounded-full shadow-lg hover:shadow-xl hover:bg-zinc-700 duration-300 transition-colors"
+        className="bg-neutral-800 h-12 w-12 flex items-center justify-center rounded-full shadow-lg hover:shadow-xl hover:bg-neutral-700 duration-300 transition-colors"
         href={whatsAppLink}
         target="_blank"
         rel="noopener noreferrer"

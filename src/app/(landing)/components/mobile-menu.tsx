@@ -48,14 +48,14 @@ const MobileMenu = () => {
       </SheetTrigger>
       <SheetContent
         side="right"
-        className="w-full sm:w-[380px] p-0 [&>button]:hidden bg-zinc-50"
+        className="w-full sm:w-[380px] p-0 [&>button]:hidden bg-neutral-50"
         id="mobile-menu"
         aria-label="Menu de navegação móvel"
       >
         <Column className="h-full">
           <Row
             as="header"
-            className="items-center justify-between px-6 py-5 h-20 bg-white border-b border-zinc-200"
+            className="items-center justify-between px-6 py-5 h-20 bg-white border-b border-neutral-200"
           >
             <Image
               src={shortLogoImage}
@@ -86,10 +86,10 @@ const MobileMenu = () => {
                     <Button
                       variant="ghost"
                       onClick={() => handleNavClick(section)}
-                      className="flex w-full items-center justify-start gap-4 text-base text-zinc-800 hover:text-primary hover:bg-primary/5 font-medium h-auto px-4 py-3.5 rounded-md group"
+                      className="flex w-full items-center justify-start gap-4 text-base text-neutral-800 hover:text-primary hover:bg-primary/5 font-medium h-auto px-4 py-3.5 rounded-md group"
                     >
                       <Icon
-                        className="h-5 w-5 text-zinc-800 group-hover:text-primary transition-colors"
+                        className="h-5 w-5 text-neutral-800 group-hover:text-primary transition-colors"
                         aria-hidden="true"
                       />
                       {label}
@@ -97,7 +97,7 @@ const MobileMenu = () => {
                   </li>
                   {index < navItems.length - 1 && (
                     <li key={`${label}-divider`} aria-hidden="true">
-                      <span className="block h-px bg-zinc-200 my-1" />
+                      <span className="block h-px bg-neutral-200 my-1" />
                     </li>
                   )}
                 </Fragment>
@@ -107,7 +107,7 @@ const MobileMenu = () => {
 
           <Flex
             as="footer"
-            className="px-6 py-6 bg-white border-t border-zinc-200"
+            className="px-6 py-6 bg-white border-t border-neutral-200"
           >
             <Button
               asChild

@@ -121,7 +121,7 @@ const ActivePlanCard = () => {
               {users.current.map((user) => (
                 <Flex
                   key={user.email}
-                  className={`items-center justify-center gap-2 p-2 ${is3xl ? "flex-col h-20 text-center" : "h-12.5"} rounded-md bg-zinc-100 hover:bg-zinc-200 transition-colors`}
+                  className={`items-center justify-center gap-2 p-2 ${is3xl ? "flex-col h-20 text-center" : "h-12.5"} rounded-md bg-neutral-100 hover:bg-neutral-200 transition-colors`}
                 >
                   <Flex className="w-8 h-8 rounded-full items-center justify-center font-semibold bg-primary text-white text-xs shrink-0">
                     FE
@@ -176,7 +176,7 @@ const ActivePlanCard = () => {
             {availableCharts.map((chart) => (
               <Flex
                 key={chart.name}
-                className="break-inside-avoid mb-2 items-center gap-3 p-2.5 rounded-lg bg-zinc-100 hover:bg-zinc-200 text-foreground transition-colors"
+                className="break-inside-avoid mb-2 items-center gap-3 p-2.5 rounded-lg bg-neutral-100 hover:bg-neutral-200 text-foreground transition-colors"
               >
                 <CircleCheckBig className="w-5 h-5 text-primary" />
                 <span className="text-sm font-medium">{chart.name}</span>

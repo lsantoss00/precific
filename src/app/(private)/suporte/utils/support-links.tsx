@@ -31,7 +31,7 @@ export const supportUsefulResourcesLinks: SupportLinkItemType[] = [
   {
     title: "Sobre Nós",
     description: "Conheça o Grupo Viriato e nossa missão.",
-    icon: <FileText className="h-5 w-5 text-zinc-500" />,
+    icon: <FileText className="h-5 w-5 text-neutral-500" />,
     href: "/sobre-nos",
   },
 
@@ -39,7 +39,7 @@ export const supportUsefulResourcesLinks: SupportLinkItemType[] = [
     title: "Termos de Uso",
     description:
       "Conheça nossos termos de uso e garanta uma experiência segura e confiável.",
-    icon: <Handshake className="h-5 w-5 text-zinc-500" />,
+    icon: <Handshake className="h-5 w-5 text-neutral-500" />,
 
     href: "/termos-de-uso",
   },
@@ -47,7 +47,7 @@ export const supportUsefulResourcesLinks: SupportLinkItemType[] = [
     title: "Política de Privacidade",
     description:
       "Conheça nossa política de privacidade e garanta a segurança de seus dados.",
-    icon: <Cookie className="h-5 w-5 text-zinc-500" />,
+    icon: <Cookie className="h-5 w-5 text-neutral-500" />,
     href: "/politica-de-privacidade",
   },
 ];

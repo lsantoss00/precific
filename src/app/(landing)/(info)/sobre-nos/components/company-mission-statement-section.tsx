@@ -18,7 +18,7 @@ const CompanyMissionStatementSection = () => {
           >
             O Grupo Viriato leva as empresas à excelência.
           </h2>
-          <p className="text-sm sm:text-base md:text-base lg:text-base xl:text-base 2xl:text-lg text-zinc-200 leading-relaxed text-center">
+          <p className="text-sm sm:text-base md:text-base lg:text-base xl:text-base 2xl:text-lg text-neutral-200 leading-relaxed text-center">
             Há quatro décadas, transformamos desafios em estratégia e estratégia
             em crescimento real. Evoluímos de um escritório familiar para um
             ecossistema completo que impulsiona negócios com inteligência

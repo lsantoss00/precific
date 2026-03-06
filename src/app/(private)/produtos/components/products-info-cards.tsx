@@ -2,7 +2,7 @@
 
 import { pluralize } from "@/src/helpers/pluralize";
 import { useQuery } from "@tanstack/react-query";
-import { CheckCircle, Package, Tag, XCircle } from "lucide-react";
+import { Package, Tag } from "lucide-react";
 import { getProductSummaries } from "../services/get-summary-products";
 import InfoCard from "./info-card";
 
@@ -37,34 +37,34 @@ const ProductInfoCards = () => {
         <Tag className="w-12 h-12 p-2.5 text-secondary bg-secondary/20 rounded-md" />
       ),
     },
-    {
-      id: 3,
-      title: pluralize(
-        summary?.activeProducts || 0,
-        "Produto Ativo",
-        "Produtos Ativos",
-      ),
-      value: summary?.activeProducts || 0,
-      icon: (
-        <CheckCircle className="w-12 h-12 p-2.5 text-green-600 bg-green-100 rounded-md" />
-      ),
-    },
-    {
-      id: 4,
-      title: pluralize(
-        summary?.inactiveProducts || 0,
-        "Produto Inativo",
-        "Produtos Inativos",
-      ),
-      value: summary?.inactiveProducts || 0,
-      icon: (
-        <XCircle className="w-12 h-12 p-2.5 text-red-600 bg-red-100 rounded-md" />
-      ),
-    },
+    // {
+    //   id: 3,
+    //   title: pluralize(
+    //     summary?.activeProducts || 0,
+    //     "Produto Ativo",
+    //     "Produtos Ativos",
+    //   ),
+    //   value: summary?.activeProducts || 0,
+    //   icon: (
+    //     <CheckCircle className="w-12 h-12 p-2.5 text-green-600 bg-green-100 rounded-md" />
+    //   ),
+    // },
+    // {
+    //   id: 4,
+    //   title: pluralize(
+    //     summary?.inactiveProducts || 0,
+    //     "Produto Inativo",
+    //     "Produtos Inativos",
+    //   ),
+    //   value: summary?.inactiveProducts || 0,
+    //   icon: (
+    //     <XCircle className="w-12 h-12 p-2.5 text-red-600 bg-red-100 rounded-md" />
+    //   ),
+    // },
   ];
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 w-full gap-4">
+    <div className="grid grid-cols-1 sm:grid-cols-2  w-full gap-4">
       {infoCards.map((card) => (
         <InfoCard
           key={card.id}

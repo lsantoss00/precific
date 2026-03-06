@@ -201,49 +201,50 @@ export const productsTableColumns: ColumnDef<Partial<ProductResponseType>>[] = [
       return (
         <Row className="justify-end space-x-2">
           <Button
-            variant="outline"
+            variant="ghost"
             size="icon"
             onClick={() => meta?.onViewProductDetails(product)}
             aria-label="Visualizar Produto"
-            className="border-zinc-300 bg-muted hover:border-foreground! hover:ring-0 ring-foreground!"
+            className="hover:bg-primary/20  hover:text-primary"
           >
-            <Eye className="w-4 h-4 text-foreground" />
+            <Eye />
           </Button>
           <Show
             when={!isDisabled}
             fallback={
-              <Button size="icon" disabled={true}>
+              <Button variant="ghost" size="icon" disabled={true}>
                 <Pencil />
               </Button>
             }
           >
             <Button
               asChild
-              variant="outline"
+              variant="ghost"
               size="icon"
-              className="border-zinc-300 bg-muted hover:border-foreground! hover:ring-0 ring-foreground!"
+              className="hover:bg-primary/20  hover:text-primary"
               disabled={
                 meta?.pendingUpdateProductStatus || meta?.pendingDeleteProduct
               }
               aria-label="Precificar Produto"
             >
               <Link href={`/produtos/${product.id}`}>
-                <Pencil className="w-4 h-4 text-foreground" />
+                <Pencil />
               </Link>
             </Button>
           </Show>
           <Button
-            variant="destructive"
+            variant="ghost"
             size="icon"
             onClick={() => meta?.onDeleteProduct(product.id!, product.name!)}
             disabled={isDisabled}
             aria-label="Excluir produto"
+            className="hover:bg-red-200  hover:text-red-500"
           >
             <Show
               when={!meta?.pendingDeleteProduct}
               fallback={<Loader2Icon className="animate-spin" />}
             >
-              <Trash2 className="w-4 h-4" />
+              <Trash2 />
             </Show>
           </Button>
         </Row>

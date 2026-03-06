@@ -42,7 +42,7 @@ const KpiCard = ({
   };
 
   return (
-    <Card className="p-6 flex flex-row justify-between items-center w-full min-h-28 rounded-md shadow-sm">
+    <Card className="p-6 flex flex-row justify-between items-center w-full min-h-28 rounded-md">
       <Column className="justify-between h-full gap-2 w-full">
         <Row className="items-center gap-2">
           {icon}

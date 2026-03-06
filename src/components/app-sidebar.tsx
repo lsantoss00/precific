@@ -149,10 +149,11 @@ export function AppSidebar() {
           </SidebarGroupContent>
         </SidebarGroup>
       </SidebarContent>
+      <Separator aria-hidden="true" />
       <SidebarFooter className="items-center mb-2 space-y-4">
         <Menu />
         {/* <span
-          className="text-gray-500 text-xs font-medium"
+          className="text-neutral-500 text-xs font-medium"
           aria-label="Versão do aplicativo"
         >
           v0.1.0

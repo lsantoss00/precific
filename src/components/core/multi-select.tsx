@@ -579,7 +579,7 @@ export const MultiSelect = React.forwardRef<MultiSelectRef, MultiSelectProps>(
                 getAllOptions().length
               } opções selecionadas. ${placeholder}`}
               className={cn(
-                "flex p-1 rounded-md border min-h-12 h-auto items-center justify-between bg-white! [&_svg]:pointer-events-auto shadow-xs",
+                "flex p-1 rounded-md border min-h-12 h-auto items-center justify-between bg-white! [&_svg]:pointer-events-auto shadow-sm",
                 autoSize ? "w-auto" : "w-full",
                 responsiveSettings.compactMode && "min-h-8 text-sm",
                 screenSize === "mobile" && "min-h-12 text-base",

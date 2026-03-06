@@ -64,7 +64,7 @@ const MultipleImportDialog = ({ trigger }: MultipleImportDialogProps) => {
               </Button>
             </div>
             <div className="gap-1 mb-4 md:mb-9">
-              <span className="text-xs text-zinc-500">
+              <span className="text-xs text-neutral-500">
                 Exemplo de preenchimento da planilha
               </span>
               <div className="overflow-x-auto">

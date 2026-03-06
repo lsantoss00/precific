@@ -322,7 +322,7 @@ const ContactForm = () => {
         </Show>
         Eu quero precificar!
       </Button>
-      <p className="text-[10px] text-zinc-400 text-center">
+      <p className="text-[10px] text-neutral-400 text-center">
         Este site é protegido pelo reCAPTCHA e a
         <Link
           href="https://policies.google.com/privacy"
