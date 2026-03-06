@@ -99,52 +99,42 @@ interface MultiSelectProps
   onSearch?: (value: string) => void;
   onSearchValue?: string;
   value?: string[];
+  resetKey?: number;
 }
 
-export interface MultiSelectRef {
-  reset: () => void;
-  getSelectedValues: () => string[];
-  setSelectedValues: (values: string[]) => void;
-  clear: () => void;
-  focus: () => void;
-}
-
-export const MultiSelect = React.forwardRef<MultiSelectRef, MultiSelectProps>(
-  (
-    {
-      options,
-      onValueChange,
-      variant,
-      defaultValue = [],
-      placeholder = "Selecione",
-      animation = 0,
-      animationConfig,
-      maxCount = 3,
-      modalPopover = false,
-      asChild = false,
-      className,
-      hideSelectAll = false,
-      searchable = true,
-      autoSize = false,
-      singleLine = false,
-      popoverClassName,
-      disabled = false,
-      responsive,
-      minWidth,
-      maxWidth,
-      deduplicateOptions = false,
-      resetOnDefaultValueChange = true,
-      closeOnSelect = false,
-      commandInputPlaceholder = "Busque opções...",
-      onScrollEnd,
-      isLoadingMore = false,
-      onSearch,
-      onSearchValue,
-      value,
-      ...props
-    },
-    ref,
-  ) => {
+export const MultiSelect = ({
+  options,
+  onValueChange,
+  variant,
+  defaultValue = [],
+  placeholder = "Selecione",
+  animation = 0,
+  animationConfig,
+  maxCount = 3,
+  modalPopover = false,
+  asChild = false,
+  className,
+  hideSelectAll = false,
+  searchable = true,
+  autoSize = false,
+  singleLine = false,
+  popoverClassName,
+  disabled = false,
+  responsive,
+  minWidth,
+  maxWidth,
+  deduplicateOptions = false,
+  resetOnDefaultValueChange = true,
+  closeOnSelect = false,
+  commandInputPlaceholder = "Busque opções...",
+  onScrollEnd,
+  isLoadingMore = false,
+  onSearch,
+  onSearchValue,
+  value,
+  resetKey,
+  ...props
+}: MultiSelectProps) => {
     const [selectedValues, setSelectedValues] =
       React.useState<string[]>(defaultValue);
     const [isPopoverOpen, setIsPopoverOpen] = React.useState(false);
@@ -188,45 +178,17 @@ export const MultiSelect = React.forwardRef<MultiSelectRef, MultiSelectProps>(
       [],
     );
 
-    const resetToDefault = React.useCallback(() => {
-      setSelectedValues(defaultValue);
-      setIsPopoverOpen(false);
-      onValueChange(defaultValue.length > 0 ? defaultValue : undefined);
-    }, [defaultValue, onValueChange]);
-
     const buttonRef = React.useRef<HTMLButtonElement>(null);
+    const prevResetKeyRef = React.useRef<number | undefined>(undefined);
 
-    React.useImperativeHandle(
-      ref,
-      () => ({
-        reset: resetToDefault,
-        getSelectedValues: () => selectedValues,
-        setSelectedValues: (values: string[]) => {
-          setSelectedValues(values);
-          onValueChange(values.length > 0 ? values : undefined);
-        },
-        clear: () => {
-          setSelectedValues([]);
-          onValueChange(undefined);
-        },
-        focus: () => {
-          if (buttonRef.current) {
-            buttonRef.current.focus();
-            const originalOutline = buttonRef.current.style.outline;
-            const originalOutlineOffset = buttonRef.current.style.outlineOffset;
-            buttonRef.current.style.outline = "2px solid hsl(var(--ring))";
-            buttonRef.current.style.outlineOffset = "2px";
-            setTimeout(() => {
-              if (buttonRef.current) {
-                buttonRef.current.style.outline = originalOutline;
-                buttonRef.current.style.outlineOffset = originalOutlineOffset;
-              }
-            }, 1000);
-          }
-        },
-      }),
-      [resetToDefault, selectedValues, onValueChange],
-    );
+    React.useEffect(() => {
+      if (resetKey !== undefined && resetKey !== prevResetKeyRef.current) {
+        setSelectedValues([]);
+        setIsPopoverOpen(false);
+        onValueChange(undefined);
+        prevResetKeyRef.current = resetKey;
+      }
+    }, [resetKey, onValueChange]);
 
     const isMobile = useMediaQuery("(max-width: 639px)");
     const isTablet = useMediaQuery(
@@ -849,8 +811,6 @@ export const MultiSelect = React.forwardRef<MultiSelectRef, MultiSelectProps>(
         </Popover>
       </>
     );
-  },
-);
+};
 
-MultiSelect.displayName = "MultiSelect";
 export type { MultiSelectOption, MultiSelectProps };
