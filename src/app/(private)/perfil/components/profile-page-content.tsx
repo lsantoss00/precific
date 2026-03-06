@@ -1,7 +1,6 @@
 "use client";
 
 import CompanyData from "@/src/app/(private)/perfil/components/company-data";
-import CompanySubscriptionDetails from "@/src/app/(private)/perfil/components/company-subscription-details";
 import UserData from "@/src/app/(private)/perfil/components/user-data";
 import { postProfilePicture } from "@/src/app/(private)/perfil/services/post-profile-picture";
 import { Button } from "@/src/components/core/button";
@@ -72,7 +71,6 @@ const ProfilePageContent = () => {
       >
         <UserData onImageChange={handleImageChange} />
         <Flex className="flex-col w-full h-full gap-4">
-          <CompanySubscriptionDetails />
           <CompanyData />
         </Flex>
       </Flex>

@@ -16,7 +16,6 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuShortcut,
   DropdownMenuTrigger,
@@ -99,11 +98,6 @@ const Menu = () => {
         </Row>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-56 p-1" align="start">
-        <DropdownMenuLabel className="flex flex-col">
-          <span className="text-xs sm:text-sm text-neutral-500">
-            {profile?.username}
-          </span>
-        </DropdownMenuLabel>
         <DropdownMenuItem asChild className="cursor-pointer">
           <Link href="/perfil">
             Perfil
