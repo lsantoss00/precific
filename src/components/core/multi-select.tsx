@@ -148,7 +148,6 @@ export const MultiSelect = React.forwardRef<MultiSelectRef, MultiSelectProps>(
     const [selectedValues, setSelectedValues] =
       React.useState<string[]>(defaultValue);
     const [isPopoverOpen, setIsPopoverOpen] = React.useState(false);
-    const [isAnimating, setIsAnimating] = React.useState(false);
     const [internalSearchValue, setInternalSearchValue] = React.useState("");
 
     const [politeMessage, setPoliteMessage] = React.useState("");
