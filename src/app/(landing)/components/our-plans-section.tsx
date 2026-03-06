@@ -39,7 +39,7 @@ const OurPlansSection = () => {
             <PlanCard
               key={plan.id}
               plan={plan}
-              className="hover:scale-[1.02] hover:ring-2 hover:ring-primary transition-all duration-300"
+              className="hover:-translate-y-1 hover:ring-2 hover:ring-primary transition-all duration-300"
             />
           </FadeInOnScroll>
         ))}

@@ -31,7 +31,7 @@ const Header = () => {
             width={48}
             height={48}
             sizes="48px"
-            className="cursor-pointer hover:scale-[1.02] transition-all"
+            className="cursor-pointer hover:-translate-y-0.5 transition-all"
             onClick={() => scrollToTop()}
           />
           <ul className="hidden md:flex items-center space-x-6 lg:space-x-8">
