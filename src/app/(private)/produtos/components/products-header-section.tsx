@@ -141,15 +141,6 @@ const ProductsHeaderSection = () => {
             </Link>
           </Button>
           <ExportDataButton onClick={handleExport} pending={isFetching} />
-          {/* <MultipleImportDialog
-            trigger={
-              <Button className="hover:cursor-pointer flex-1 md:flex-none md:w-fit h-12">
-                <Upload className="text-white" aria-hidden="true" />
-                <span className="hidden sm:flex">Importar</span>
-                <span className="sr-only sm:hidden">Importar produtos</span>
-              </Button>
-            }
-          /> */}
         </Row>
       </Flex>
     </Column>
