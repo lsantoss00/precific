@@ -32,10 +32,12 @@ const SupportLinkCard = ({
         <Flex className="flex-col md:flex-row md:items-center gap-3">
           <div
             className={`h-12 w-12 rounded-md flex items-center justify-center shrink-0 ${
-              backgroundIconColor || "bg-zinc-100"
+              backgroundIconColor || "bg-neutral-100"
             }`}
           >
-            {icon || <CircleQuestionMark className="h-5 w-5 text-zinc-500" />}
+            {icon || (
+              <CircleQuestionMark className="h-5 w-5 text-neutral-500" />
+            )}
           </div>
           <Column className="gap-0.5">
             <CardTitle className="text-foreground">{title}</CardTitle>

@@ -22,17 +22,20 @@ import { toast } from "sonner";
 interface ConfirmDeleteProductDialogProps {
   open?: boolean;
   onOpenChange?: (open: boolean) => void;
+  onDeleteSuccess?: () => void;
   product: { productId: string; productName: string } | null;
 }
 
 const ConfirmDeleteProductDialog = ({
   open,
   onOpenChange,
+  onDeleteSuccess,
   product,
 }: ConfirmDeleteProductDialogProps) => {
   const { mutate: del, isPending: pendingDeleteProduct } = useMutation({
     mutationFn: deleteProduct,
     onSuccess: async () => {
+      onDeleteSuccess?.();
       await queryClient.invalidateQueries({
         queryKey: ["products"],
       });
@@ -62,7 +65,7 @@ const ConfirmDeleteProductDialog = ({
         className="flex flex-col items-center"
       >
         <DialogHeader className="items-center gap-4">
-          <Flex className="w-12 h-12 rounded-full bg-red-200 items-center justify-center border border-red-600 shrink-0 shadow-md">
+          <Flex className="w-12 h-12 rounded-full bg-red-200 items-center justify-center border border-red-600 shrink-0 shadow-sm">
             <Trash2 className="text-red-600" />
           </Flex>
           <Column className="items-center gap-2">
@@ -79,7 +82,7 @@ const ConfirmDeleteProductDialog = ({
         <DialogFooter className="w-full items-center">
           <Button
             variant="outline"
-            className="flex-1 w-full border-zinc-300 bg-muted hover:border-foreground! text-foreground! hover:ring-0"
+            className="flex-1 w-full border-neutral-300 bg-muted hover:border-foreground! text-foreground! hover:ring-0"
             onClick={() => onOpenChange?.(false)}
           >
             Cancelar

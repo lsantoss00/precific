@@ -24,7 +24,7 @@ const UserImageUpload = ({ initialPreview, onChange }: UserUploadProps) => {
 
   return (
     <Card
-      className="p-4.5 w-full shadow-2xs transition-colors duration-200 border-neutral-100 flex flex-col md:flex-row md:items-center rounded-sm relative cursor-pointer hover:bg-gray-100 gap-4"
+      className="p-4.5 w-full shadow-2xs transition-colors duration-200 border-neutral-100 flex flex-col md:flex-row md:items-center rounded-sm relative cursor-pointer hover:bg-neutral-100 gap-4"
       onClick={() => ref.current?.click()}
     >
       <div className="min-h-24 w-24 rounded-md flex border-2 border-primary relative overflow-hidden shrink-0">
@@ -52,7 +52,7 @@ const UserImageUpload = ({ initialPreview, onChange }: UserUploadProps) => {
       <Show when={preview}>
         <Button
           variant="ghost"
-          className="flex w-12 h-12 cursor-pointer absolute right-0 top-0"
+          className="flex w-12 cursor-pointer absolute right-0 top-0"
           onClick={(e) => {
             e.stopPropagation();
             setPreview(null);

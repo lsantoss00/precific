@@ -31,7 +31,7 @@ import {
   parseAsStringLiteral,
   useQueryState,
 } from "nuqs";
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import { toast } from "sonner";
 import { getProducts } from "../../services/get-products";
 import { updateProductStatus } from "../../services/update-product-status";
@@ -60,8 +60,6 @@ const ProductsTable = () => {
   const pageSize = 10;
   const pricedProductsQuantity = company?.pricedProductsQuantity;
 
-  const [products, setProducts] = useState<ProductResponseType[]>([]);
-  const [totalPages, setTotalPages] = useState(0);
   const [openConfirmDeleteDialog, setOpenConfirmDeleteDialog] = useState(false);
   const [productToDelete, setProductToDelete] = useState<{
     productId: string;
@@ -95,15 +93,30 @@ const ProductsTable = () => {
     useMutation({
       mutationFn: updateProductStatus,
       onSuccess: async (_, variables) => {
-        setProducts((prev) =>
-          prev.map((product) =>
-            product.id === variables.productId
+        queryClient.setQueryData(
+          [
+            "products",
+            profile?.companyId,
+            page,
+            pageSize,
+            search,
+            sortBy,
+            sortOrder,
+          ],
+          (old: Awaited<ReturnType<typeof getProducts>> | undefined) =>
+            old
               ? {
-                  ...product,
-                  status: variables.status as "ACTIVE" | "INACTIVE",
+                  ...old,
+                  data: old.data.map((product) =>
+                    product.id === variables.productId
+                      ? {
+                          ...product,
+                          status: variables.status as "ACTIVE" | "INACTIVE",
+                        }
+                      : product,
+                  ),
                 }
-              : product,
-          ),
+              : old,
         );
         await queryClient.invalidateQueries({
           queryKey: ["product", "summaries"],
@@ -116,6 +129,8 @@ const ProductsTable = () => {
         toast.error(error.message, { className: "!bg-red-600 !text-white" });
       },
     });
+
+  const products = data?.data ?? [];
 
   const table = useReactTable({
     data: products,
@@ -155,31 +170,20 @@ const ProductsTable = () => {
     },
   });
 
-  useEffect(() => {
-    if (data?.data) setProducts(data.data);
-    if (data?.totalPages !== undefined) setTotalPages(data.totalPages);
-  }, [data]);
-
-  useEffect(() => {
-    if (!isPending && data?.data && data.data.length === 0 && page > 1) {
-      setPage(page - 1);
-    }
-  }, [data, isPending, page, setPage]);
-
   const hasData = !isPending && products.length > 0;
 
   return (
-    <Column className="bg-white shadow-sm flex flex-col h-160.5! overflow-hidden rounded-md">
-      <div className="flex-1 overflow-hidden">
+    <Column className="bg-white shadow-md flex flex-col h-160.5! overflow-hidden rounded-md">
+      <div className="flex-1 overflow-hidden relative">
         <Table className="w-full table-fixed">
-          <TableHeader className="sticky top-0 z-10 shadow-sm h-14">
+          <TableHeader className="sticky top-0 z-10 h-14">
             {table.getHeaderGroups().map((headerGroup) => (
               <TableRow key={headerGroup.id} className="hover:bg-transparent!">
                 {headerGroup.headers.map((header) => (
                   <TableHead
                     key={header.id}
                     style={{ width: header.column.columnDef.size }}
-                    className={`text-gray-400 ${header.column.columnDef.meta?.className ?? ""}`}
+                    className={`text-neutral-400 ${header.column.columnDef.meta?.className ?? ""}`}
                   >
                     {header.isPlaceholder
                       ? null
@@ -193,30 +197,8 @@ const ProductsTable = () => {
             ))}
           </TableHeader>
           <TableBody>
-            <Show
-              when={hasData}
-              fallback={
-                <TableRow className="hover:bg-transparent!">
-                  <TableCell
-                    colSpan={table.getAllColumns().length}
-                    className="h-130 text-center text-gray-500"
-                  >
-                    <div className="flex items-center justify-center h-full">
-                      <Show
-                        when={isPending}
-                        fallback={<span>Sem resultados.</span>}
-                      >
-                        <Row className="justify-center items-center gap-2">
-                          <Loader2 className="text-primary animate-spin" />
-                          <span>Carregando produtos...</span>
-                        </Row>
-                      </Show>
-                    </div>
-                  </TableCell>
-                </TableRow>
-              }
-            >
-              {table.getRowModel().rows.map((row) => (
+            {hasData &&
+              table.getRowModel().rows.map((row) => (
                 <TableRow key={row.id}>
                   {row.getVisibleCells().map((cell) => (
                     <TableCell
@@ -232,28 +214,34 @@ const ProductsTable = () => {
                   ))}
                 </TableRow>
               ))}
-            </Show>
           </TableBody>
         </Table>
+        <Show when={!hasData}>
+          <div className="absolute inset-0 top-14 flex items-center justify-center">
+            <Show when={isPending} fallback={<span>Sem resultados.</span>}>
+              <Row className="justify-center items-center gap-2">
+                <Loader2 className="text-primary animate-spin" />
+                <span>Carregando produtos...</span>
+              </Row>
+            </Show>
+          </div>
+        </Show>
       </div>
-      <Row className="bg-neutral-50 border-t h-14 md:pr-3">
-        <ProductsTablePagination totalPages={totalPages} />
+      <Row className="border-t h-14 md:pr-3">
+        <ProductsTablePagination totalPages={data?.totalPages ?? 0} />
       </Row>
       <ConfirmDeleteProductDialog
         product={productToDelete!}
         open={openConfirmDeleteDialog}
-        onOpenChange={(open) => {
-          setOpenConfirmDeleteDialog(open);
-          if (!open) setProductToDelete(null);
+        onOpenChange={setOpenConfirmDeleteDialog}
+        onDeleteSuccess={() => {
+          if (products.length <= 1 && page > 1) setPage(page - 1);
         }}
       />
       <ProductDetailsDialog
         product={productToView!}
         open={openProductDetailsDialog}
-        onOpenChange={(open) => {
-          setOpenProductDetailsDialog(open);
-          if (!open) setProductToView(null);
-        }}
+        onOpenChange={setOpenProductDetailsDialog}
       />
     </Column>
   );

@@ -2,7 +2,7 @@ import ReasonCard from "@/src/app/(landing)/components/reason-card";
 import FadeInOnScroll from "@/src/components/animations/fade-in-on-scroll";
 import Column from "@/src/components/core/column";
 import { Container } from "@/src/components/core/container";
-import { Brain, ChartColumn, FileSpreadsheet } from "lucide-react";
+import { Brain, ChartColumn } from "lucide-react";
 
 const ReasonsSection = () => {
   return (
@@ -23,7 +23,7 @@ const ReasonsSection = () => {
           </h2>
         </FadeInOnScroll>
         <div
-          className="grid grid-cols-1 lg:grid-cols-3 w-full max-w-5xl gap-6"
+          className="grid grid-cols-1 lg:grid-cols-2 w-full max-w-5xl gap-6"
           aria-label="Benefícios do Precific"
         >
           {reasonsMap?.map((reason, index) => (
@@ -42,12 +42,6 @@ const ReasonsSection = () => {
 export default ReasonsSection;
 
 const reasonsMap = [
-  {
-    icon: <FileSpreadsheet />,
-    title: "Importe sua tabela de produtos",
-    description:
-      "Através do seu sistema, exporte seus produtos e insira-os no Precific.",
-  },
   {
     icon: <Brain />,
     title: "O Precific faz os cálculos",

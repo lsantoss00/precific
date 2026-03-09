@@ -19,7 +19,7 @@ const GetAheadSection = () => {
             >
               Esteja à frente da concorrência!
             </h2>
-            <p className="text-center text-sm md:text-base xl:text-base 2xl:text-lg text-zinc-200 max-w-3xl">
+            <p className="text-center text-sm md:text-base xl:text-base 2xl:text-lg text-neutral-200 max-w-3xl">
               Empresas que não precificarem corretamente, não irão aproveitar os
               créditos de IBS/CBS e estarão com o preço fora do mercado, não
               conseguindo competir com seus concorrentes!

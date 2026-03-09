@@ -1,7 +1,6 @@
 "use client";
 
 import ProducStatCard from "@/src/app/(private)/planos/components/product-stat-card";
-import { Badge } from "@/src/components/core/badge";
 import { Card } from "@/src/components/core/card";
 import Column from "@/src/components/core/column";
 import Flex from "@/src/components/core/flex";
@@ -81,20 +80,12 @@ const ActivePlanCard = () => {
   return (
     <Card className="w-full py-0! overflow-hidden">
       <div className="p-6 text-primary-foreground bg-primary">
-        <Flex className="flex-col gap-4 sm:flex-row items-start justify-between">
-          <Column className="gap-2">
-            <Badge
-              variant="secondary"
-              className="bg-primary-foreground/20 text-primary-foreground border-none text-xs font-medium"
-            >
-              Ativo
-            </Badge>
-            <Column>
-              <h2 className="text-2xl font-bold tracking-tight">{name}</h2>
-              <p className="text-sm mt-1 text-primary-foreground/80">
-                {description}
-              </p>
-            </Column>
+        <Flex className="flex-col gap-4 sm:flex-row items-center justify-between">
+          <Column className="h-20 justify-center">
+            <h2 className="text-2xl font-bold tracking-tight">{name}</h2>
+            <p className="text-sm mt-1 text-primary-foreground/80">
+              {description}
+            </p>
           </Column>
           <div className="text-right shrink-0">
             <div className="text-3xl font-extrabold tracking-tight">
@@ -121,7 +112,7 @@ const ActivePlanCard = () => {
               {users.current.map((user) => (
                 <Flex
                   key={user.email}
-                  className={`items-center justify-center gap-2 p-2 ${is3xl ? "flex-col h-20 text-center" : "h-12.5"} rounded-md bg-zinc-100 hover:bg-zinc-200 transition-colors`}
+                  className={`items-center justify-center gap-2 p-2 ${is3xl ? "flex-col h-20 text-center" : "h-12.5"} rounded-md bg-neutral-100 hover:bg-neutral-200 transition-colors`}
                 >
                   <Flex className="w-8 h-8 rounded-full items-center justify-center font-semibold bg-primary text-white text-xs shrink-0">
                     FE
@@ -172,11 +163,11 @@ const ActivePlanCard = () => {
         <Separator />
         <section>
           <SectionHeader icon={BarChart3} title="Gráficos Disponíveis" />
-          <div className="md:columns-3 gap-2">
+          <div className="md:columns-2 gap-2">
             {availableCharts.map((chart) => (
               <Flex
                 key={chart.name}
-                className="break-inside-avoid mb-2 items-center gap-3 p-2.5 rounded-lg bg-zinc-100 hover:bg-zinc-200 text-foreground transition-colors"
+                className="break-inside-avoid mb-2 items-center gap-3 p-2.5 rounded-lg bg-neutral-100 hover:bg-neutral-200 text-foreground transition-colors"
               >
                 <CircleCheckBig className="w-5 h-5 text-primary" />
                 <span className="text-sm font-medium">{chart.name}</span>

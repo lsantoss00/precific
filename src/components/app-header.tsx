@@ -43,15 +43,15 @@ export function AppHeader() {
       <div className="h-[env(safe-area-inset-top)]" aria-hidden="true" />
       <Row className="w-full h-20 justify-between items-center px-2">
         <SidebarTrigger
-          className="p-2! hover:bg-gray-100 rounded-md transition-colors shrink-0"
+          className="p-2! hover:bg-neutral-100 rounded-md transition-colors shrink-0"
           aria-label="Abrir menu de navegação"
         >
-          <MenuIcon className="w-6! h-6! text-gray-700" aria-hidden="true" />
+          <MenuIcon className="w-6! h-6! text-neutral-700" aria-hidden="true" />
         </SidebarTrigger>
         <DropdownMenu modal={false}>
           <DropdownMenuTrigger
             asChild
-            className="cursor-pointer hover:bg-gray-100 p-2 rounded-md transition-colors shrink-0"
+            className="cursor-pointer hover:bg-neutral-100 p-2 rounded-md transition-colors shrink-0"
           >
             <button aria-label="Menu do usuário" type="button">
               <Show

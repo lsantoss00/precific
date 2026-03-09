@@ -37,11 +37,10 @@ const MobileMenu = () => {
       <SheetTrigger asChild className="md:hidden">
         <Button
           variant="ghost"
-          className="h-10 w-10 p-0"
+          className="p-0!"
           aria-label="Abrir menu de navegação"
           aria-expanded={isOpen}
           aria-controls="mobile-menu"
-          type="button"
         >
           <Menu className="h-6! w-6!" aria-hidden="true" />
         </Button>
@@ -67,7 +66,7 @@ const MobileMenu = () => {
             <Button
               variant="ghost"
               onClick={closeMenu}
-              className="h-12 w-12 p-0"
+              className="p-0!"
               aria-label="Fechar menu de navegação"
             >
               <X className="h-6! w-6!" aria-hidden="true" />

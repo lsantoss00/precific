@@ -51,7 +51,7 @@ const PlanCard = ({ plan, className }: PlanCardProps) => {
         ))}
       </ul>
       <Button
-        className={`h-12 uppercase font-semibold ring-2 ring-primary focus-visible:ring-primary ${
+        className={`uppercase font-semibold ring-2 ring-primary focus-visible:ring-primary ${
           !plan?.isMostPopular &&
           "ring-2 ring-primary text-primary hover:text-white bg-white"
         }`}

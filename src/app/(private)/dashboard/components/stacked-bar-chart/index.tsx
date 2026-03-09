@@ -105,11 +105,7 @@ const StackedBarChart = ({
         >
           <ChartContainer config={config} className="h-full w-full">
             <REBarChart accessibilityLayer data={data} margin={margin}>
-              <CartesianGrid
-                vertical={false}
-                strokeDasharray="3 3"
-                opacity={0.5}
-              />
+              <CartesianGrid vertical={false} />
               <XAxis
                 dataKey={xAxisKey}
                 tickLine={false}

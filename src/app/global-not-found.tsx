@@ -46,6 +46,7 @@ export default function GlobalNotFound() {
             height={500}
             className="flex self-center"
             aria-hidden="true"
+            priority
           />
           <Column as="header" className="gap-2">
             <h1 className="text-2xl md:text-4xl font-medium text-center">
@@ -58,11 +59,7 @@ export default function GlobalNotFound() {
           </Column>
         </Column>
         <Link href="/produtos">
-          <Button
-            className="cursor-pointer h-12"
-            variant="secondary"
-            type="button"
-          >
+          <Button className="cursor-pointer" type="button">
             <ArrowLeft aria-hidden="true" />
             Voltar para o Precific
           </Button>

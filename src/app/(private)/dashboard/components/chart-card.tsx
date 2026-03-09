@@ -38,7 +38,7 @@ const ChartCard = ({
   fetching,
 }: ChartCardProps) => {
   return (
-    <Card className={cn("rounded-md shadow-sm h-full w-full", className)}>
+    <Card className={cn("rounded-md h-full w-full", className)}>
       <CardHeader className={cn("mb-4", headerClassName)}>
         <CardTitle>{title}</CardTitle>
         <Row className="items-center justify-between">

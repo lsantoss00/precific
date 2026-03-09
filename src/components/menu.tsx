@@ -16,7 +16,6 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuShortcut,
   DropdownMenuTrigger,
@@ -99,12 +98,7 @@ const Menu = () => {
         </Row>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-56 p-1" align="start">
-        <DropdownMenuLabel className="flex flex-col">
-          <span className="text-xs sm:text-sm text-neutral-500">
-            {profile?.username}
-          </span>
-        </DropdownMenuLabel>
-        <DropdownMenuItem asChild className="cursor-pointer">
+        <DropdownMenuItem asChild className="cursor-pointer h-10">
           <Link href="/perfil">
             Perfil
             <DropdownMenuShortcut>
@@ -114,7 +108,7 @@ const Menu = () => {
         </DropdownMenuItem>
         <DropdownMenuSeparator />
         <DropdownMenuItem
-          className="text-red-600! cursor-pointer"
+          className="text-red-600! cursor-pointer h-10"
           onClick={() => doLogout()}
         >
           Sair

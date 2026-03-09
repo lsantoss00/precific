@@ -823,7 +823,7 @@ const ProductResult = () => {
             </Link>
           </Button>
           <Button
-            className="flex-1 md:flex-none md:w-40 h-12 flex items-center disabled:bg-primary/90 disabled:text-white"
+            className="flex-1 md:flex-none md:w-40 flex items-center disabled:bg-primary/90 disabled:text-white"
             onClick={handleFinishForm}
             disabled={pending}
           >
