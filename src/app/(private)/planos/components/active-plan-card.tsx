@@ -45,10 +45,10 @@ const planData = {
     { name: "Ranking de Markup", available: true },
     { name: "Ranking de Custo Fixo", available: true },
     { name: "Ranking de Frete", available: true },
-    { name: "Preço de Venda X Custo de Aquisição", available: false },
-    { name: "Preço de Venda X Lucro Líquido", available: false },
-    { name: "Histórico de Preços", available: false },
-    { name: "Histórico de Lucros Líquidos", available: false },
+    { name: "Preço de Venda X Custo de Aquisição", available: true },
+    { name: "Preço de Venda X Lucro Líquido", available: true },
+    { name: "Histórico de Preços", available: true },
+    { name: "Histórico de Lucros Líquidos", available: true },
   ],
 };
 

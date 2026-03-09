@@ -124,6 +124,7 @@ export function AppSidebar() {
                       asChild={!item.disabled}
                       isActive={isActive}
                       disabled={item.disabled}
+                      className="flex relative"
                       aria-current={isActive ? "page" : undefined}
                     >
                       {item.disabled ? (
@@ -132,12 +133,26 @@ export function AppSidebar() {
                           {!isCollapsed && (
                             <span className="font-medium">{item.title}</span>
                           )}
+                          {!isCollapsed && item.soon && <ComingSoonBadge />}
+                          {isCollapsed && item.soon && (
+                            <Clock
+                              className="w-4! h-4! absolute bg-black rounded-full text-white right-2 bottom-2"
+                              aria-label="Em breve"
+                            />
+                          )}
                         </>
                       ) : (
                         <Link href={item.url}>
                           <item.icon className="w-5! h-5!" aria-hidden="true" />
                           {!isCollapsed && (
                             <span className="font-medium">{item.title}</span>
+                          )}
+                          {!isCollapsed && item.soon && <ComingSoonBadge />}
+                          {isCollapsed && item.soon && (
+                            <Clock
+                              className="w-4! h-4! absolute bg-black rounded-full text-white right-2 bottom-2"
+                              aria-label="Em breve"
+                            />
                           )}
                         </Link>
                       )}
@@ -186,7 +201,7 @@ const secondaryItems = [
     url: "/planos",
     icon: Crown,
     disabled: false,
-    soon: false,
+    soon: true,
   },
   {
     title: "Suporte",
