@@ -25,6 +25,14 @@ const errorMessagesTranslation: Record<string, string> = {
 
   "Unable to validate email address: invalid format":
     "Endereço de e-mail inválido.",
+
+  //  Erros de plano
+  NO_ACTIVE_PLAN: "Sua empresa não possui um plano ativo.",
+  PLAN_INACTIVE: "Seu plano está inativo. Renove sua assinatura.",
+  PRODUCT_LIMIT_REACHED: "Você atingiu o limite de produtos do seu plano.",
+  DELETE_NOT_ALLOWED: "Seu plano não permite excluir produtos.",
+  UPDATE_NOT_ALLOWED: "Seu plano não permite editar produtos.",
+  USER_LIMIT_REACHED: "Limite de usuários atingido para o plano.",
 };
 
 type SupabaseError =
@@ -41,7 +49,7 @@ export function supabaseErrorsTranslator(error: SupabaseError): string {
   if (typeof error === "string") {
     key = error;
   } else {
-    key = error.code || error.message || "";
+    key = (error as any).hint || error.code || error.message || "";
   }
 
   if (errorMessagesTranslation[key]) {

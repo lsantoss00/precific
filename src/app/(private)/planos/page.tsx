@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   },
 };
 
-export default function SupportPage() {
+export default function PlansPage() {
   return (
     <Container variant="page">
       <PageTitle

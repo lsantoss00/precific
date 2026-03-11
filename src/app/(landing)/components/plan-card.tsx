@@ -1,6 +1,9 @@
 "use client";
 
-import { PlanType } from "@/src/app/(landing)/types/plan-type";
+import {
+  PlanDisplayName,
+  PlanType,
+} from "@/src/app/(private)/planos/types/plan-type";
 import { Badge } from "@/src/components/core/badge";
 import { Button } from "@/src/components/core/button";
 import { Card } from "@/src/components/core/card";
@@ -28,7 +31,10 @@ const PlanCard = ({ plan, className }: PlanCardProps) => {
     >
       <Column className="gap-1">
         <Row className="items-center justify-between gap-2">
-          <h3 className="font-semibold text-lg md:text-xl">{plan.name}</h3>
+          <h3 className="font-semibold text-lg md:text-xl">
+            {PlanDisplayName[plan?.name as keyof typeof PlanDisplayName] ??
+              plan?.name}
+          </h3>
           {plan?.isMostPopular && (
             <Badge className="font-semibold uppercase">Mais Popular</Badge>
           )}

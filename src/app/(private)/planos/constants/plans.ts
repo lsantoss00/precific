@@ -1,9 +1,9 @@
-import { PlanType } from "@/src/app/(landing)/types/plan-type";
+import { PlanType } from "@/src/app/(private)/planos/types/plan-type";
 
 export const plans: PlanType[] = [
   {
     id: "1",
-    name: "BÁSICO",
+    name: "basic",
     description:
       "Ideal para pequenos negócios que buscam um controle simples e eficiente da precificação.",
     price: "R$ 79,99",
@@ -16,7 +16,7 @@ export const plans: PlanType[] = [
   },
   {
     id: "2",
-    name: "INTERMEDIÁRIO",
+    name: "standard",
     description:
       "Perfeito para negócios em expansão que precisam de mais controle e melhores insights.",
     price: "R$ 199,99",
@@ -31,7 +31,7 @@ export const plans: PlanType[] = [
   },
   {
     id: "3",
-    name: "AVANÇADO",
+    name: "pro",
     description:
       "Indicado para empresas que exigem controle total e gestão avançada da precificação.",
     price: "R$ 399,99",
@@ -44,7 +44,7 @@ export const plans: PlanType[] = [
   },
   {
     id: "4",
-    name: "CUSTOMIZADO",
+    name: "custom",
     description:
       "Solução flexível para empresas que precisam de regras e recursos sob medida dedicados.",
     price: "R$ 799,99",

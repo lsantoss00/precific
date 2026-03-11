@@ -1,10 +1,12 @@
 "use client";
 
+import { getCompanyActivePlan } from "@/src/app/(private)/perfil/services/get-company-active-plan";
 import { getCompanyById } from "@/src/app/(private)/perfil/services/get-company-by-id";
 import { getCompanySubscriptionStatus } from "@/src/app/(private)/perfil/services/get-company-subscription-status";
 import { getUserProfile } from "@/src/app/(private)/perfil/services/get-user-profile";
 import { CompanyType } from "@/src/app/(private)/perfil/types/company-type";
 import { ProfileType } from "@/src/app/(private)/perfil/types/profile-type";
+import { CompanyActivePlanType } from "@/src/app/(private)/planos/types/plan-type";
 import { queryClient } from "@/src/libs/tanstack-query/query-client";
 import { User } from "@supabase/supabase-js";
 import { useQuery } from "@tanstack/react-query";
@@ -17,6 +19,8 @@ interface AuthContextType {
   isPremium: boolean;
   expiresAt: string | null;
   isLoadingAuth: boolean;
+  plan: CompanyActivePlanType | null;
+  hasReachedProductLimit: boolean;
 }
 
 const AuthContext = createContext<AuthContextType>({
@@ -25,6 +29,8 @@ const AuthContext = createContext<AuthContextType>({
   isPremium: false,
   expiresAt: null,
   isLoadingAuth: true,
+  plan: null,
+  hasReachedProductLimit: false,
 });
 
 export function AuthProvider({ children }: { children: React.ReactNode }) {
@@ -43,7 +49,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     refetchOnWindowFocus: true,
   });
 
-  const { data: profile, isLoading: isLoadingProfile } = useQuery({
+  const { data: profile, isLoading: isLoadingProfile } = useQuery<ProfileType>({
     queryFn: () => getUserProfile({ userId: user!.id }),
     queryKey: ["profile", user?.id],
     enabled: !!user?.id,
@@ -51,14 +57,13 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     gcTime: 1000 * 60 * 60,
   });
 
-  const { data: company, isLoading: isLoadingCompany } =
-    useQuery<CompanyType | null>({
-      queryFn: () => getCompanyById({ companyId: profile!.companyId! }),
-      queryKey: ["company", profile?.companyId],
-      enabled: !!profile?.companyId,
-      staleTime: 1000 * 60 * 15,
-      gcTime: 1000 * 60 * 60,
-    });
+  const { data: company, isLoading: isLoadingCompany } = useQuery<CompanyType>({
+    queryFn: () => getCompanyById({ companyId: profile!.companyId! }),
+    queryKey: ["company", profile?.companyId],
+    enabled: !!profile?.companyId,
+    staleTime: 1000 * 60 * 15,
+    gcTime: 1000 * 60 * 60,
+  });
 
   const { data: subscription, isLoading: isLoadingSubscription } = useQuery({
     queryFn: () => {
@@ -74,6 +79,16 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     refetchOnReconnect: true,
     refetchInterval: 1000 * 60 * 5,
   });
+
+  const { data: plan, isLoading: isLoadingPlan } =
+    useQuery<CompanyActivePlanType>({
+      queryFn: () => getCompanyActivePlan({ companyId: profile!.companyId! }),
+      queryKey: ["company-active-plan", profile?.companyId],
+      enabled: !!profile?.companyId,
+      staleTime: 1000 * 60 * 15,
+      gcTime: 1000 * 60 * 60,
+      refetchOnWindowFocus: true,
+    });
 
   useEffect(() => {
     const {
@@ -113,6 +128,9 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
           queryClient.invalidateQueries({
             queryKey: ["company-subscription", profile.companyId],
           });
+          queryClient.invalidateQueries({
+            queryKey: ["company-active-plan", profile?.companyId],
+          });
         },
       )
       .subscribe();
@@ -126,10 +144,16 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     isLoadingUser ||
     (!!user && isLoadingProfile) ||
     (!!profile?.companyId && isLoadingCompany) ||
-    (!!company && isLoadingSubscription);
+    (!!company && isLoadingSubscription) ||
+    (!!profile?.companyId && isLoadingPlan);
 
   const isPremium = subscription?.hasActiveSubscription ?? false;
   const expiresAt = subscription?.expiresAt ?? null;
+
+  const hasReachedProductLimit =
+    plan?.maxProducts != null
+      ? (company?.productsQuantity ?? 0) >= plan.maxProducts
+      : false;
 
   return (
     <AuthContext.Provider
@@ -139,6 +163,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         isPremium,
         expiresAt,
         isLoadingAuth,
+        plan: plan ?? null,
+        hasReachedProductLimit,
       }}
     >
       {children}

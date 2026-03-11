@@ -1,13 +1,13 @@
 import { createClient } from "@/src/libs/supabase/client";
 import { camelizeKeys } from "humps";
 
-interface GetCompanySubscriptionStatusParams {
+interface GetCompanySubscriptionStatusProps {
   companyId: string;
 }
 
 export async function getCompanySubscriptionStatus({
   companyId,
-}: GetCompanySubscriptionStatusParams) {
+}: GetCompanySubscriptionStatusProps) {
   const supabase = createClient();
 
   const { data: subscription, error } = await supabase
@@ -22,7 +22,6 @@ export async function getCompanySubscriptionStatus({
   const data = camelizeKeys(subscription);
 
   if (error) {
-    console.error("Erro ao buscar assinatura da empresa:", error);
     return {
       hasActiveSubscription: false,
       expiresAt: null,
