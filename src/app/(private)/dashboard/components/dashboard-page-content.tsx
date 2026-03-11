@@ -9,7 +9,7 @@ import { ChartFiltersType } from "@/src/app/(private)/dashboard/types/chart-filt
 import Column from "@/src/components/core/column";
 import Show from "@/src/components/core/show";
 import PageTitle from "@/src/components/page-title";
-import PremiumFeatureWrapper from "@/src/components/premium-feature-wrapper";
+import PremiumPageOverlay from "@/src/components/premium-page-overlay";
 import { useAuth } from "@/src/providers/auth-provider";
 import { CircleX, LayoutDashboard } from "lucide-react";
 import dynamic from "next/dynamic";
@@ -158,12 +158,8 @@ const DashboardPageContent = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 w-full gap-4">
             <ProductsAveragePriceKpiCard filters={apiFilters} />
             <ProductsAverageAcquisitionCostKpiCard filters={apiFilters} />
-            <PremiumFeatureWrapper isPremium={!isPremium}>
-              <ProductsAverageNetProfitKpiCard filters={apiFilters} />
-            </PremiumFeatureWrapper>
-            <PremiumFeatureWrapper isPremium={!isPremium}>
-              <ProductsAverageProfitabilityKpiCard filters={apiFilters} />
-            </PremiumFeatureWrapper>
+            <ProductsAverageNetProfitKpiCard filters={apiFilters} />
+            <ProductsAverageProfitabilityKpiCard filters={apiFilters} />
           </div>
 
           <div className="grid grid-cols-8 gap-4 items-stretch">
@@ -171,46 +167,35 @@ const DashboardPageContent = () => {
               <ProductsNetProfitRankingChart filters={apiFilters} />
             </div>
             <div className="col-span-8 lg:col-span-4 2xl:col-span-2">
-              <PremiumFeatureWrapper isPremium={!isPremium}>
-                <ProductsMarkupRankingChart filters={apiFilters} />
-              </PremiumFeatureWrapper>
+              <ProductsMarkupRankingChart filters={apiFilters} />
             </div>
             <div className="col-span-8 lg:col-span-4">
-              <PremiumFeatureWrapper isPremium={!isPremium}>
-                <ProductsFixedCostsRankingChart filters={apiFilters} />
-              </PremiumFeatureWrapper>
+              <ProductsFixedCostsRankingChart filters={apiFilters} />
             </div>
             <div className="col-span-8 2xl:col-span-4">
-              <PremiumFeatureWrapper isPremium={!isPremium}>
-                <ProductsShippingRankingChart filters={apiFilters} />
-              </PremiumFeatureWrapper>
+              <ProductsShippingRankingChart filters={apiFilters} />
             </div>
             <div className="col-span-8">
-              <PremiumFeatureWrapper isPremium={!isPremium}>
-                <ProductsPricesAndAcquisitionCostsChart
-                  productIds={apiFilters.productIds ?? []}
-                />
-              </PremiumFeatureWrapper>
+              <ProductsPricesAndAcquisitionCostsChart
+                productIds={apiFilters.productIds ?? []}
+              />
             </div>
             <div className="col-span-8">
-              <PremiumFeatureWrapper isPremium={!isPremium}>
-                <ProductsPricesAndNetProfitsChart
-                  productIds={apiFilters.productIds ?? []}
-                />
-              </PremiumFeatureWrapper>
+              <ProductsPricesAndNetProfitsChart
+                productIds={apiFilters.productIds ?? []}
+              />
             </div>
             <div className="col-span-8 lg:col-span-4">
-              <PremiumFeatureWrapper isPremium={!isPremium}>
-                <ProductsPriceHistoryChart filters={apiFilters} />
-              </PremiumFeatureWrapper>
+              <ProductsPriceHistoryChart filters={apiFilters} />
             </div>
             <div className="col-span-8 lg:col-span-4">
-              <PremiumFeatureWrapper isPremium={!isPremium}>
-                <ProductsNetProfitHistoryChart filters={apiFilters} />
-              </PremiumFeatureWrapper>
+              <ProductsNetProfitHistoryChart filters={apiFilters} />
             </div>
           </div>
         </Column>
+      </Show>
+      <Show when={!isPremium && companyHasProducts}>
+        <PremiumPageOverlay />
       </Show>
     </Column>
   );

@@ -7,22 +7,22 @@ import Flex from "@/src/components/core/flex";
 import { Input } from "@/src/components/core/input";
 import { Label } from "@/src/components/core/label";
 import Row from "@/src/components/core/row";
-import Show from "@/src/components/core/show";
 import ExportDataButton from "@/src/components/export-data-button";
+import PlanCrownBadge from "@/src/components/plan-crown-badge";
 import PageTitle from "@/src/components/page-title";
 import { currencyFormatter } from "@/src/helpers/currency-formatter";
 import { useDebounce } from "@/src/hooks/use-debounce";
 import { useAuth } from "@/src/providers/auth-provider";
 import { useQuery } from "@tanstack/react-query";
-import { Package, PlusCircle, TriangleAlert } from "lucide-react";
+import Show from "@/src/components/core/show";
+import { Package, PlusCircle } from "lucide-react";
 import Link from "next/link";
 import { parseAsInteger, parseAsString, useQueryState } from "nuqs";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
 
 const ProductsHeaderSection = () => {
-  const { isLoadingAuth, isPremium } = useAuth();
-
+  const { hasReachedProductLimit, plan } = useAuth();
   const [search, setSearch] = useQueryState(
     "filtro",
     parseAsString.withDefault("").withOptions({
@@ -106,16 +106,6 @@ const ProductsHeaderSection = () => {
           icon={<Package size={26} className="shrink-0" />}
           title="Produtos"
         />
-        <Show when={!isLoadingAuth && !isPremium}>
-          <Flex className="bg-secondary/5 border border-secondary rounded-md gap-2 p-1.5 items-center">
-            <TriangleAlert className="text-secondary shrink-0" />
-            <span className="text-sm">
-              No <strong className="font-semibold">Plano Gratuito</strong> não é
-              possível editar ou excluir produtos e o limite de precificação é
-              de 10 produtos.
-            </span>
-          </Flex>
-        </Show>
       </Flex>
       <Flex className="flex-col lg:flex-row justify-between lg:items-center w-full gap-4">
         <div className="w-full lg:max-w-120">
@@ -137,13 +127,25 @@ const ProductsHeaderSection = () => {
           className="space-x-2 w-full lg:w-fit lg:justify-end"
           aria-label="Ações de produtos"
         >
-          <Button asChild className="hover:cursor-pointer w-fit">
-            <Link href="/produtos/novo">
+          <Button
+            disabled={hasReachedProductLimit}
+            className="hover:cursor-pointer w-fit disabled:bg-primary/90! disabled:text-whit relative"
+          >
+            <Link href="/produtos/novo" className="flex flex-row gap-2">
               <PlusCircle aria-hidden="true" />
               <span>Novo Produto</span>
             </Link>
+            <Show when={hasReachedProductLimit}>
+              <div className="h-6 w-6 absolute -right-2 -top-2">
+                <PlanCrownBadge isPremium />
+              </div>
+            </Show>
           </Button>
-          <ExportDataButton onClick={handleExport} pending={isFetching} />
+          <ExportDataButton
+            onClick={handleExport}
+            pending={isFetching}
+            disabled={!plan?.canExportData}
+          />
         </Row>
       </Flex>
     </Column>

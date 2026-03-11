@@ -98,7 +98,7 @@ const ActivePlanCard = () => {
             </p>
           </Column>
         </Flex>
-        {(plan?.startedAt || plan?.expiresAt) && (
+        {plan?.planType !== "free" && (plan?.startedAt || plan?.expiresAt) && (
           <Flex className="flex-col sm:flex-row sm:items-center gap-2 text-sm text-neutral-300">
             <CalendarDays className="w-3.5 h-3.5 hidden sm:flex" />
             {plan?.startedAt && (

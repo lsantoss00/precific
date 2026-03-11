@@ -5,6 +5,7 @@ import Row from "@/src/components/core/row";
 import Show from "@/src/components/core/show";
 import { Switch } from "@/src/components/core/switch";
 import CustomTooltip from "@/src/components/custom-tooltip";
+import PlanCrownBadge from "@/src/components/plan-crown-badge";
 import { currencyFormatter } from "@/src/helpers/currency-formatter";
 import { useAuth } from "@/src/providers/auth-provider";
 import { ColumnDef, Row as TanstackRow } from "@tanstack/react-table";
@@ -28,22 +29,16 @@ interface ProductActionsCellProps {
 }
 
 const ProductActionsCell = ({ row, meta }: ProductActionsCellProps) => {
-  const { isPremium } = useAuth();
+  const { hasReachedProductLimit, plan } = useAuth();
   const product = row.original;
 
-  const priceIn2026 = product?.priceIn2026 ?? 0;
-  const isPriced = priceIn2026 > 0;
-  const freeLimitReached = (meta?.pricedProductsQuantity ?? 0) >= 10;
+  const isPending =
+    meta?.pendingUpdateProductStatus || meta?.pendingDeleteProduct;
 
-  const isOverLimit = !isPremium && !isPriced && freeLimitReached;
+  const isEditDisabled =
+    isPending || hasReachedProductLimit || !plan?.canUpdateProducts;
 
-  const cannotEditExisting = !isPremium && isPriced;
-
-  const isDisabled =
-    meta?.pendingUpdateProductStatus ||
-    meta?.pendingDeleteProduct ||
-    isOverLimit ||
-    cannotEditExisting;
+  const isDeleteDisabled = isPending || !plan?.canDeleteProducts;
 
   return (
     <Row className="justify-end space-x-2">
@@ -57,11 +52,23 @@ const ProductActionsCell = ({ row, meta }: ProductActionsCellProps) => {
         <Eye />
       </Button>
       <Show
-        when={!isDisabled}
+        when={!isEditDisabled}
         fallback={
-          <Button variant="ghost" size="icon" disabled={true}>
-            <Pencil />
-          </Button>
+          <Row className="relative">
+            <Button
+              variant="ghost"
+              size="icon"
+              disabled={true}
+              className="relative"
+            >
+              <Pencil />
+            </Button>
+            <Show when={!plan?.canUpdateProducts}>
+              <div className="h-6 w-6 absolute -right-2 -top-1.5">
+                <PlanCrownBadge isPremium />
+              </div>
+            </Show>
+          </Row>
         }
       >
         <Button
@@ -69,9 +76,7 @@ const ProductActionsCell = ({ row, meta }: ProductActionsCellProps) => {
           variant="ghost"
           size="icon"
           className="hover:bg-primary/20  hover:text-primary"
-          disabled={
-            meta?.pendingUpdateProductStatus || meta?.pendingDeleteProduct
-          }
+          disabled={isPending}
           aria-label="Precificar Produto"
         >
           <Link href={`/produtos/${product.id}`}>
@@ -79,22 +84,66 @@ const ProductActionsCell = ({ row, meta }: ProductActionsCellProps) => {
           </Link>
         </Button>
       </Show>
-      <Button
-        variant="ghost"
-        size="icon"
-        onClick={() => meta?.onDeleteProduct(product.id!, product.name!)}
-        disabled={isDisabled}
-        aria-label="Excluir produto"
-        className="hover:bg-red-200  hover:text-red-500"
-      >
-        <Show
-          when={!meta?.pendingDeleteProduct}
-          fallback={<Loader2Icon className="animate-spin" />}
+      <Row className="relative">
+        <Button
+          variant="ghost"
+          size="icon"
+          onClick={() => meta?.onDeleteProduct(product.id!, product.name!)}
+          disabled={isDeleteDisabled}
+          aria-label="Excluir produto"
+          className="hover:bg-red-200  hover:text-red-500 relative"
         >
-          <Trash2 />
+          <Show
+            when={!meta?.pendingDeleteProduct}
+            fallback={<Loader2Icon className="animate-spin" />}
+          >
+            <Trash2 />
+          </Show>
+        </Button>
+        <Show when={!plan?.canDeleteProducts}>
+          <div className="h-6 w-6 absolute -right-2 -top-1.5 opacity-100">
+            <PlanCrownBadge isPremium />
+          </div>
         </Show>
-      </Button>
+      </Row>
     </Row>
+  );
+};
+
+interface ProductStatusCellProps {
+  row: TanstackRow<Partial<ProductResponseType>>;
+  meta: ProductTableMeta;
+}
+
+const ProductStatusCell = ({ row, meta }: ProductStatusCellProps) => {
+  const { plan } = useAuth();
+  const product = row.original;
+  const isActive = row.getValue("status") === "ACTIVE";
+
+  return (
+    <div className="flex items-center">
+      <Row className="relative">
+        <Switch
+          checked={isActive}
+          onCheckedChange={(checked) => {
+            meta?.onUpdateProductStatus?.(
+              product.id!,
+              checked ? "ACTIVE" : "INACTIVE",
+            );
+          }}
+          disabled={
+            meta?.pendingUpdateProductStatus ||
+            meta?.pendingDeleteProduct ||
+            !plan?.canUpdateProducts
+          }
+        />
+        <Show when={!plan?.canUpdateProducts}>
+          <div className="h-6 w-6 absolute -right-2 -top-2">
+            <PlanCrownBadge isPremium />
+          </div>
+        </Show>
+      </Row>
+    </div>
   );
 };
 
@@ -226,25 +275,7 @@ export const productsTableColumns: ColumnDef<Partial<ProductResponseType>>[] = [
     ),
     cell: ({ row, table }) => {
       const meta = table.options.meta as ProductTableMeta;
-      const product = row.original;
-      const isActive = row.getValue("status") === "ACTIVE";
-
-      return (
-        <div className="flex items-center">
-          <Switch
-            checked={isActive}
-            onCheckedChange={(checked) => {
-              meta?.onUpdateProductStatus?.(
-                product.id!,
-                checked ? "ACTIVE" : "INACTIVE",
-              );
-            }}
-            disabled={
-              meta?.pendingUpdateProductStatus || meta?.pendingDeleteProduct
-            }
-          />
-        </div>
-      );
+      return <ProductStatusCell row={row} meta={meta} />;
     },
     meta: {
       className: "hidden 2xl:table-cell",

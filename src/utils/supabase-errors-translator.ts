@@ -27,8 +27,7 @@ const errorMessagesTranslation: Record<string, string> = {
     "Endereço de e-mail inválido.",
 
   //  Erros de plano
-  NO_ACTIVE_PLAN: "Sua empresa não possui um plano ativo.",
-  PLAN_INACTIVE: "Seu plano está inativo. Renove sua assinatura.",
+  NO_ACTIVE_PLAN: "Sua empresa não possui um plano.",
   PRODUCT_LIMIT_REACHED: "Você atingiu o limite de produtos do seu plano.",
   DELETE_NOT_ALLOWED: "Seu plano não permite excluir produtos.",
   UPDATE_NOT_ALLOWED: "Seu plano não permite editar produtos.",

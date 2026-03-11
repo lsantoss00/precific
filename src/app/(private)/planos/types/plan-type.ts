@@ -1,4 +1,5 @@
 export enum PlanDisplayName {
+  free = "Grátis",
   basic = "Básico",
   standard = "Intermediário",
   pro = "Avançado",
@@ -7,7 +8,7 @@ export enum PlanDisplayName {
 
 export type PlanType = {
   id: string;
-  name: "basic" | "standard" | "pro" | "custom";
+  name: "free" | "basic" | "standard" | "pro" | "custom";
   description: string;
   price: string;
   benefits: string[];
@@ -31,6 +32,7 @@ export interface CompanyActivePlanType {
   maxUsers: number | null;
   canDeleteProducts: boolean;
   canUpdateProducts: boolean;
+  canExportData: boolean;
   startedAt: string | null;
   expiresAt: string | null;
   users: PlanUser[];

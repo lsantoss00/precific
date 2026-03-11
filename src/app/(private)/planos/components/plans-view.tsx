@@ -6,12 +6,15 @@ import { plans } from "@/src/app/(private)/planos/constants/plans";
 import { Button } from "@/src/components/core/button";
 import Flex from "@/src/components/core/flex";
 import Show from "@/src/components/core/show";
-import { useState } from "react";
+import { parseAsStringLiteral, useQueryState } from "nuqs";
 
-type ViewState = "active-plan" | "plans";
+const viewOptions = ["active-plan", "available-plans"] as const;
 
 export default function PlansView() {
-  const [activeView, setActiveView] = useState<ViewState>("active-plan");
+  const [activeView, setActiveView] = useQueryState(
+    "aba",
+    parseAsStringLiteral(viewOptions).withDefault("active-plan"),
+  );
 
   return (
     <Flex className="flex flex-col gap-4">
@@ -24,8 +27,8 @@ export default function PlansView() {
           Plano Ativo
         </Button>
         <Button
-          variant={activeView === "plans" ? "default" : "outline"}
-          onClick={() => setActiveView("plans")}
+          variant={activeView === "available-plans" ? "default" : "outline"}
+          onClick={() => setActiveView("available-plans")}
           className="border"
         >
           Nossos Planos
@@ -36,7 +39,7 @@ export default function PlansView() {
           <ActivePlanCard />
         </Flex>
       </Show>
-      <Show when={activeView === "plans"}>
+      <Show when={activeView === "available-plans"}>
         <div className="grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-4 items-center gap-4">
           {plans.map((plan) => (
             <PlanCard key={plan.id} plan={plan} />
