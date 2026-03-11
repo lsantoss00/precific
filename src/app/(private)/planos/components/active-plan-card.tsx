@@ -9,11 +9,13 @@ import Flex from "@/src/components/core/flex";
 import { Progress } from "@/src/components/core/progress";
 import Row from "@/src/components/core/row";
 import { Separator } from "@/src/components/core/separator";
+import { dateFormatter } from "@/src/helpers/date-formatter";
 import { useMediaQuery } from "@/src/hooks/use-media-query";
 import { useAuth } from "@/src/providers/auth-provider";
 import { useQuery } from "@tanstack/react-query";
 import {
   BarChart3,
+  CalendarDays,
   CircleCheckBig,
   Package,
   Users,
@@ -80,25 +82,35 @@ const ActivePlanCard = () => {
 
   return (
     <Card className="w-full py-0! overflow-hidden">
-      <div className="p-6 text-primary-foreground bg-primary">
-        <Flex className="flex-col gap-4 sm:flex-row items-center justify-between">
-          <Column className="h-20 justify-center">
+      <Column className="p-6 text-primary-foreground bg-primary gap-2">
+        <Flex className="flex-col sm:flex-row md:items-start justify-between gap-2">
+          <Column className="gap-2">
             <h2 className="text-2xl font-bold tracking-tight">
               {PlanDisplayName[plan?.planId as keyof typeof PlanDisplayName] ??
                 plan?.planId}
             </h2>
-            <p className="text-sm mt-1 text-primary-foreground/80">
-              {plan?.description}
+            <p className="text-sm text-neutral-300">{plan?.description}</p>
+          </Column>
+          <Column className="text-right items-start shrink-0">
+            <p className="text-3xl text-start font-extrabold tracking-tight">
+              R$ {plan?.price.toFixed(2).replace(".", ",")}{" "}
+              <span className="text-xs text-neutral-300">/mês</span>
             </p>
           </Column>
-          <div className="text-right shrink-0">
-            <div className="text-3xl font-extrabold tracking-tight">
-              R$ {plan?.price.toFixed(2).replace(".", ",")}{" "}
-              <span className="text-xs text-primary-foreground/70">/mês</span>
-            </div>
-          </div>
         </Flex>
-      </div>
+        {(plan?.startedAt || plan?.expiresAt) && (
+          <Flex className="flex-col sm:flex-row sm:items-center gap-2 text-sm text-neutral-300">
+            <CalendarDays className="w-3.5 h-3.5 hidden sm:flex" />
+            {plan?.startedAt && (
+              <span>Início em: {dateFormatter(plan.startedAt, true)}</span>
+            )}
+            <span className="hidden sm:block">-</span>
+            {plan?.expiresAt && (
+              <span>Expira em: {dateFormatter(plan.expiresAt, true)}</span>
+            )}
+          </Flex>
+        )}
+      </Column>
       <Column className="p-6 gap-4 w-full">
         <Flex className="flex-col md:flex-row gap-4">
           <section className="w-full">

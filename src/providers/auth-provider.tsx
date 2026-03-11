@@ -2,7 +2,6 @@
 
 import { getCompanyActivePlan } from "@/src/app/(private)/perfil/services/get-company-active-plan";
 import { getCompanyById } from "@/src/app/(private)/perfil/services/get-company-by-id";
-import { getCompanySubscriptionStatus } from "@/src/app/(private)/perfil/services/get-company-subscription-status";
 import { getUserProfile } from "@/src/app/(private)/perfil/services/get-user-profile";
 import { CompanyType } from "@/src/app/(private)/perfil/types/company-type";
 import { ProfileType } from "@/src/app/(private)/perfil/types/profile-type";
@@ -65,29 +64,17 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     gcTime: 1000 * 60 * 60,
   });
 
-  const { data: subscription, isLoading: isLoadingSubscription } = useQuery({
-    queryFn: () => {
-      if (!profile?.companyId) return null;
-      return getCompanySubscriptionStatus({ companyId: profile.companyId });
-    },
-    queryKey: ["company-subscription", profile?.companyId],
-    enabled: !!profile?.companyId,
-    staleTime: 1000 * 60 * 5,
-    gcTime: 1000 * 60 * 10,
-    refetchOnMount: true,
-    refetchOnWindowFocus: true,
-    refetchOnReconnect: true,
-    refetchInterval: 1000 * 60 * 5,
-  });
-
   const { data: plan, isLoading: isLoadingPlan } =
     useQuery<CompanyActivePlanType>({
       queryFn: () => getCompanyActivePlan({ companyId: profile!.companyId! }),
       queryKey: ["company-active-plan", profile?.companyId],
       enabled: !!profile?.companyId,
-      staleTime: 1000 * 60 * 15,
-      gcTime: 1000 * 60 * 60,
+      staleTime: 1000 * 60 * 5,
+      gcTime: 1000 * 60 * 10,
+      refetchOnMount: true,
       refetchOnWindowFocus: true,
+      refetchOnReconnect: true,
+      refetchInterval: 1000 * 60 * 5,
     });
 
   useEffect(() => {
@@ -126,10 +113,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         },
         () => {
           queryClient.invalidateQueries({
-            queryKey: ["company-subscription", profile.companyId],
-          });
-          queryClient.invalidateQueries({
-            queryKey: ["company-active-plan", profile?.companyId],
+            queryKey: ["company-active-plan", profile.companyId],
           });
         },
       )
@@ -144,11 +128,10 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     isLoadingUser ||
     (!!user && isLoadingProfile) ||
     (!!profile?.companyId && isLoadingCompany) ||
-    (!!company && isLoadingSubscription) ||
     (!!profile?.companyId && isLoadingPlan);
 
-  const isPremium = subscription?.hasActiveSubscription ?? false;
-  const expiresAt = subscription?.expiresAt ?? null;
+  const isPremium = plan?.planStatus === "active";
+  const expiresAt = plan?.expiresAt ?? null;
 
   const hasReachedProductLimit =
     plan?.maxProducts != null

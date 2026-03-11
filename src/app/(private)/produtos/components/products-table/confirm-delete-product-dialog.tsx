@@ -14,6 +14,7 @@ import {
 import Flex from "@/src/components/core/flex";
 import Show from "@/src/components/core/show";
 import { queryClient } from "@/src/libs/tanstack-query/query-client";
+import { useAuth } from "@/src/providers/auth-provider";
 import { DialogDescription } from "@radix-ui/react-dialog";
 import { useMutation } from "@tanstack/react-query";
 import { Loader2Icon, Trash2 } from "lucide-react";
@@ -32,6 +33,8 @@ const ConfirmDeleteProductDialog = ({
   onDeleteSuccess,
   product,
 }: ConfirmDeleteProductDialogProps) => {
+  const { profile } = useAuth();
+
   const { mutate: del, isPending: pendingDeleteProduct } = useMutation({
     mutationFn: deleteProduct,
     onSuccess: async () => {
@@ -41,6 +44,9 @@ const ConfirmDeleteProductDialog = ({
       });
       await queryClient.invalidateQueries({
         queryKey: ["product", "summaries"],
+      });
+      queryClient.invalidateQueries({
+        queryKey: ["company-active-plan", profile?.companyId],
       });
       toast.success("Produto deletado com sucesso!", {
         className: "!bg-green-600 !text-white",

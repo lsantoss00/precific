@@ -31,5 +31,7 @@ export interface CompanyActivePlanType {
   maxUsers: number | null;
   canDeleteProducts: boolean;
   canUpdateProducts: boolean;
+  startedAt: string | null;
+  expiresAt: string | null;
   users: PlanUser[];
 }
