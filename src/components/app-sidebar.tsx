@@ -5,6 +5,8 @@ import shortLogoImage from "@/public/images/precific-short-logo-image.webp";
 import ComingSoonBadge from "@/src/components/coming-soon-badge";
 import { Separator } from "@/src/components/core/separator";
 import Menu from "@/src/components/menu";
+import PlanCrownBadge from "@/src/components/plan-crown-badge";
+import { useAuth } from "@/src/providers/auth-provider";
 import { Clock, Crown, Headset, LayoutDashboard, Package } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -25,9 +27,50 @@ import {
 
 export function AppSidebar() {
   const { state } = useSidebar();
+  const { plan } = useAuth();
   const pathname = usePathname();
 
   const isCollapsed = state === "collapsed";
+
+  const isFreePlan = plan?.planId === "free";
+
+  const mainItems = [
+    {
+      title: "Produtos",
+      url: "/produtos",
+      icon: Package,
+      disabled: false,
+      soon: false,
+      premium: false,
+    },
+    {
+      title: "Dashboard",
+      url: "/dashboard",
+      icon: LayoutDashboard,
+      disabled: isFreePlan ? true : false,
+      soon: false,
+      premium: true,
+    },
+  ];
+
+  const secondaryItems = [
+    {
+      title: "Planos",
+      url: "/planos",
+      icon: Crown,
+      disabled: false,
+      soon: false,
+      premium: false,
+    },
+    {
+      title: "Suporte",
+      url: "/suporte",
+      icon: Headset,
+      disabled: false,
+      soon: false,
+      premium: false,
+    },
+  ];
 
   return (
     <Sidebar collapsible="icon" aria-label="Menu de navegação principal">
@@ -86,6 +129,16 @@ export function AppSidebar() {
                               aria-label="Em breve"
                             />
                           )}
+                          {!isCollapsed && item.premium && (
+                            <div className="h-6 w-6">
+                              <PlanCrownBadge />
+                            </div>
+                          )}
+                          {isCollapsed && item.premium && (
+                            <div className="h-6 w-6 absolute right-0 top-0">
+                              <PlanCrownBadge />
+                            </div>
+                          )}
                         </>
                       ) : (
                         <Link href={item.url}>
@@ -99,6 +152,16 @@ export function AppSidebar() {
                               className="w-4! h-4! absolute bg-black rounded-full text-white right-2 bottom-2"
                               aria-label="Em breve"
                             />
+                          )}
+                          {!isCollapsed && item.premium && (
+                            <div className="h-6 w-6">
+                              <PlanCrownBadge />
+                            </div>
+                          )}
+                          {isCollapsed && item.premium && (
+                            <div className="h-6 w-6 absolute right-0 top-0">
+                              <PlanCrownBadge />
+                            </div>
                           )}
                         </Link>
                       )}
@@ -177,37 +240,3 @@ export function AppSidebar() {
     </Sidebar>
   );
 }
-
-const mainItems = [
-  {
-    title: "Produtos",
-    url: "/produtos",
-    icon: Package,
-    disabled: false,
-    soon: false,
-  },
-  {
-    title: "Dashboard",
-    url: "/dashboard",
-    icon: LayoutDashboard,
-    disabled: false,
-    soon: false,
-  },
-];
-
-const secondaryItems = [
-  {
-    title: "Planos",
-    url: "/planos",
-    icon: Crown,
-    disabled: false,
-    soon: true,
-  },
-  {
-    title: "Suporte",
-    url: "/suporte",
-    icon: Headset,
-    disabled: false,
-    soon: false,
-  },
-];

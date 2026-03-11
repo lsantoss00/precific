@@ -33,7 +33,7 @@ const ExportDataButton = ({
       </Button>
       <Show when={disabled}>
         <div className="h-6 w-6 absolute -right-2 -top-1.5">
-          <PlanCrownBadge isPremium />
+          <PlanCrownBadge />
         </div>
       </Show>
     </Row>

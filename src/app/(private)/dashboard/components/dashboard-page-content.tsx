@@ -9,7 +9,6 @@ import { ChartFiltersType } from "@/src/app/(private)/dashboard/types/chart-filt
 import Column from "@/src/components/core/column";
 import Show from "@/src/components/core/show";
 import PageTitle from "@/src/components/page-title";
-import PremiumPageOverlay from "@/src/components/premium-page-overlay";
 import { useAuth } from "@/src/providers/auth-provider";
 import { CircleX, LayoutDashboard } from "lucide-react";
 import dynamic from "next/dynamic";
@@ -193,9 +192,6 @@ const DashboardPageContent = () => {
             </div>
           </div>
         </Column>
-      </Show>
-      <Show when={!isPremium && companyHasProducts}>
-        <PremiumPageOverlay />
       </Show>
     </Column>
   );

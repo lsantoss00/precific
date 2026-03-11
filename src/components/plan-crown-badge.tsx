@@ -1,28 +1,15 @@
 "use client";
 
 import Flex from "@/src/components/core/flex";
-import Show from "@/src/components/core/show";
 import { Crown } from "lucide-react";
 
-interface PlanCrownBadgeProps {
-  isPremium?: boolean;
-}
-
-const PlanCrownBadge = ({ isPremium = false }: PlanCrownBadgeProps) => {
+const PlanCrownBadge = () => {
   return (
     <Flex
-      className={`h-full w-full rounded-full items-center justify-center border-2 shrink-0 p-0.5 ${
-        isPremium
-          ? "border-secondary bg-yellow-200"
-          : "border-muted-foreground bg-neutral-100"
-      } shadow-sm`}
+      className="h-full w-full rounded-full items-center justify-center border-2 shrink-0 p-0.5 border-secondary bg-yellow-200 shadow-sm"
+      aria-label="Plano Premium"
     >
-      <Show
-        when={isPremium}
-        fallback={<Crown className="text-muted-foreground" />}
-      >
-        <Crown className="text-secondary" />
-      </Show>
+      <Crown className="text-secondary" />
     </Flex>
   );
 };
