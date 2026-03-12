@@ -11,6 +11,7 @@ import Row from "@/src/components/core/row";
 import { Separator } from "@/src/components/core/separator";
 import { dateFormatter } from "@/src/helpers/date-formatter";
 import { useMediaQuery } from "@/src/hooks/use-media-query";
+import { cn } from "@/src/libs/shadcn-ui/utils";
 import { useAuth } from "@/src/providers/auth-provider";
 import { useQuery } from "@tanstack/react-query";
 import {
@@ -116,10 +117,14 @@ const ActivePlanCard = () => {
           <section className="w-full">
             <SectionHeader icon={Users} title="Usuários" />
             <p className="text-sm text-muted-foreground mb-3">
-              {plan?.maxUsers} de {plan?.maxUsers} usuários utilizados
+              {plan?.users?.length} de {plan?.maxUsers} usuários utilizados
             </p>
             <Progress
-              value={plan?.maxUsers ? (plan.maxUsers / plan.maxUsers) * 100 : 0}
+              value={
+                plan?.maxUsers
+                  ? ((plan.users?.length ?? 0) / plan.maxUsers) * 100
+                  : 0
+              }
               className="h-2 mb-4"
             />
             <div
@@ -144,17 +149,23 @@ const ActivePlanCard = () => {
           <section className="w-full">
             <SectionHeader icon={Package} title="Produtos" />
             <p className="text-sm text-muted-foreground mb-3">
-              {company?.productsQuantity} de {plan?.maxProducts} produtos
-              cadastrados
+              {plan?.maxProducts
+                ? `${company?.productsQuantity} de ${plan.maxProducts} produtos cadastrados`
+                : `${company?.productsQuantity} produto(s) cadastrado(s)`}
             </p>
             <Progress
               value={
                 plan?.maxProducts
                   ? ((company?.productsQuantity ?? 0) / plan.maxProducts) * 100
-                  : 0
+                  : 100
               }
-              className="h-2 mb-4"
+              className={cn(
+                "h-2 mb-4",
+                !plan?.maxProducts &&
+                  "*:data-[slot=progress-indicator]:bg-neutral-100",
+              )}
             />
+
             <div
               className={`grid grid-cols-1 md:grid-cols-2 ${is3xl && "grid-cols-4!"} gap-2`}
             >

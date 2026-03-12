@@ -32,11 +32,15 @@ const ProductActionsCell = ({ row, meta }: ProductActionsCellProps) => {
   const { hasReachedProductLimit, plan } = useAuth();
   const product = row.original;
 
+  const isFreePlan = plan?.planId === "free";
+
   const isPending =
     meta?.pendingUpdateProductStatus || meta?.pendingDeleteProduct;
 
   const isEditDisabled =
-    isPending || hasReachedProductLimit || !plan?.canUpdateProducts;
+    isPending ||
+    (isFreePlan && hasReachedProductLimit) ||
+    !plan?.canUpdateProducts;
 
   const isDeleteDisabled = isPending || !plan?.canDeleteProducts;
 
