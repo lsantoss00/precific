@@ -7,14 +7,14 @@ import Flex from "@/src/components/core/flex";
 import { Input } from "@/src/components/core/input";
 import { Label } from "@/src/components/core/label";
 import Row from "@/src/components/core/row";
+import Show from "@/src/components/core/show";
 import ExportDataButton from "@/src/components/export-data-button";
-import PlanCrownBadge from "@/src/components/plan-crown-badge";
 import PageTitle from "@/src/components/page-title";
+import PlanCrownBadge from "@/src/components/plan-crown-badge";
 import { currencyFormatter } from "@/src/helpers/currency-formatter";
 import { useDebounce } from "@/src/hooks/use-debounce";
 import { useAuth } from "@/src/providers/auth-provider";
 import { useQuery } from "@tanstack/react-query";
-import Show from "@/src/components/core/show";
 import { Package, PlusCircle } from "lucide-react";
 import Link from "next/link";
 import { parseAsInteger, parseAsString, useQueryState } from "nuqs";
@@ -137,7 +137,7 @@ const ProductsHeaderSection = () => {
             </Link>
             <Show when={hasReachedProductLimit}>
               <div className="h-6 w-6 absolute -right-2 -top-2">
-                <PlanCrownBadge isPremium />
+                <PlanCrownBadge />
               </div>
             </Show>
           </Button>

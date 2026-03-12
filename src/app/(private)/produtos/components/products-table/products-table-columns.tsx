@@ -65,7 +65,7 @@ const ProductActionsCell = ({ row, meta }: ProductActionsCellProps) => {
             </Button>
             <Show when={!plan?.canUpdateProducts}>
               <div className="h-6 w-6 absolute -right-2 -top-1.5">
-                <PlanCrownBadge isPremium />
+                <PlanCrownBadge />
               </div>
             </Show>
           </Row>
@@ -102,7 +102,7 @@ const ProductActionsCell = ({ row, meta }: ProductActionsCellProps) => {
         </Button>
         <Show when={!plan?.canDeleteProducts}>
           <div className="h-6 w-6 absolute -right-2 -top-1.5 opacity-100">
-            <PlanCrownBadge isPremium />
+            <PlanCrownBadge />
           </div>
         </Show>
       </Row>
@@ -139,7 +139,7 @@ const ProductStatusCell = ({ row, meta }: ProductStatusCellProps) => {
         />
         <Show when={!plan?.canUpdateProducts}>
           <div className="h-6 w-6 absolute -right-2 -top-2">
-            <PlanCrownBadge isPremium />
+            <PlanCrownBadge />
           </div>
         </Show>
       </Row>

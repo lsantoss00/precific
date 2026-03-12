@@ -26,7 +26,7 @@ const PremiumFeatureWrapper = ({
             tooltipClassName="max-w-xs!"
             icon={
               <div className="h-10 w-10 bg-white rounded-full">
-                <PlanCrownBadge isPremium={isPremium} />
+                <PlanCrownBadge />
               </div>
             }
             message={
