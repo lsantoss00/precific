@@ -12,13 +12,14 @@ import PageTitle from "@/src/components/page-title";
 import { useAuth } from "@/src/providers/auth-provider";
 import { CircleX, LayoutDashboard } from "lucide-react";
 import dynamic from "next/dynamic";
+import { useRouter } from "next/navigation";
 import {
   parseAsArrayOf,
   parseAsIsoDate,
   parseAsString,
   useQueryStates,
 } from "nuqs";
-import { useMemo } from "react";
+import { useEffect, useMemo } from "react";
 
 const ProductsNetProfitRankingChart = dynamic(
   () =>
@@ -77,7 +78,18 @@ const ProductsNetProfitHistoryChart = dynamic(
 );
 
 const DashboardPageContent = () => {
-  const { company, isPremium } = useAuth();
+  const { company, plan } = useAuth();
+  const router = useRouter();
+
+  const isFreePlan = plan?.planId === "free";
+
+  useEffect(() => {
+    if (isFreePlan) {
+      router.replace("/produtos");
+    }
+  }, [isFreePlan, router]);
+
+  if (isFreePlan) return null;
 
   const [filters, setFilters] = useQueryStates(
     {

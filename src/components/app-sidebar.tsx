@@ -108,7 +108,7 @@ export function AppSidebar() {
               {mainItems.map((item) => {
                 const isActive = pathname.startsWith(item.url);
                 return (
-                  <SidebarMenuItem key={item.title}>
+                  <SidebarMenuItem key={item.title} className="relative">
                     <SidebarMenuButton
                       asChild={!item.disabled}
                       isActive={isActive}
@@ -129,16 +129,6 @@ export function AppSidebar() {
                               aria-label="Em breve"
                             />
                           )}
-                          {!isCollapsed && item.premium && (
-                            <div className="h-6 w-6">
-                              <PlanCrownBadge />
-                            </div>
-                          )}
-                          {isCollapsed && item.premium && (
-                            <div className="h-6 w-6 absolute right-0 top-0">
-                              <PlanCrownBadge />
-                            </div>
-                          )}
                         </>
                       ) : (
                         <Link href={item.url}>
@@ -153,19 +143,19 @@ export function AppSidebar() {
                               aria-label="Em breve"
                             />
                           )}
-                          {!isCollapsed && item.premium && (
-                            <div className="h-6 w-6">
-                              <PlanCrownBadge />
-                            </div>
-                          )}
-                          {isCollapsed && item.premium && (
-                            <div className="h-6 w-6 absolute right-0 top-0">
-                              <PlanCrownBadge />
-                            </div>
-                          )}
                         </Link>
                       )}
                     </SidebarMenuButton>
+                    {item.premium && !isCollapsed && (
+                      <div className="h-6 w-6 absolute right-2 top-1/2 -translate-y-1/2 pointer-events-none">
+                        <PlanCrownBadge />
+                      </div>
+                    )}
+                    {item.premium && isCollapsed && (
+                      <div className="h-6 w-6 absolute right-0 top-0 pointer-events-none">
+                        <PlanCrownBadge />
+                      </div>
+                    )}
                   </SidebarMenuItem>
                 );
               })}
