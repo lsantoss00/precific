@@ -136,7 +136,7 @@ const ActivePlanCard = () => {
                   className={`items-center justify-center gap-2 p-2 ${is3xl ? "flex-col h-20 text-center" : "h-12.5"} rounded-md bg-neutral-100 hover:bg-neutral-200 transition-colors`}
                 >
                   <Flex className="w-8 h-8 rounded-full items-center justify-center font-semibold bg-primary text-white text-xs shrink-0">
-                    {user.username.charAt(0).toUpperCase()}
+                    {user?.username?.charAt(0).toUpperCase()}
                   </Flex>
                   <span className="text-xs font-medium text-foreground truncate w-full">
                     {user.email}
