@@ -6,9 +6,13 @@ import { BanknoteArrowUp } from "lucide-react";
 
 interface ProductsMarkupChartProps {
   filters?: ChartFiltersType;
+  enabled?: boolean;
 }
 
-const ProductsAveragePriceKpiCard = ({ filters }: ProductsMarkupChartProps) => {
+const ProductsAveragePriceKpiCard = ({
+  filters,
+  enabled = true,
+}: ProductsMarkupChartProps) => {
   const {
     data: averagePrice,
     isFetching,
@@ -20,6 +24,7 @@ const ProductsAveragePriceKpiCard = ({ filters }: ProductsMarkupChartProps) => {
         filters,
       }),
     placeholderData: keepPreviousData,
+    enabled,
   });
 
   return (

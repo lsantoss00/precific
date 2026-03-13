@@ -8,6 +8,8 @@ import ProductsAverageProfitabilityKpiCard from "@/src/app/(private)/dashboard/c
 import { ChartFiltersType } from "@/src/app/(private)/dashboard/types/chart-filters-type";
 import Column from "@/src/components/core/column";
 import Show from "@/src/components/core/show";
+import PremiumFeatureWrapper from "@/src/components/premium-feature-wrapper";
+import { ChartName, isChartAvailable } from "@/src/constants/dashboard-charts";
 import PageTitle from "@/src/components/page-title";
 import { useAuth } from "@/src/providers/auth-provider";
 import { CircleX, LayoutDashboard } from "lucide-react";
@@ -82,6 +84,9 @@ const DashboardPageContent = () => {
   const router = useRouter();
 
   const isFreePlan = plan?.planId === "free";
+
+  const isPremium = (chartName: ChartName) =>
+    !isChartAvailable(chartName, plan?.planId);
 
   const [filters, setFilters] = useQueryStates(
     {
@@ -167,40 +172,66 @@ const DashboardPageContent = () => {
             onChange={handleFilterChange}
           />
           <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 w-full gap-4">
-            <ProductsAveragePriceKpiCard filters={apiFilters} />
-            <ProductsAverageAcquisitionCostKpiCard filters={apiFilters} />
-            <ProductsAverageNetProfitKpiCard filters={apiFilters} />
-            <ProductsAverageProfitabilityKpiCard filters={apiFilters} />
+            <PremiumFeatureWrapper isPremium={isPremium("Preço Médio de Venda")}>
+              <ProductsAveragePriceKpiCard filters={apiFilters} enabled={!isPremium("Preço Médio de Venda")} />
+            </PremiumFeatureWrapper>
+            <PremiumFeatureWrapper isPremium={isPremium("Custo Médio")}>
+              <ProductsAverageAcquisitionCostKpiCard filters={apiFilters} enabled={!isPremium("Custo Médio")} />
+            </PremiumFeatureWrapper>
+            <PremiumFeatureWrapper isPremium={isPremium("Lucro Líquido Médio")}>
+              <ProductsAverageNetProfitKpiCard filters={apiFilters} enabled={!isPremium("Lucro Líquido Médio")} />
+            </PremiumFeatureWrapper>
+            <PremiumFeatureWrapper isPremium={isPremium("Rentabilidade Média")}>
+              <ProductsAverageProfitabilityKpiCard filters={apiFilters} enabled={!isPremium("Rentabilidade Média")} />
+            </PremiumFeatureWrapper>
           </div>
 
           <div className="grid grid-cols-8 gap-4 items-stretch">
             <div className="col-span-8 2xl:col-span-6 h-full">
-              <ProductsNetProfitRankingChart filters={apiFilters} />
+              <PremiumFeatureWrapper isPremium={isPremium("Ranking de Lucro Líquido")}>
+                <ProductsNetProfitRankingChart filters={apiFilters} enabled={!isPremium("Ranking de Lucro Líquido")} />
+              </PremiumFeatureWrapper>
             </div>
             <div className="col-span-8 lg:col-span-4 2xl:col-span-2">
-              <ProductsMarkupRankingChart filters={apiFilters} />
+              <PremiumFeatureWrapper isPremium={isPremium("Ranking de Markup")}>
+                <ProductsMarkupRankingChart filters={apiFilters} enabled={!isPremium("Ranking de Markup")} />
+              </PremiumFeatureWrapper>
             </div>
             <div className="col-span-8 lg:col-span-4">
-              <ProductsFixedCostsRankingChart filters={apiFilters} />
+              <PremiumFeatureWrapper isPremium={isPremium("Ranking de Custo Fixo")}>
+                <ProductsFixedCostsRankingChart filters={apiFilters} enabled={!isPremium("Ranking de Custo Fixo")} />
+              </PremiumFeatureWrapper>
             </div>
             <div className="col-span-8 2xl:col-span-4">
-              <ProductsShippingRankingChart filters={apiFilters} />
+              <PremiumFeatureWrapper isPremium={isPremium("Ranking de Frete")}>
+                <ProductsShippingRankingChart filters={apiFilters} enabled={!isPremium("Ranking de Frete")} />
+              </PremiumFeatureWrapper>
             </div>
             <div className="col-span-8">
-              <ProductsPricesAndAcquisitionCostsChart
-                productIds={apiFilters.productIds ?? []}
-              />
+              <PremiumFeatureWrapper isPremium={isPremium("Preço de Venda X Custo de Aquisição")}>
+                <ProductsPricesAndAcquisitionCostsChart
+                  productIds={apiFilters.productIds ?? []}
+                  enabled={!isPremium("Preço de Venda X Custo de Aquisição")}
+                />
+              </PremiumFeatureWrapper>
             </div>
             <div className="col-span-8">
-              <ProductsPricesAndNetProfitsChart
-                productIds={apiFilters.productIds ?? []}
-              />
+              <PremiumFeatureWrapper isPremium={isPremium("Preço de Venda X Lucro Líquido")}>
+                <ProductsPricesAndNetProfitsChart
+                  productIds={apiFilters.productIds ?? []}
+                  enabled={!isPremium("Preço de Venda X Lucro Líquido")}
+                />
+              </PremiumFeatureWrapper>
             </div>
             <div className="col-span-8 lg:col-span-4">
-              <ProductsPriceHistoryChart filters={apiFilters} />
+              <PremiumFeatureWrapper isPremium={isPremium("Histórico de Preços")}>
+                <ProductsPriceHistoryChart filters={apiFilters} enabled={!isPremium("Histórico de Preços")} />
+              </PremiumFeatureWrapper>
             </div>
             <div className="col-span-8 lg:col-span-4">
-              <ProductsNetProfitHistoryChart filters={apiFilters} />
+              <PremiumFeatureWrapper isPremium={isPremium("Histórico de Lucros Líquidos")}>
+                <ProductsNetProfitHistoryChart filters={apiFilters} enabled={!isPremium("Histórico de Lucros Líquidos")} />
+              </PremiumFeatureWrapper>
             </div>
           </div>
         </Column>

@@ -11,10 +11,12 @@ import { useState } from "react";
 
 interface ProductsNetProfitRankingChartProps {
   filters?: ChartFiltersType;
+  enabled?: boolean;
 }
 
 const ProductsNetProfitRankingChart = ({
   filters,
+  enabled = true,
 }: ProductsNetProfitRankingChartProps) => {
   const [sortDirection, setSortDirection] = useState<"asc" | "desc">("desc");
 
@@ -26,6 +28,7 @@ const ProductsNetProfitRankingChart = ({
     queryKey: ["dashboard", "products-net-profit", sortDirection, filters],
     queryFn: () => getProductsNetProfit({ sortDirection, filters }),
     placeholderData: keepPreviousData,
+    enabled,
   });
 
   const isAscending = sortDirection === "asc";

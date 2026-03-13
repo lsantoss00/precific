@@ -7,10 +7,12 @@ import { keepPreviousData, useQuery } from "@tanstack/react-query";
 
 interface ProductsPricesAndNetProfitsChartProps {
   productIds: string[];
+  enabled?: boolean;
 }
 
 const ProductsPricesAndNetProfitsChart = ({
   productIds,
+  enabled = true,
 }: ProductsPricesAndNetProfitsChartProps) => {
   const {
     data: products,
@@ -20,6 +22,7 @@ const ProductsPricesAndNetProfitsChart = ({
     queryKey: ["dashboard", "products-prices-and-net-profits", productIds],
     queryFn: () => getProductsPricesAndNetProfits({ productIds }),
     placeholderData: keepPreviousData,
+    enabled,
   });
 
   const chartData = (products || []).map((product) => ({

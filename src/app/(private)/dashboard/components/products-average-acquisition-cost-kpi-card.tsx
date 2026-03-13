@@ -6,10 +6,12 @@ import { BanknoteArrowDown } from "lucide-react";
 
 interface ProductsAverageAcquisitionCostKpiCardProps {
   filters?: ChartFiltersType;
+  enabled?: boolean;
 }
 
 const ProductsAverageAcquisitionCostKpiCard = ({
   filters,
+  enabled = true,
 }: ProductsAverageAcquisitionCostKpiCardProps) => {
   const {
     data: averageAcquisitionCost,
@@ -22,6 +24,7 @@ const ProductsAverageAcquisitionCostKpiCard = ({
         filters,
       }),
     placeholderData: keepPreviousData,
+    enabled,
   });
 
   return (

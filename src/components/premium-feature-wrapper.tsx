@@ -31,10 +31,7 @@ const PremiumFeatureWrapper = ({
             }
             message={
               <Column className="gap-2">
-                <p>Plano Pago</p>
-                <span>
-                  Faça upgrade do seu plano para visualizar este gráfico.
-                </span>
+                <p>Faça upgrade do seu plano para visualizar este gráfico.</p>
               </Column>
             }
           />

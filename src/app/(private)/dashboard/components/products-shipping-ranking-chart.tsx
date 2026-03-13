@@ -11,10 +11,12 @@ import { useState } from "react";
 
 interface ProductsShippingRankingChartProps {
   filters?: ChartFiltersType;
+  enabled?: boolean;
 }
 
 const ProductsShippingRankingChart = ({
   filters,
+  enabled = true,
 }: ProductsShippingRankingChartProps) => {
   const [sortDirection, setSortDirection] = useState<"asc" | "desc">("desc");
 
@@ -26,6 +28,7 @@ const ProductsShippingRankingChart = ({
     queryKey: ["dashboard", "products-shipping", sortDirection, filters],
     queryFn: () => getProductsShipping({ sortDirection, filters }),
     placeholderData: keepPreviousData,
+    enabled,
   });
 
   const isAscending = sortDirection === "asc";

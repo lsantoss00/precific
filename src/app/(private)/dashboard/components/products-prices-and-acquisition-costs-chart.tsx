@@ -9,10 +9,12 @@ import { keepPreviousData, useQuery } from "@tanstack/react-query";
 
 interface ProductsPricesAndAcquisitionCostsChartProps {
   productIds: string[];
+  enabled?: boolean;
 }
 
 const ProductsPricesAndAcquisitionCostsChart = ({
   productIds,
+  enabled = true,
 }: ProductsPricesAndAcquisitionCostsChartProps) => {
   const {
     data: products,
@@ -26,6 +28,7 @@ const ProductsPricesAndAcquisitionCostsChart = ({
     ],
     queryFn: () => getProductsPricesAndAcquisitionCosts({ productIds }),
     placeholderData: keepPreviousData,
+    enabled,
   });
 
   const chartData = (products || []).map((product) => ({

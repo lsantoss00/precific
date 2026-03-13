@@ -6,10 +6,12 @@ import { HandCoins } from "lucide-react";
 
 interface ProductsAverageNetProfitKpiCardProps {
   filters?: ChartFiltersType;
+  enabled?: boolean;
 }
 
 const ProductsAverageNetProfitKpiCard = ({
   filters,
+  enabled = true,
 }: ProductsAverageNetProfitKpiCardProps) => {
   const {
     data: averageNetProfit,
@@ -22,6 +24,7 @@ const ProductsAverageNetProfitKpiCard = ({
         filters,
       }),
     placeholderData: keepPreviousData,
+    enabled,
   });
 
   return (

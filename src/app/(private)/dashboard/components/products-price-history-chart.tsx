@@ -12,10 +12,12 @@ import { keepPreviousData, useQuery } from "@tanstack/react-query";
 
 interface ProductsPriceHistoryChartProps {
   filters: ChartFiltersType;
+  enabled?: boolean;
 }
 
 const ProductsPriceHistoryChart = ({
   filters,
+  enabled = true,
 }: ProductsPriceHistoryChartProps) => {
   const hasProductsSelected = Boolean(
     filters.productIds && filters.productIds.length > 0,
@@ -31,7 +33,8 @@ const ProductsPriceHistoryChart = ({
       getProductsPriceHistory({
         filters,
       }),
-    enabled: Boolean(filters.productIds && filters.productIds.length > 0),
+    enabled:
+      enabled && Boolean(filters.productIds && filters.productIds.length > 0),
     placeholderData: keepPreviousData,
   });
 

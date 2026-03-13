@@ -6,10 +6,12 @@ import { BadgePercent } from "lucide-react";
 
 interface ProductsAverageProfitabilityKpiCardProps {
   filters?: ChartFiltersType;
+  enabled?: boolean;
 }
 
 const ProductsAverageProfitabilityKpiCard = ({
   filters,
+  enabled = true,
 }: ProductsAverageProfitabilityKpiCardProps) => {
   const {
     data: averageProfitability,
@@ -22,6 +24,7 @@ const ProductsAverageProfitabilityKpiCard = ({
         filters,
       }),
     placeholderData: keepPreviousData,
+    enabled,
   });
 
   return (

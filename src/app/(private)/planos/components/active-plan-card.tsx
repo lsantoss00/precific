@@ -9,6 +9,10 @@ import Flex from "@/src/components/core/flex";
 import { Progress } from "@/src/components/core/progress";
 import Row from "@/src/components/core/row";
 import { Separator } from "@/src/components/core/separator";
+import {
+  DASHBOARD_CHARTS,
+  isChartAvailable,
+} from "@/src/constants/dashboard-charts";
 import { dateFormatter } from "@/src/helpers/date-formatter";
 import { useMediaQuery } from "@/src/hooks/use-media-query";
 import { cn } from "@/src/libs/shadcn-ui/utils";
@@ -22,28 +26,6 @@ import {
   Users,
   XCircle,
 } from "lucide-react";
-
-const charts = [
-  "Preço Médio de Venda",
-  "Custo Médio",
-  "Lucro Líquido Médio",
-  "Rentabilidade Média",
-  "Ranking de Lucro Líquido",
-  "Ranking de Markup",
-  "Ranking de Custo Fixo",
-  "Ranking de Frete",
-  "Preço de Venda X Custo de Aquisição",
-  "Preço de Venda X Lucro Líquido",
-  "Histórico de Preços",
-  "Histórico de Lucros Líquidos",
-];
-
-const basicCharts = new Set([
-  "Preço Médio de Venda",
-  "Custo Médio",
-  "Ranking de Lucro Líquido",
-  "Ranking de Markup",
-]);
 
 const SectionHeader = ({
   icon: Icon,
@@ -74,13 +56,12 @@ const ActivePlanCard = () => {
   const is3xl = useMediaQuery(`(min-width: 1800px)`);
 
   const isFreePlan = plan?.planId === "free";
-  const isBasicPlan = plan?.planId === "basic";
 
-  const availableCharts = charts.filter(
-    (name) => !isFreePlan && (!isBasicPlan || basicCharts.has(name)),
+  const availableCharts = DASHBOARD_CHARTS.filter((name) =>
+    isChartAvailable(name, plan?.planId),
   );
-  const lockedCharts = charts.filter(
-    (name) => isFreePlan || (isBasicPlan && !basicCharts.has(name)),
+  const lockedCharts = DASHBOARD_CHARTS.filter(
+    (name) => !isChartAvailable(name, plan?.planId),
   );
 
   return (
