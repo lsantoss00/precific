@@ -156,7 +156,7 @@ const AcquisitionCostForm = () => {
           </Column>
         </Column>
         <Column className="space-y-2">
-          <Label htmlFor="pisCofins" required>
+          <Label htmlFor="pisCofins" required={!ísPresumedProfit}>
             PIS/COFINS (%)
           </Label>
           <Column className="gap-2">
@@ -165,8 +165,9 @@ const AcquisitionCostForm = () => {
                 name="pisCofins"
                 control={control}
                 rules={{
-                  required: "Campo obrigatório",
+                  required: ísPresumedProfit ? false : "Campo obrigatório",
                   validate: (value) => {
+                    if (ísPresumedProfit) return true;
                     if (
                       value === null ||
                       value === undefined ||
