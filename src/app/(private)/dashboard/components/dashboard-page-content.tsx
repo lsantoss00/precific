@@ -83,14 +83,6 @@ const DashboardPageContent = () => {
 
   const isFreePlan = plan?.planId === "free";
 
-  useEffect(() => {
-    if (isFreePlan) {
-      router.replace("/produtos");
-    }
-  }, [isFreePlan, router]);
-
-  if (isFreePlan) return null;
-
   const [filters, setFilters] = useQueryStates(
     {
       dataInicial: parseAsIsoDate,
@@ -127,6 +119,14 @@ const DashboardPageContent = () => {
       produtos: newFilters.productIds?.length ? newFilters.productIds : null,
     });
   };
+
+  useEffect(() => {
+    if (isFreePlan) {
+      router.replace("/produtos");
+    }
+  }, [isFreePlan, router]);
+
+  if (isFreePlan) return null;
 
   const companyHasProducts = company ? company.productsQuantity > 0 : null;
 

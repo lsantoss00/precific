@@ -96,7 +96,7 @@ const ActivePlanCard = () => {
           </Column>
           <Column className="text-right items-start shrink-0">
             <p className="text-3xl text-start font-extrabold tracking-tight">
-              R$ {plan?.price.toFixed(2).replace(".", ",")}{" "}
+              R$ {(plan?.price ?? 0).toFixed(2).replace(".", ",")}{" "}
               <span className="text-xs text-neutral-300">/mês</span>
             </p>
           </Column>
