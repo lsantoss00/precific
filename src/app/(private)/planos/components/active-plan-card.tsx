@@ -77,10 +77,10 @@ const ActivePlanCard = () => {
   const isBasicPlan = plan?.planId === "basic";
 
   const availableCharts = charts.filter(
-    (name) => !isBasicPlan || basicCharts.has(name),
+    (name) => !isFreePlan && (!isBasicPlan || basicCharts.has(name)),
   );
   const lockedCharts = charts.filter(
-    (name) => isBasicPlan && !basicCharts.has(name),
+    (name) => isFreePlan || (isBasicPlan && !basicCharts.has(name)),
   );
 
   return (
