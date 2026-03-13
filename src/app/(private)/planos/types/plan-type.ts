@@ -26,8 +26,6 @@ export interface CompanyActivePlanType {
   planId: string;
   description: string;
   price: number;
-  planType: string;
-  planStatus: string;
   maxProducts: number | null;
   maxUsers: number | null;
   canDeleteProducts: boolean;

@@ -15,7 +15,6 @@ import { createClient } from "../libs/supabase/client";
 interface AuthContextType {
   profile: ProfileType | null;
   company: CompanyType | null;
-  isPremium: boolean;
   expiresAt: string | null;
   isLoadingAuth: boolean;
   plan: CompanyActivePlanType | null;
@@ -25,7 +24,6 @@ interface AuthContextType {
 const AuthContext = createContext<AuthContextType>({
   profile: null,
   company: null,
-  isPremium: false,
   expiresAt: null,
   isLoadingAuth: true,
   plan: null,
@@ -130,7 +128,6 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     (!!profile?.companyId && isLoadingCompany) ||
     (!!profile?.companyId && isLoadingPlan);
 
-  const isPremium = plan?.planStatus === "active";
   const expiresAt = plan?.expiresAt ?? null;
 
   const hasReachedProductLimit =
@@ -143,7 +140,6 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       value={{
         profile: profile ?? null,
         company: company ?? null,
-        isPremium,
         expiresAt,
         isLoadingAuth,
         plan: plan ?? null,

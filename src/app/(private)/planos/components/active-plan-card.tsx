@@ -73,12 +73,14 @@ const ActivePlanCard = () => {
   const isMd = useMediaQuery(`(min-width: 768px)`);
   const is3xl = useMediaQuery(`(min-width: 1800px)`);
 
-  const isBasic = plan?.planId === "basic";
+  const isFreePlan = plan?.planId === "free";
+  const isBasicPlan = plan?.planId === "basic";
+
   const availableCharts = charts.filter(
-    (name) => !isBasic || basicCharts.has(name),
+    (name) => !isBasicPlan || basicCharts.has(name),
   );
   const lockedCharts = charts.filter(
-    (name) => isBasic && !basicCharts.has(name),
+    (name) => isBasicPlan && !basicCharts.has(name),
   );
 
   return (
@@ -99,7 +101,7 @@ const ActivePlanCard = () => {
             </p>
           </Column>
         </Flex>
-        {plan?.planType !== "free" && (plan?.startedAt || plan?.expiresAt) && (
+        {!isFreePlan && (plan?.startedAt || plan?.expiresAt) && (
           <Flex className="flex-col sm:flex-row sm:items-center gap-2 text-sm text-neutral-300">
             <CalendarDays className="w-3.5 h-3.5 hidden sm:flex" />
             {plan?.startedAt && (
