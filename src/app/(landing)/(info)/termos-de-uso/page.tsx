@@ -42,7 +42,7 @@ export default function TermsOfUsePage() {
     <InfoPageLayout>
       <InfoPageHeader
         title="Termos de Uso"
-        description="Bem-vindo ao Precific! Estes Termos de Uso estabelecem as regras e
+        description="Estes Termos de Uso estabelecem as regras e
         condições para utilização da nossa plataforma de precificação
         inteligente. <br /> Ao acessar ou utilizar nossos serviços, você
         concorda integralmente com estes termos. Leia atentamente antes de
