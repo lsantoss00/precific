@@ -311,7 +311,7 @@ const ContactForm = () => {
         )}
       </div>
       <Button
-        className="h-12 md:h-14 text-sm md:text-base"
+        className="md:h-14 text-sm md:text-base"
         type="submit"
         disabled={
           contactMutation.isPending || formInputFieldIsBlank || !isValid
@@ -322,7 +322,7 @@ const ContactForm = () => {
         </Show>
         Eu quero precificar!
       </Button>
-      <p className="text-[10px] text-zinc-400 text-center">
+      <p className="text-[10px] text-neutral-400 text-center">
         Este site é protegido pelo reCAPTCHA e a
         <Link
           href="https://policies.google.com/privacy"

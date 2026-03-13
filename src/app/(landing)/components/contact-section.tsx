@@ -21,7 +21,7 @@ const ContactSection = () => {
               >
                 Nossa equipe especializada está pronta para tirar suas dúvidas
               </h2>
-              <p className="text-sm md:text-base xl:text-base 2xl:text-lg max-w-xl text-zinc-200">
+              <p className="text-sm md:text-base xl:text-base 2xl:text-lg max-w-xl text-neutral-200">
                 Preencha o formulário{" "}
                 <span className="xl:inline hidden">ao lado</span>
                 <span className="xl:hidden">abaixo</span> para que um dos nossos

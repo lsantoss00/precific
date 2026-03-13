@@ -1,19 +1,20 @@
-import React, { forwardRef } from "react";
+import React from "react";
 
 type ColumnProps = React.ComponentProps<"div"> & {
   as?: React.ElementType;
 };
 
-const Column = forwardRef<HTMLElement, ColumnProps>(
-  ({ as: Component = "div", className, children, ...props }, ref) => {
-    return (
-      <Component ref={ref} className={`flex flex-col ${className}`} {...props}>
-        {children}
-      </Component>
-    );
-  }
-);
-
-Column.displayName = "Column";
+const Column = ({
+  as: Component = "div",
+  className,
+  children,
+  ...props
+}: ColumnProps) => {
+  return (
+    <Component className={`flex flex-col ${className}`} {...props}>
+      {children}
+    </Component>
+  );
+};
 
 export default Column;

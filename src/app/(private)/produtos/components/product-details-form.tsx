@@ -49,14 +49,16 @@ const ProductDetailsForm = () => {
 
   return (
     <Card className="w-full p-6 rounded-md flex flex-col space-y-6 flex-1">
-      <h3 className="text-lg font-medium text-gray-800">Detalhes do Produto</h3>
+      <h3 className="text-lg font-medium text-neutral-800">
+        Detalhes do Produto
+      </h3>
       <form className="flex flex-col space-y-4">
         <Column className="space-y-2">
           <Row className="justify-between items-end">
             <Label htmlFor="name" required>
               Nome
             </Label>
-            <span className="text-[10px] text-gray-400 tabular-nums">
+            <span className="text-[10px] text-neutral-400 tabular-nums">
               {nameValue.length}/64
             </span>
           </Row>
@@ -80,7 +82,7 @@ const ProductDetailsForm = () => {
             <Label htmlFor="sku" required>
               SKU
             </Label>
-            <span className="text-[10px] text-gray-400 tabular-nums">
+            <span className="text-[10px] text-neutral-400 tabular-nums">
               {skuValue.length}/32
             </span>
           </Row>
@@ -119,7 +121,7 @@ const ProductDetailsForm = () => {
         <Column className="space-y-2">
           <Row className="justify-between items-end">
             <Label htmlFor="observations">Observações</Label>
-            <span className="text-[10px] text-gray-400 tabular-nums">
+            <span className="text-[10px] text-neutral-400 tabular-nums">
               {obsValue.length}/256
             </span>
           </Row>

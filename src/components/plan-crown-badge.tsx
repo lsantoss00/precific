@@ -14,8 +14,8 @@ const PlanCrownBadge = ({ isPremium = false }: PlanCrownBadgeProps) => {
       className={`h-full w-full rounded-full items-center justify-center border-2 shrink-0 ${
         isPremium
           ? "border-secondary bg-secondary/20"
-          : "border-muted-foreground bg-zinc-100"
-      } shadow-md`}
+          : "border-muted-foreground bg-neutral-100"
+      } shadow-sm`}
     >
       <Show
         when={isPremium}

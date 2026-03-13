@@ -84,7 +84,7 @@ const ProductForm = ({ productId }: ProductFormProps) => {
         </Button>
         <Button
           asChild
-          className="flex-1 md:flex-none md:w-40 h-12 lg:h-full! lg:w-20 flex items-center"
+          className="flex-1 md:flex-none md:w-40 lg:h-full! lg:w-20 flex items-center"
           disabled={!isFormValid}
         >
           <Link

@@ -1,5 +1,5 @@
 import { cn } from "@/src/libs/shadcn-ui/utils";
-import React, { forwardRef } from "react";
+import React from "react";
 
 type ContainerVariant = "section" | "page";
 
@@ -13,21 +13,18 @@ type ContainerProps = React.ComponentProps<"div"> & {
   variant?: ContainerVariant;
 };
 
-const Container = forwardRef<HTMLElement, ContainerProps>(
-  (
-    { as: Component = "div", className, variant = "section", ...props },
-    ref,
-  ) => {
-    return (
-      <Component
-        ref={ref}
-        className={cn("w-full", variantClasses[variant], className)}
-        {...props}
-      />
-    );
-  },
-);
-
-Container.displayName = "Container";
+const Container = ({
+  as: Component = "div",
+  className,
+  variant = "section",
+  ...props
+}: ContainerProps) => {
+  return (
+    <Component
+      className={cn("w-full", variantClasses[variant], className)}
+      {...props}
+    />
+  );
+};
 
 export { Container };

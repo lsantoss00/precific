@@ -22,7 +22,7 @@ const Footer = () => {
       <Container variant="section" className="2xl:px-0! 2xl:max-w-7xl m-auto">
         <Flex className="flex-col xl:flex-row justify-between gap-8 md:gap-12 lg:gap-16">
           <Column className="flex-1 space-y-4 md:space-y-6 w-full md:w-auto">
-            <Row className="items-center gap-4">
+            <Row className="items-center max-sm:justify-center gap-4">
               <Flex as="figure" className="relative">
                 <Image
                   src={grupoViriatoLogoImageWhite}
@@ -50,7 +50,7 @@ const Footer = () => {
                 />
               </Flex>
             </Row>
-            <p className="text-muted-foreground text-sm sm:text-base max-w-sm md:w-full md:max-w-none xl:max-w-lg leading-relaxed text-justify">
+            <p className="text-muted-foreground text-sm sm:text-base md:w-full md:max-w-none xl:max-w-lg leading-relaxed text-justify">
               O Precific é um produto oficial do Grupo Viriato, desenvolvido
               para apoiar empresas na formação de preços com precisão,
               inteligência tributária e eficiência operacional. Há mais de 40

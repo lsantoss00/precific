@@ -9,21 +9,16 @@ import { Label } from "@/src/components/core/label";
 import Row from "@/src/components/core/row";
 import Show from "@/src/components/core/show";
 import ExportDataButton from "@/src/components/export-data-button";
+import PageTitle from "@/src/components/page-title";
 import { currencyFormatter } from "@/src/helpers/currency-formatter";
 import { useDebounce } from "@/src/hooks/use-debounce";
 import { useAuth } from "@/src/providers/auth-provider";
 import { useQuery } from "@tanstack/react-query";
 import { Package, PlusCircle, TriangleAlert } from "lucide-react";
-import dynamic from "next/dynamic";
 import Link from "next/link";
 import { parseAsInteger, parseAsString, useQueryState } from "nuqs";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
-
-const MultipleImportDialog = dynamic(
-  () => import("@/src/components/multiple-import-dialog"),
-  { ssr: false },
-);
 
 const ProductsHeaderSection = () => {
   const { isLoadingAuth, isPremium } = useAuth();
@@ -75,9 +70,11 @@ const ProductsHeaderSection = () => {
         SKU: product.sku || "-",
         Nome: product.name || "-",
         NCM: product.ncm || "-",
-        Preço: currencyFormatter(Number(product.priceToday)) || "-",
-        "Preço em 2026": currencyFormatter(Number(product.priceIn2026)) || "-",
-        "Preço em 2027": currencyFormatter(Number(product.priceIn2027)) || "-",
+        Preço: currencyFormatter(Number(product.priceToday) * 100) || "-",
+        "Preço em 2026":
+          currencyFormatter(Number(product.priceIn2026) * 100) || "-",
+        "Preço em 2027":
+          currencyFormatter(Number(product.priceIn2027) * 100) || "-",
         Status: product.status === "INACTIVE" ? "Inativo" : "Ativo",
       }));
 
@@ -105,10 +102,10 @@ const ProductsHeaderSection = () => {
   return (
     <Column as="header" className="space-y-3 w-full">
       <Flex className="md:items-center gap-2 justify-between flex-col-reverse md:flex-row">
-        <Row className="items-center gap-2">
-          <Package size={26} className="shrink-0" />
-          <h1 className="text-3xl font-semibold">Produtos</h1>
-        </Row>
+        <PageTitle
+          icon={<Package size={26} className="shrink-0" />}
+          title="Produtos"
+        />
         <Show when={!isLoadingAuth && !isPremium}>
           <Flex className="bg-secondary/5 border border-secondary rounded-md gap-2 p-1.5 items-center">
             <TriangleAlert className="text-secondary shrink-0" />
@@ -140,22 +137,13 @@ const ProductsHeaderSection = () => {
           className="space-x-2 w-full lg:w-fit lg:justify-end"
           aria-label="Ações de produtos"
         >
-          <Button asChild className="hover:cursor-pointer w-fit h-12 ">
+          <Button asChild className="hover:cursor-pointer w-fit">
             <Link href="/produtos/novo">
               <PlusCircle aria-hidden="true" />
               <span>Novo Produto</span>
             </Link>
           </Button>
           <ExportDataButton onClick={handleExport} pending={isFetching} />
-          {/* <MultipleImportDialog
-            trigger={
-              <Button className="hover:cursor-pointer flex-1 md:flex-none md:w-fit h-12">
-                <Upload className="text-white" aria-hidden="true" />
-                <span className="hidden sm:flex">Importar</span>
-                <span className="sr-only sm:hidden">Importar produtos</span>
-              </Button>
-            }
-          /> */}
         </Row>
       </Flex>
     </Column>

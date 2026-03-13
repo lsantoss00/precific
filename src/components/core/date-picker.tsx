@@ -24,7 +24,7 @@ function DatePicker({ value, onValueChange }: DatePickerProps) {
       <PopoverTrigger asChild>
         <Button
           id="date-picker"
-          className="w-full h-12 justify-between font-normal text-muted-foreground text-base bg-white! border border-foreground/10!"
+          className="w-full justify-between font-normal text-muted-foreground text-base bg-white! border border-foreground/10! shadow-sm"
         >
           <Show
             when={value}

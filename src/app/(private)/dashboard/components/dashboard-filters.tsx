@@ -10,7 +10,6 @@ import { Label } from "@/src/components/core/label";
 import {
   MultiSelect,
   MultiSelectOption,
-  MultiSelectRef,
 } from "@/src/components/core/multi-select";
 import Row from "@/src/components/core/row";
 import Show from "@/src/components/core/show";
@@ -18,7 +17,7 @@ import { useDebounce } from "@/src/hooks/use-debounce";
 import { useMediaQuery } from "@/src/hooks/use-media-query";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { SearchX } from "lucide-react";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 interface DashboardFiltersProps {
   value: ChartFiltersType;
@@ -34,7 +33,6 @@ const DashboardFilters = ({ value, onChange }: DashboardFiltersProps) => {
 
   const { fromDate: dateFrom, toDate: dateTo, productIds: products } = value;
 
-  const multiSelectRef = useRef<MultiSelectRef>(null);
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedProducts, setSelectedProducts] = useState<
     string[] | undefined
@@ -48,6 +46,7 @@ const DashboardFilters = ({ value, onChange }: DashboardFiltersProps) => {
   const [selectedProductsMap, setSelectedProductsMap] = useState<
     Map<string, string>
   >(new Map());
+  const [resetKey, setResetKey] = useState(0);
 
   const debouncedSearched = useDebounce(searchTerm);
   const debouncedProducts = useDebounce(selectedProducts, 500);
@@ -108,7 +107,7 @@ const DashboardFilters = ({ value, onChange }: DashboardFiltersProps) => {
     return Array.from(map.values());
   }, [fetchedOptions, selectedProductsMap]);
 
-  useMemo(() => {
+  useEffect(() => {
     const newMap = new Map(selectedProductsMap);
     let hasChanges = false;
 
@@ -155,7 +154,7 @@ const DashboardFilters = ({ value, onChange }: DashboardFiltersProps) => {
     setSelectedFromDate(undefined);
     setSelectedToDate(undefined);
     setSearchTerm("");
-    multiSelectRef.current?.clear();
+    setResetKey((key) => key + 1);
 
     onChange({
       fromDate: undefined,
@@ -179,7 +178,11 @@ const DashboardFilters = ({ value, onChange }: DashboardFiltersProps) => {
   }, [dateTo]);
 
   useEffect(() => {
-    if (JSON.stringify(debouncedProducts) !== JSON.stringify(products)) {
+    const arraysEqual =
+      debouncedProducts?.length === products?.length &&
+      debouncedProducts?.every((id, i) => id === products?.[i]);
+
+    if (!arraysEqual) {
       onChange({ ...value, productIds: debouncedProducts });
     }
   }, [debouncedProducts]);
@@ -232,7 +235,6 @@ const DashboardFilters = ({ value, onChange }: DashboardFiltersProps) => {
         <Column className="gap-2 w-full 2xl:w-83.5">
           <Label>Produtos:</Label>
           <MultiSelect
-            ref={multiSelectRef}
             options={options}
             value={selectedProducts}
             onValueChange={handleProductsChange}
@@ -243,6 +245,7 @@ const DashboardFilters = ({ value, onChange }: DashboardFiltersProps) => {
             isLoadingMore={isFetching || isDebouncing}
             onSearch={setSearchTerm}
             onSearchValue={searchTerm}
+            resetKey={resetKey}
           />
         </Column>
       </Flex>

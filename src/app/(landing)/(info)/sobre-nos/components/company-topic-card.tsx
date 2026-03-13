@@ -11,7 +11,7 @@ const CompanyTopicCard = ({
   title,
   description,
 }: CompanyTopicCardProps) => (
-  <Column className="relative w-full space-y-4 sm:space-y-5 md:space-y-6 rounded-md bg-white shadow-lg px-4 py-5 sm:px-5 sm:py-6 md:px-6 md:py-6 xl:flex-row xl:space-y-0 xl:px-0 xl:py-0 transition-all duration-300 hover:ring-2 ring-primary hover:scale-[1.02] cursor-default">
+  <Column className="relative w-full space-y-4 sm:space-y-5 md:space-y-6 rounded-md bg-white shadow-lg px-4 py-5 sm:px-5 sm:py-6 md:px-6 md:py-6 xl:flex-row xl:space-y-0 xl:px-0 xl:py-0 transition-all duration-300 hover:ring-2 ring-primary hover:-translate-y-1 cursor-default">
     <Column className="w-full xl:w-auto">
       <span className="h-fit w-fit rounded-full bg-primary p-3 sm:p-4 md:p-5 text-white xl:absolute xl:-left-10 xl:top-1/2 xl:-translate-y-1/2 xl:p-6 flex [&>svg]:w-5 [&>svg]:h-5 sm:[&>svg]:w-6 sm:[&>svg]:h-6 xl:[&>svg]:w-7 xl:[&>svg]:h-7">
         {icon}

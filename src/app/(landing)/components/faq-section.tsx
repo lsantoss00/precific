@@ -30,7 +30,7 @@ const FAQSection = () => {
           </Column>
         </FadeInOnScroll>
         <FadeInOnScroll direction="right" offset={20} className="w-full flex-1">
-          <Column className="relative z-10 bg-white h-fit w-full rounded-md m-auto">
+          <Column className="relative z-10 bg-white h-fit w-full rounded-md m-auto shadow-sm">
             <FAQAccordion />
           </Column>
         </FadeInOnScroll>
